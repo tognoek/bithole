@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Bit Hole</string>
+    <string name="welcome">Welcome to Bit Hole</string>
+    <string name="Password">Password</string>
+    <string name="Mail">Mail</string>
+    <string name="User">User Name</string>
+    <string name="HUser">Enter User Name</string>
+    <string name="HPassword">Enter Password</string>
+    <string name="loginsignup">Don\'t have an account</string>
+    <string name="logingoogle">LOGIN WITH GOOGLE</string>
+    <string name="getpass">Forgot password?</string>
+    <string name="name">Đặng Văn Thống - 2115053120150</string>
+</resources>
