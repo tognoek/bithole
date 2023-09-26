@@ -30,6 +30,7 @@
                 app:cardCornerRadius="25dp">
 
                 <ImageView
+                    android:id="@+id/logobit"
                     android:layout_width="@dimen/size_logo"
                     android:layout_height="@dimen/size_logo"
                     android:src="@drawable/logo" />
