@@ -52,7 +52,6 @@ public class SQLITE extends SQLiteOpenHelper {
         Cursor cursor = null;
         if (Data != null){
             cursor = Data.rawQuery(query, null);
-            Toast.makeText(context, "Remove Table account", Toast.LENGTH_SHORT).show();
         }
         if (cursor != null){
             cursor.moveToNext();
