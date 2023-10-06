@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     Account acc = new Account(user, password);
                     SQLITE myDb = new SQLITE(MainActivity.this);
                     if (myDb.Findaccount(acc)){
-                        Intent intent = new Intent(MainActivity.this, HelloWord.class);
+                        Intent intent = new Intent(MainActivity.this, Home.class);
                         startActivity(intent);
                     }else{
                         showToast("Incorrect username or password");
