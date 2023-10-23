@@ -10,10 +10,19 @@
     <string name="logingoogle">LOGIN WITH GOOGLE</string>
     <string name="getpass">Forgot password?</string>
     <string name="name">Team Bit Hole</string>
+<<<<<<< HEAD
     <string name="shop_underline"><u>Shop</u></string>
     <string name="sanpham_underline"><u>Sản phẩm</u></string>
     <string name="danhmuc_underline"><u>Danh mục sản phẩm</u></string>
     <string name="shop">Shop</string>
     <string name="sanpham">Sản phẩm</string>
     <string name="danhmuc">Danh mục sản phẩm</string>
+=======
+
+    <string name="message">
+            <p>Vui lòng xác minh email của bạn để bảo vệ tài khoản và tránh thất thoát thông tin. <u><font color="#0080FF">Thiết lập ngay</font></u></p>
+    </string>
+    <string name="under_line"><u>Danh sách yêu thích</u></string>
+
+>>>>>>> 41fd3540d740133d3aff92dfa066626c24321b36
 </resources>
