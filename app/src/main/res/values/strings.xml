@@ -10,4 +10,10 @@
     <string name="logingoogle">LOGIN WITH GOOGLE</string>
     <string name="getpass">Forgot password?</string>
     <string name="name">Team Bit Hole</string>
+    <string name="shop_underline"><u>Shop</u></string>
+    <string name="sanpham_underline"><u>Sản phẩm</u></string>
+    <string name="danhmuc_underline"><u>Danh mục sản phẩm</u></string>
+    <string name="shop">Shop</string>
+    <string name="sanpham">Sản phẩm</string>
+    <string name="danhmuc">Danh mục sản phẩm</string>
 </resources>

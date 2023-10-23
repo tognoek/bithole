@@ -7,68 +7,46 @@
     tools:context=".detail_shop"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#EF9898">
         <ImageView
+            android:id="@+id/backPage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/back"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            />
+            android:layout_gravity="center"
+            android:layout_margin="10dp"/>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:background="@color/white"
-            android:layout_height="45dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="50dp">
-
-            <ImageView
-                android:id="@+id/search"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/search"
-                />
-
-            <EditText
-                android:id="@+id/textsearch"
-                style="@style/styleTow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="40dp"
-                android:layout_toEndOf="@id/search"
-                android:hint="Search in the shop"
-                android:inputType="textEmailAddress"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="#4C4C4C"/>
-            <ImageView
-                android:id="@+id/cam"
-                android:layout_toEndOf="@id/textsearch"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="-40dp"
-                android:src="@drawable/camera" />
-        </RelativeLayout>
+        <EditText
+            android:id="@+id/editTextInput"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toEndOf="@id/backPage"
+            app:layout_constraintEnd_toStartOf="@id/settings"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/edittext"
+            android:hint="Select in the shop"
+            android:layout_height="wrap_content"/>
 
         <ImageView
+            android:id="@+id/settings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/setting"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="-40dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
             />
         
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -115,6 +93,7 @@
                     android:layout_toEndOf="@+id/textNameShop"
                     android:src="@drawable/rightbutton"
                     android:layout_marginStart="20dp"
+                    android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"/>
                 <RelativeLayout
                     android:layout_toEndOf="@+id/iconright"
@@ -148,26 +127,156 @@
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:text="Online"/>
-                <RelativeLayout
-                    android:layout_toEndOf = "@+id/onloroff"
+
+                <View
+
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="20dp"
                     android:layout_centerInParent="true"
-                    android:background="#37FF00"/>
+                    android:layout_marginStart="20dp"
+                    android:layout_toEndOf="@+id/onloroff"
+                    android:background="@drawable/circle" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
+                <RelativeLayout
+                    android:id="@+id/star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/white">
+
+                    <View
+                        android:id="@+id/iconstar"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/circle" />
+
+                    <TextView
+                        android:id="@+id/starvod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toEndOf="@+id/iconstar"
+                        android:text="4.5" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_toEndOf="@+id/starvod"
+                        android:text=" / 5.0" />
+                </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/star"
+                    android:layout_centerInParent="true"
+                    android:text=" | 2Tr nguoi theo doi"/>
             </RelativeLayout>
         </LinearLayout>
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/shop_underline"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/sanpham"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/danhmuc"/>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#939393" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Gợi ý cho bạn"/>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            >
+
+            <TextView
+                android:id="@+id/allItems"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Xem tất cả"
+                android:textColor="#FF0000" />
+
+            <ImageView
+                android:layout_toEndOf="@+id/allItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rightbutton"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            and>
+
+        </TableLayout>
 
 
 
+    </LinearLayout>
 
 </LinearLayout>
