@@ -10,4 +10,10 @@
     <string name="logingoogle">LOGIN WITH GOOGLE</string>
     <string name="getpass">Forgot password?</string>
     <string name="name">Team Bit Hole</string>
+
+    <string name="message">
+            <p>Vui lòng xác minh email của bạn để bảo vệ tài khoản và tránh thất thoát thông tin. <u><font color="#0080FF">Thiết lập ngay</font></u></p>
+    </string>
+    <string name="under_line"><u>Danh sách yêu thích</u></string>
+
 </resources>

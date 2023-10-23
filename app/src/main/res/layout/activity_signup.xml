@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/costum"
-        tools:layout_editor_absoluteX="-29dp"
-        tools:layout_editor_absoluteY="31dp">
+        >
 
         <LinearLayout
             android:id="@+id/logo"
@@ -21,7 +20,7 @@
             android:layout_marginTop="90dp"
             android:gravity="center"
             android:orientation="vertical"
-            tools:ignore="MissingConstraints">
+        >
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"

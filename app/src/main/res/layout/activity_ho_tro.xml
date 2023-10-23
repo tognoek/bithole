@@ -1,336 +1,384 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HoTroActivity">
+    tools:context=".MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:background="#E683B6"
+        android:padding="5dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/s_giohang" />
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:paddingEnd="10dp"
-            android:background="#E683B6"
-            android:paddingStart="10dp"
-            >
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                app:srcCompat="@drawable/header_2" />
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:paddingEnd="10dp"
-                app:srcCompat="@drawable/header_1"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"/>
-            <TextView
-                android:id="@+id/textview1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Câu hỏi"
-                android:textSize="25dp"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@id/imageView1"
-                />
-        </RelativeLayout>
-        <EditText
-            android:id="@+id/edittext1"
-            android:layout_width="match_parent"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/s_trove" />
+
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/imageView1"
+            android:text="Câu hỏi"
             android:textStyle="bold"
-            android:text="Tìm câu trả lời hữu ích nhất tại đây"
-            android:textSize="20dp"
-            android:gravity="center"
-            />
+            android:textSize="25dp" />
+    </RelativeLayout>
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="*"
-            android:paddingTop="5dp"
-            android:paddingBottom="10dp"
-            >
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="15dp">
-                <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?android:attr/selectableItemBackground">
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/option1"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        style="@style/option"
-                        android:text="Vấn đề đơn về hàng"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?android:attr/selectableItemBackground">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/option2"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        style="@style/option"
-                        android:text="Vận chuyển"
-                        />
-                </LinearLayout>
 
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="15dp">
-                <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?android:attr/selectableItemBackground">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/option3"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        style="@style/option"
-                        android:text="Hoàn trả &#038; Hoàn tiền"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?android:attr/selectableItemBackground">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/option4"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        style="@style/option"
-                        android:text="Thanh toán &#038; Khuyến mãi"
-                        />
-                </LinearLayout>
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="15dp">
-                <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?android:attr/selectableItemBackground">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/option5"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        style="@style/option"
-                        android:text="Sản phẩm &#038; Kho hoàn"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?android:attr/selectableItemBackground">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/option6"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        style="@style/option"
-                        android:text="Tài khoản"
-                        />
-                </LinearLayout>
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="15dp">
-                <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?android:attr/selectableItemBackground">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/option7"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        style="@style/option"
-                        android:text="Bảo mật và Quyền riêng tư"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?android:attr/selectableItemBackground">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/option8"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        style="@style/option"
-                        android:text="Phương tiện truyền thông"
-                        />
-                </LinearLayout>
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp">
-                <LinearLayout
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?android:attr/selectableItemBackground">
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/option9"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        style="@style/option"
-                        android:text="Đề xuất / Tranh chấp"
-                        />
-                </LinearLayout>
-            </TableRow>
-        </TableLayout>
-
+    <ScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintTop_toBottomOf="@id/header">
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/rectangle_top_bottom"
+            app:layout_constraintTop_toTopOf="parent">
 
-            >
             <TextView
+                android:id="@+id/edittext1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Không thể tìm thấy câu hỏi bạn đang tìm kiếm?"
-                android:textStyle="bold"
-                android:textSize="15dp"
                 android:gravity="center"
                 android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dịch vụ khách hàng"
-                android:background="@drawable/rectangle"
-                android:textSize="15dp"
-                android:layout_gravity="center"
-                />
-            <TextView
+                android:text="Tìm câu trả lời hữu ích nhất tại đây"
+                android:background="@drawable/rectangle_bottom"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Đối với tất cả Q &#038; AS Hãy nhấp vào trang QA của chúng tôi"
-                android:textSize="12dp"
-                android:gravity="center"
-                android:paddingBottom="5dp"
                 android:paddingTop="5dp"
-                />
+                android:paddingBottom="10dp"
+                android:stretchColumns="*">
 
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/s_vandedonhang" />
+
+                        <TextView
+                            style="@style/option"
+                            android:text="Vấn đề đơn về hàng" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/s_vanchuyen" />
+
+                        <TextView
+                            style="@style/option"
+                            android:text="Vận chuyển" />
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/s_hoantien" />
+
+                        <TextView
+                            style="@style/option"
+                            android:text="Hoàn trả &#038; Hoàn tiền" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/s_thanhtoan" />
+
+                        <TextView
+                            style="@style/option"
+                            android:text="Thanh toán &#038; Khuyến mãi" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/s_sanpham" />
+
+                        <TextView
+                            style="@style/option"
+                            android:text="Sản phẩm &#038; Kho hoàn" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/s_f_user" />
+
+                        <TextView
+                            style="@style/option"
+                            android:text="Tài khoản" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/s_baomat" />
+
+                        <TextView
+                            style="@style/option"
+                            android:text="Bảo mật và Quyền riêng tư" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/s_youtube" />
+
+                        <TextView
+                            style="@style/option"
+                            android:text="Phương tiện truyền thông" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/s_dexuat" />
+
+                        <TextView
+                            style="@style/option"
+                            android:text="Đề xuất / Tranh chấp" />
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rectangle_top_bottom"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="Không thể tìm thấy câu hỏi bạn đang tìm kiếm?"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rectangle"
+                    android:text="Dịch vụ khách hàng"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="Đối với tất cả Q &#038; AS Hãy nhấp vào trang QA của chúng tôi"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+
+    </ScrollView>
+
+
     <LinearLayout
+        android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:layout_alignParentBottom="true"
         android:background="#E683B6"
         android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:weightSum="2">
+        android:paddingTop="5dp"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
         <LinearLayout
             android:id="@+id/phone"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground">
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:src="@drawable/footer_1"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/s_headphone" />
+
             <TextView
                 style="@style/option"
-                android:text="Dịch vụ khách hàng"
-                />
+                android:text="Dịch vụ khách hàng" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/history"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground">
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:src="@drawable/footer_2"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/s_lichsu" />
+
             <TextView
                 style="@style/option"
-                android:text="Lịch sử phục vụ"
-                />
+                android:text="Lịch sử phục vụ" />
         </LinearLayout>
     </LinearLayout>
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
