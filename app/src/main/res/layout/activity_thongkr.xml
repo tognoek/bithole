@@ -613,7 +613,7 @@
             android:layout_height="wrap_content"
             android:text="QL Bài Đăng"
             android:layout_gravity="center"
-            android:textSize="18dp">
+            android:textSize="16dp">
         </TextView>
     </LinearLayout>
     </LinearLayout>
