@@ -32,6 +32,7 @@
             android:id="@+id/imageView1"
             android:layout_width="30dp"
             android:layout_height="30dp"
+
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:background="?android:attr/selectableItemBackground"
@@ -47,6 +48,7 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@id/imageView1"
             android:text="Thiết lập tài khoản"
+            android:textColor="@color/black"
             android:textSize="25dp"
             android:textStyle="bold" />
     </RelativeLayout>
