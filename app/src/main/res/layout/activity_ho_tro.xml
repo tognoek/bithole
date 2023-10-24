@@ -317,7 +317,9 @@
                     android:layout_gravity="center"
                     android:background="@drawable/rectangle"
                     android:text="Dịch vụ khách hàng"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
 
                 <TextView
                     android:layout_width="match_parent"

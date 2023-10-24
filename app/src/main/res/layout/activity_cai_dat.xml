@@ -63,14 +63,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:background="@color/white"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -88,7 +91,10 @@
                     android:layout_gravity="center"
                     android:layout_toStartOf="@id/forward"
                     android:paddingEnd="5dp"
-                    android:src="@drawable/s_qrcode" />
+                    android:src="@drawable/s_qrcode"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"/>
 
                 <ImageView
                     android:id="@+id/forward"
@@ -97,7 +103,10 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/s_tientoi" />
+                    android:src="@drawable/s_tientoi"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"/>
 
             </RelativeLayout>
 
@@ -113,7 +122,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -129,7 +140,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -145,7 +158,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -169,7 +184,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -185,7 +202,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -211,7 +230,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -227,7 +248,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -243,7 +266,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -277,7 +302,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -293,7 +320,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -309,7 +338,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -325,7 +356,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -341,7 +374,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -357,7 +392,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -383,7 +420,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@color/white"
-                android:padding="7dp">
+                android:padding="7dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
