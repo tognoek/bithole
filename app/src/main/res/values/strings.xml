@@ -16,12 +16,21 @@
     <string name="shop">Shop</string>
     <string name="sanpham">Sản phẩm</string>
     <string name="danhmuc">Danh mục sản phẩm</string>
+<<<<<<< HEAD
+=======
+    =======
+>>>>>>> b4696d98293b0048c093d98e791d4e8eac283faa
 
     <string name="message">
             <p>Vui lòng xác minh email của bạn để bảo vệ tài khoản và tránh thất thoát thông tin. <u><font color="#0080FF">Thiết lập ngay</font></u></p>
     </string>
     <string name="under_line"><u>Danh sách yêu thích</u></string>
+<<<<<<< HEAD
     <string name="text_under_line">
             <p>Xem thêm về <u><font color="#0080FF">Quy định đăng bài của BitHole</font></u></p>
     </string>
+=======
+
+    >>>>>>> 41fd3540d740133d3aff92dfa066626c24321b36
+>>>>>>> b4696d98293b0048c093d98e791d4e8eac283faa
 </resources>

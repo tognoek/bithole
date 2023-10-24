@@ -16,6 +16,9 @@
             android:name=".DangSanPhamActivity"
             android:exported="false" />
         <activity
+            android:name=".detail"
+            android:exported="false" />
+        <activity
             android:name=".NguoiDungActivity"
             android:exported="false" />
         <activity
