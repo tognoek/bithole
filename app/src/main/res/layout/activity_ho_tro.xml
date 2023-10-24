@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E8E8E8"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -46,6 +47,7 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@id/imageView1"
             android:text="Câu hỏi"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="25dp" />
     </RelativeLayout>
@@ -69,14 +71,18 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingBottom="5dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="2dp"
                 android:text="Tìm câu trả lời hữu ích nhất tại đây"
-                android:background="@drawable/rectangle_bottom"
+                android:background="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@color/white"
                 android:paddingTop="5dp"
                 android:paddingBottom="10dp"
                 android:stretchColumns="*">
@@ -289,8 +295,9 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="4dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/rectangle_top_bottom"
                 android:orientation="vertical"
                 >
 
