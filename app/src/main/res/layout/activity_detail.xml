@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="#EF9898">
+        android:background="@color/pink">
         <ImageView
             android:id="@+id/backPage"
             app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +19,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/back"
+            android:src="@drawable/s_trove"
             android:layout_gravity="center"
             android:layout_margin="10dp"/>
 
@@ -42,7 +42,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/setting"
+            android:src="@drawable/s_caidat"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             />
@@ -66,7 +66,7 @@
                 app:layout_constraintTop_toTopOf="@id/Page"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:background="#FFFFFF" />
+                android:background="#A6A6A6" />
             <LinearLayout
                 android:id="@+id/imagePrd"
                 android:layout_width="match_parent"
@@ -74,12 +74,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space1"
                 android:orientation="horizontal"
-                android:background="#FB9B9B">
+                android:background="@color/white">
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="3"
                     android:layout_height="wrap_content"
                     android:src="@drawable/anhmau"/>
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/black"/>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="2"
@@ -90,13 +94,19 @@
                         android:layout_width="wrap_content"
                         android:layout_weight="1"
                         android:layout_height="0dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:src="@drawable/anhmau"/>
+                    <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"/>
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_weight="1"
                         android:layout_height="0dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:src="@drawable/anhmau"/>
 
                 </LinearLayout>
@@ -140,32 +150,28 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="21dp"
-                            android:text="*"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="21dp"
-                            android:text="*"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="21dp"
-                            android:text="*"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="21dp"
-                            android:text="*"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="21dp"
-                            android:text="*"/>
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star"/>
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star"/>
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star"/>
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star"/>
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star"/>
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -182,8 +188,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:textSize="21dp"
+                        android:textSize="18dp"
                         android:text="Đã bán 219"/>
                 </LinearLayout>
                 <LinearLayout
@@ -198,7 +203,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:src="@drawable/traitym"/>
+                        android:src="@drawable/heart"/>
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -210,7 +215,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/chiase"/>
+                        android:src="@drawable/sharetwo"/>
                 </LinearLayout>
             </LinearLayout>
             <RelativeLayout
@@ -251,14 +256,14 @@
 
                 <ImageView
                     android:id="@+id/rightbackTop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/rightbutton"/>
+                    android:src="@drawable/s_tientoi"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
             <RelativeLayout
                 android:id="@+id/detailShop"
@@ -266,7 +271,7 @@
                 app:layout_constraintTop_toBottomOf="@id/TopSell"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="#EF9898">
+                android:background="@color/pink">
                 <androidx.cardview.widget.CardView
                     android:id="@+id/logoshop"
                     android:layout_width="wrap_content"
@@ -326,7 +331,10 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="1">
+                            android:background="@drawable/radius_rectangle"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="5dp">
                             <ImageView
                                 android:id="@+id/LocalIcon"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -362,6 +370,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
                                 android:text="Xem Shop" />
                         </LinearLayout>
                     </LinearLayout>
@@ -382,7 +391,7 @@
                 app:layout_constraintTop_toBottomOf="@id/space4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="#ED7C7C"
+                android:background="@color/pink"
                 android:orientation="vertical"
                 android:paddingBottom="20dp">
                 <TextView
@@ -444,7 +453,7 @@
                 app:layout_constraintTop_toBottomOf="@id/space5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#DC7C7C"
+                android:background="@color/pink"
                 android:paddingBottom="30dp"
                 android:orientation="vertical">
                 <TableLayout
@@ -887,13 +896,18 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
+    <RelativeLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#FFFFFF" />
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#E683B6"
+        android:background="@color/pink"
         android:orientation="horizontal"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
@@ -960,7 +974,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@color/input"
+                android:background="@drawable/radius_rectangle"
                 android:gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
