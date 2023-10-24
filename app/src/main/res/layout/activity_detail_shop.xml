@@ -18,7 +18,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/back"
+            android:src="@drawable/s_trove"
             android:layout_gravity="center"
             android:layout_margin="10dp"/>
 
@@ -41,7 +41,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/setting"
+            android:src="@drawable/s_caidat"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             />
