@@ -74,8 +74,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.nextpage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, DangSanPhamActivity.class));
-                startActivity(new Intent(MainActivity.this, detail_shop.class));
+                startActivity(new Intent(MainActivity.this, NguoiDungActivity.class));
             }
         });
     }
