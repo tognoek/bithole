@@ -11,7 +11,7 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E683B6"
+        android:background="@color/pink"
         android:padding="5dp"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
@@ -21,14 +21,15 @@
             android:id="@+id/textview1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/trove"
+            android:layout_toRightOf="@id/img_trove"
             android:text="Tôi"
             android:textSize="25dp"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/trove"
+            android:id="@+id/img_trove"
+            android:onClick="goBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentStart="true"
@@ -40,29 +41,29 @@
             app:srcCompat="@drawable/s_trove" />
 
         <ImageView
-            android:id="@+id/headphone"
+            android:id="@+id/img_hotro"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="10dp"
-            android:layout_toLeftOf="@id/giohang"
+            android:layout_toLeftOf="@id/img_giohang"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
             app:srcCompat="@drawable/s_headphone" />
 
         <ImageView
-            android:id="@+id/giohang"
+            android:id="@+id/img_giohang"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="10dp"
-            android:layout_toLeftOf="@id/caidat"
+            android:layout_toLeftOf="@id/img_caidat"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
             app:srcCompat="@drawable/s_giohang" />
 
         <ImageView
-            android:id="@+id/caidat"
+            android:id="@+id/img_caidat"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentTop="true"
@@ -518,7 +519,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/hotro"
+                        android:id="@+id/dv_hotro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/lienket"
@@ -542,7 +543,7 @@
                         android:id="@+id/santhuong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/hotro"
+                        android:layout_toRightOf="@id/dv_hotro"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -660,7 +661,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#E683B6"
+        android:background="@color/pink"
         android:orientation="horizontal"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
