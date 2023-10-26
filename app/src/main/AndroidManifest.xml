@@ -13,6 +13,18 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".activity_thanhtoan"
+            android:exported="false" />
+        <activity
+            android:name=".activity_quanlybaidang"
+            android:exported="false" />
+        <activity
+            android:name=".activity_trangchu"
+            android:exported="false" />
+        <activity
+            android:name=".activity_dangky"
+            android:exported="false" />
+        <activity
             android:name=".activity_login"
             android:exported="false" />
         <activity
