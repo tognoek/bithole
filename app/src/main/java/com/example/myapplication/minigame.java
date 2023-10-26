@@ -2,9 +2,12 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,6 +15,7 @@ import java.util.Locale;
 
 public class minigame extends AppCompatActivity {
     public TextView countdownTimer;
+    private ImageView trove;
     public CountDownTimer timer;
     public Button start;
     @Override
@@ -20,6 +24,15 @@ public class minigame extends AppCompatActivity {
         setContentView(R.layout.activity_minigame);
         countdownTimer = findViewById(R.id.countdown_timer);
         startTime();
+        trove = (ImageView) findViewById(R.id.trove);
+        trove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),activity_trangchu.class);
+                startActivity(intent);
+            }
+        });
+
     }
     private void startTime(){
         timer = new CountDownTimer( 6*360*10000, 1000) {
