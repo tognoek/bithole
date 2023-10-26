@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.nextpage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, GioHang.class));
+                startActivity(new Intent(MainActivity.this, MaGiamGia.class));
             }
         });
     }
