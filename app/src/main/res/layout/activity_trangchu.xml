@@ -130,11 +130,13 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
                         android:src="@drawable/flash"/>
+
                     <ImageView
+                        android:id="@+id/f_magiamgia"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="0.5"
-                        android:src="@drawable/salemoituan"/>
+                        android:src="@drawable/salemoituan" />
                     <ImageView
                         android:id="@+id/minigame"
                         android:layout_width="wrap_content"

@@ -261,25 +261,23 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/diem"
+                        android:id="@+id/lichsumua"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/phieudanhgia"
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="10dp"
-                            android:text="150"
-                            android:textSize="20dp" />
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/s_lichsumua" />
 
                         <TextView
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Điểm"
+                            android:text="Lịch sử mua"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -287,7 +285,7 @@
                         android:id="@+id/vi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/diem"
+                        android:layout_toRightOf="@id/lichsumua"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -300,7 +298,7 @@
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Điểm"
+                            android:text="Ví"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -329,6 +327,7 @@
             </TableLayout>
 
             <RelativeLayout
+                android:id="@+id/s_donhangcuatoi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="9dp"
@@ -638,6 +637,7 @@
                         android:textSize="15dp" />
 
                     <android.widget.Button
+                        android:id="@+id/button_dimuasam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"

@@ -23,7 +23,7 @@
             android:padding="10dp">
 
             <ImageView
-                android:id="@+id/icback"
+                android:id="@+id/img_trove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -579,6 +579,100 @@
         </LinearLayout>
     </ScrollView>
 
+
+    <LinearLayout
+        android:id="@+id/footer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:background="@color/pink">
+        <LinearLayout
+            android:id="@+id/f_doanhthu_k"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp">
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:src="@drawable/doanhthu">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doanh Thu"
+                android:layout_gravity="center"
+                android:textSize="18dp">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/f_dangbai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp">
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:src="@drawable/post">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đăng Bài"
+                android:layout_gravity="center"
+                android:textSize="18dp">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/f_nhapxuat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp">
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:src="@drawable/thongke">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhập Xuất"
+                android:layout_gravity="center"
+                android:textSize="18dp">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp">
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:src="@drawable/img">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QL Bài Đăng"
+                android:layout_gravity="center"
+                android:textSize="16dp">
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

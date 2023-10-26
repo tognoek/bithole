@@ -11,7 +11,13 @@ import android.widget.LinearLayout;
 public class activity_trangchu extends AppCompatActivity {
 
     private ImageView minigame;
+
+    private ImageView imageView;
     private LinearLayout thongbao;
+    private LinearLayout linear_danhmuc;
+    private LinearLayout linear_giohang;
+    private LinearLayout linear_toi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,5 +38,25 @@ public class activity_trangchu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        linear_danhmuc = findViewById(R.id.f_danhmuc);
+        linear_danhmuc.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), select.class))
+        );
+
+        linear_giohang = findViewById(R.id.f_giohang);
+        linear_giohang.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), GioHang.class))
+        );
+
+        linear_toi = findViewById(R.id.f_toi);
+        linear_toi.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), NguoiDungActivity.class))
+        );
+
+        imageView = findViewById(R.id.f_magiamgia);
+        imageView.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), MaGiamGia.class))
+        );
     }
 }

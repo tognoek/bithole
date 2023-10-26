@@ -66,14 +66,14 @@ public class MainActivity extends AppCompatActivity {
         buttonsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Signup.class);
+                Intent intent = new Intent(MainActivity.this, activity_trangchu.class);
                 startActivity(intent);
             }
         });
         findViewById(R.id.nextpage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, thongbao.class));
+                startActivity(new Intent(MainActivity.this, NguoiDungActivity.class));
             }
         });
     }

@@ -21,7 +21,7 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp">
             <ImageView
-                android:id="@+id/imageView1"
+                android:id="@+id/img_trove"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentStart="true"
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="100dp"
-                android:layout_toEndOf="@id/imageView1"
+                android:layout_toEndOf="@id/img_trove"
                 android:text="Mã giảm giá"
                 android:textStyle="bold"
                 android:textSize="20dp"
