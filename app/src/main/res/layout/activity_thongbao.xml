@@ -6,10 +6,11 @@
     tools:context=".thongbao"
     android:orientation="vertical">
     <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#FFD7E5">
+        android:background="@color/pink">
         <ImageView
             android:id="@+id/thongbao"
             android:layout_width="45dp"
@@ -37,8 +38,9 @@
     </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="45dp">
+        android:layout_height="wrap_content"
+        android:layout_above="@id/footer"
+        android:layout_below="@id/header">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -288,10 +290,11 @@
         </LinearLayout>
     </ScrollView>
     <LinearLayout
+        android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#E683B6"
+        android:background="@color/pink"
         android:orientation="horizontal"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
