@@ -531,6 +531,7 @@
                 android:textStyle="bold"
                 android:layout_gravity="center"/>
             <LinearLayout
+                android:id="@+id/thanhtoan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="50dp"

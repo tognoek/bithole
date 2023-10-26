@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class GioHang extends AppCompatActivity {
 
     private ImageView imageView_trove;
+    private LinearLayout linear_thanhtoan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,5 +20,9 @@ public class GioHang extends AppCompatActivity {
         imageView_trove.setOnClickListener(view ->
                 getOnBackPressedDispatcher().onBackPressed()
         );
+
+        linear_thanhtoan = findViewById(R.id.thanhtoan);
+        linear_thanhtoan.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), activity_thanhtoan.class)));
     }
 }
