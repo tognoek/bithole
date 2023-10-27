@@ -206,7 +206,7 @@
             android:layout_toRightOf="@id/fb"
             android:background="#F1F1F1"
             android:gravity="center"
-            android:text="Tiếp tục với Google "
+            android:text="Tiếp tục với FaceBook"
             android:textColor="#3E3C3C"
             android:textSize="20dp"
             android:textStyle="bold" />

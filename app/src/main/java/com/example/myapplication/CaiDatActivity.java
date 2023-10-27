@@ -33,7 +33,7 @@ public class CaiDatActivity extends AppCompatActivity {
 
         textView_dangxuat = findViewById(R.id.text_dangxuat);
         textView_dangxuat.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), activity_login.class))
+                startActivity(new Intent(getApplicationContext(), MainActivity.class))
         );
 
         relative_s_toi = findViewById(R.id.h_s_toi);

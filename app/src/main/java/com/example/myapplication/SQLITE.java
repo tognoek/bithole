@@ -63,16 +63,21 @@ public class SQLITE extends SQLiteOpenHelper {
     }
 
     public boolean Findauser(Account account) {
-        String query = "SELECT * FROM account WHERE [user] = '" + account.getUser() + "'";
-        SQLiteDatabase Data = this.getReadableDatabase();
-        Cursor cursor = null;
-        if (Data != null){
-            cursor = Data.rawQuery(query, null);
+        try {
+            String query = "SELECT * FROM account WHERE [user] = '" + account.getUser() + "'";
+            SQLiteDatabase Data = this.getReadableDatabase();
+            Cursor cursor = null;
+            if (Data != null){
+                cursor = Data.rawQuery(query, null);
+            }
+            if (cursor != null && cursor.getCount() != 0){
+                return true;
+            }
+            return false;
         }
-        if (cursor != null && cursor.getCount() != 0){
-            return true;
+        catch (Exception e){
+            return false;
         }
-        return false;
     }
 
     public void Remove(){
@@ -90,7 +95,9 @@ public class SQLITE extends SQLiteOpenHelper {
                 "    password VARCHAR(25),\n" +
                 "    [group] INTEGER\n" +
                 ");\n");
+        Account acc = new Account("admin", "admin@gmail.com", "thayhuy", 101);
         Toast.makeText(context, "Create Table account", Toast.LENGTH_SHORT).show();
+        insert(acc);
     }
 
     @Override
