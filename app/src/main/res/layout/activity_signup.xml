@@ -4,221 +4,214 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Signup">
+    android:background="@color/pink"
+    tools:context=".activity_dangky">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/linearLayout13"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/costum"
-        >
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="25dp">
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                app:srcCompat="@drawable/logo"/>
+        </androidx.cardview.widget.CardView>
         <LinearLayout
-            android:id="@+id/logo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="90dp"
-            android:gravity="center"
-            android:orientation="vertical"
-        >
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="125dp"
-                app:cardCornerRadius="25dp">
-
-                <ImageView
-                    android:layout_width="@dimen/size_logo"
-                    android:layout_height="@dimen/size_logo"
-                    android:src="@drawable/logo" />
-            </androidx.cardview.widget.CardView>
+            android:orientation="vertical">
 
             <TextView
                 style="@style/AppName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:layout_marginTop="-100dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="@string/app_name"
+                android:gravity="center"
+                android:text="Bit Hole"
                 android:textColor="@color/white" />
 
             <TextView
                 style="@style/styleOne"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="72dp"
-                android:text="@string/welcome" />
+                android:gravity="center"
+                android:text="Welcome to Bit Hole"
+                android:textColor="@color/white" />
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/logo"
-            android:layout_marginTop="100dp"
-            android:orientation="vertical">
+    </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:background="@color/input"
-                android:layout_height="45dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
-
-                <ImageView
-                    android:id="@+id/iconuser"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/icon_user" />
-
-                <EditText
-                    android:id="@+id/textuser"
-                    style="@style/styleTow"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_toRightOf="@id/iconuser"
-                    android:hint="@string/User"
-                    android:inputType="text"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="#4C4C4C"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:background="@color/input"
-                android:layout_height="45dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="30dp">
-
-                <ImageView
-                    android:id="@+id/iconmail"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/mail" />
-
-                <EditText
-                    android:id="@+id/textmail"
-                    style="@style/styleTow"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_toRightOf="@id/iconmail"
-                    android:hint="@string/Mail"
-                    android:inputType="textEmailAddress"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="#4C4C4C" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:background="@color/input"
-                android:layout_height="45dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="30dp">
-
-                <ImageView
-                    android:id="@+id/iconpass"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/icon_password" />
-
-                <EditText
-                    android:id="@+id/textpassword"
-                    style="@style/styleTow"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_toRightOf="@id/iconpass"
-                    android:hint="@string/Password"
-                    android:inputType="textPassword"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="#4C4C4C" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="40dp">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btregister"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="REGISTER"
-                    app:cornerRadius="0dp"
-                    android:textColor="@color/black"
-                    android:backgroundTint="#DCDCDC"/>
-            </RelativeLayout>
-
-        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
 
         <RelativeLayout
-            android:id="@+id/signup"
-            android:layout_width="match_parent"
-            android:layout_below="@id/login"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="85dp">
-            <TextView
-                android:id="@+id/have"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="#FEB6CF">
+
+            <ImageView
+                android:id="@+id/iconuser"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/icon_user" />
+
+            <EditText
+                android:id="@+id/textuser"
+                style="@style/styleTow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Already have an account?"
-                android:textSize="45px"
+                android:layout_marginEnd="20dp"
+                android:layout_toRightOf="@id/iconuser"
+                android:hint="Tên đăng nhập"
+                android:inputType="textEmailAddress"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:textColor="@color/black"
-                android:gravity="center"/>
+                android:textColorHint="#4C4C4C"
+                android:textSize="15sp" />
+        </RelativeLayout>
 
-            <Button
-                android:id="@+id/btlogin"
-                android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:background="#FEB6CF">
+
+            <ImageView
+                android:id="@+id/iconemail"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/icmailltdt" />
+
+            <EditText
+                android:id="@+id/textmail"
+                style="@style/styleTow"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/have"
-                android:layout_centerInParent="true"
-                android:backgroundTint="#005A5757"
-                android:text="LOGIN"
+                android:layout_marginEnd="20dp"
+                android:layout_toRightOf="@id/iconemail"
+                android:hint="Email"
+                android:inputType="textPassword"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:textColor="@color/black"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                app:cornerRadius="0dp" />
+                android:textColorHint="#4C4C4C"
+                android:textSize="15sp"/>
         </RelativeLayout>
         <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:background="#FEB6CF">
+
+            <ImageView
+                android:id="@+id/iconpass"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/icon_password" />
+
+            <EditText
+                android:id="@+id/textpassword"
+                style="@style/styleTow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_toRightOf="@id/iconpass"
+                android:hint="Mật khẩu"
+                android:inputType="textPassword"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#4C4C4C"
+                android:textSize="15sp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:background="#FEB6CF">
+
+            <ImageView
+                android:id="@+id/iconconfirm"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/confirm" />
+
+            <EditText
+                android:id="@+id/textconfirm"
+                style="@style/styleTow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_toRightOf="@id/iconconfirm"
+                android:hint="Nhập lại mật khẩu"
+                android:inputType="textPassword"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#4C4C4C"
+                android:textSize="15sp"/>
+        </RelativeLayout>
+        <Button
+            android:id="@+id/btregister"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="Đăng Ký" />
+
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/signup">
-            <TextView
-                android:id="@+id/made"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Made By"
-                android:textColor="@color/black"
-                android:gravity="center"/>
-            <TextView
-                android:layout_below="@id/made"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/name"
-                android:textColor="@color/black"
-                android:gravity="center"/>
-        </RelativeLayout>
-    </RelativeLayout>
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Bạn đã có tài khoản?"
+            android:textColor="#272727" />
 
+        <Button
+            android:id="@+id/btlogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:backgroundTint="#005A5757"
+            android:text="Đăng nhập"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:cornerRadius="0dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

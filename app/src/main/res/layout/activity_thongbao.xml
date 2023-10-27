@@ -15,7 +15,7 @@
             android:id="@+id/thongbao"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:src="@drawable/hvt_thongbao_ic"
+            android:src="@drawable/s_trove"
             android:layout_gravity="center"
             android:layout_marginLeft="15dp">
         </ImageView>

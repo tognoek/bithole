@@ -61,5 +61,7 @@ public class thongbao extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.thongbao).setOnClickListener(view ->
+                getOnBackPressedDispatcher().onBackPressed());
     }
 }

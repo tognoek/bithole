@@ -10,5 +10,7 @@ public class activity_thanhtoan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thanhtoan);
+        findViewById(R.id.icback).setOnClickListener(view ->
+                getOnBackPressedDispatcher().onBackPressed());
     }
 }

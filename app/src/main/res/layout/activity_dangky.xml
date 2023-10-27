@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink"
-    tools:context=".activity_sigup">
+    tools:context=".activity_dangky">
 
     <LinearLayout
         android:id="@+id/linearLayout13"
@@ -108,7 +108,7 @@
                 android:src="@drawable/icmailltdt" />
 
             <EditText
-                android:id="@+id/textemail"
+                android:id="@+id/textmail"
                 style="@style/styleTow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -185,13 +185,12 @@
                 android:textSize="15sp"/>
         </RelativeLayout>
         <Button
-            android:id="@+id/btdangky"
-            android:layout_marginLeft="130dp"
-            android:layout_marginRight="130dp"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:layout_width="match_parent"
+            android:id="@+id/btregister"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:text="Đăng Ký" />
 
         <TextView
@@ -204,7 +203,7 @@
             android:textColor="#272727" />
 
         <Button
-            android:id="@+id/dangnhap"
+            android:id="@+id/btlogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"

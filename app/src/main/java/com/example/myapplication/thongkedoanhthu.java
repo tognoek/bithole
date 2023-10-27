@@ -30,5 +30,6 @@ public class thongkedoanhthu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.backhomeshop).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), detail_shop.class)));
     }
 }

@@ -24,24 +24,26 @@ public class Signup extends AppCompatActivity {
         buttonregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String user, mail, password;
+                String user, mail, password, passtwo;
                 Integer group;
                 group = 1;
                 EditText usertext = findViewById(R.id.textuser);
                 user = usertext.getText().toString();
                 EditText mailtext = findViewById(R.id.textmail);
+                EditText passtwotext = findViewById(R.id.textconfirm);
                 mail = mailtext.getText().toString();
                 EditText passwordtext = findViewById(R.id.textpassword);
                 password = passwordtext.getText().toString();
-                if (user.isEmpty() || mail.isEmpty() || password.isEmpty()){
-                    showToast("Please enter all required information");
+                passtwo = passtwotext.getText().toString();
+                if (user.isEmpty() || mail.isEmpty() || password.isEmpty() || passtwo.isEmpty()){
+                    showToast("Nhập Hết Dữ Liệu Đi Bạn Nè");
                 }else{
                     Account account = new Account(user, mail, password, group);
                     SQLITE myDb = new SQLITE(Signup.this);
                     if (myDb.Findauser(account)){
-                        showToast("Account already exists");
+                        showToast("Tài Khoản Đã Tồn Tại Nè");
                     }
-                    else {
+                    else if (password.equals(passtwo)){
                         myDb.insert(account);
                         usertext.setText("");
                         mailtext.setText("");
@@ -54,6 +56,9 @@ public class Signup extends AppCompatActivity {
                                 finish();
                             }
                         }, 3000);
+                    }
+                    else{
+                        showToast("Sai Mật Khẩu Rồi Kìa");
                     }
                 }
 

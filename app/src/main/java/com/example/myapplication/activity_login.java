@@ -15,7 +15,7 @@ public class activity_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        button_dangky = findViewById(R.id.dangky);
+        button_dangky = findViewById(R.id.btsignup);
         button_dangky.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), activity_dangky.class))
         );

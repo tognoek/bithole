@@ -47,15 +47,15 @@ public class MainActivity extends AppCompatActivity {
                 EditText passwordtext = findViewById(R.id.textpassword);
                 password = passwordtext.getText().toString();
                 if (user.isEmpty() || password.isEmpty()){
-                    showToast("Please enter all required information");
+                    showToast("Nhập Cho Đủ Đi Bạn Yêu Ơi");
                 }else{
                     Account acc = new Account(user, password);
                     SQLITE myDb = new SQLITE(MainActivity.this);
                     if (myDb.Findaccount(acc)){
-                        Intent intent = new Intent(MainActivity.this, Home.class);
+                        Intent intent = new Intent(MainActivity.this, activity_trangchu.class);
                         startActivity(intent);
                     }else{
-                        showToast("Incorrect username or password");
+                        showToast("Ôi Chao Sai Mật Khẩu Kìa");
                     }
                 }
 
@@ -66,14 +66,8 @@ public class MainActivity extends AppCompatActivity {
         buttonsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, activity_trangchu.class);
+                Intent intent = new Intent(MainActivity.this, Signup.class);
                 startActivity(intent);
-            }
-        });
-        findViewById(R.id.nextpage).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, NguoiDungActivity.class));
             }
         });
     }

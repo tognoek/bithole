@@ -31,5 +31,6 @@ public class thongke extends AppCompatActivity {
         linear_qlbaidang.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), thongke.class))
         );
+        findViewById(R.id.logoapp).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), detail_shop.class)));
     }
 }

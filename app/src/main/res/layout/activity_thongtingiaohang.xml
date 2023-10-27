@@ -9,17 +9,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
         android:background="@color/pink">
+
         <ImageView
-            android:layout_width="50dp"
+            android:id="@+id/backve"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/s_trove" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="50dp"
             android:src="@drawable/hvt_hanglong">
         </ImageView>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="5"
             android:layout_height="wrap_content"
             android:text="ĐƠN HÀNG CỦA TÔI"
+            android:layout_gravity="center_vertical"
             android:textSize="20sp"
             android:textStyle="bold"
             android:gravity="center">
@@ -143,21 +154,21 @@
         </ImageView>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="130dp"
             android:orientation="vertical"
             android:background="@drawable/hvt_round_item"
             android:layout_toRightOf="@+id/sanpham">
             <TextView
                 android:id="@+id/tensp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Áo thun LocalBrand DongSuy T-Shirt Nam Nữ"
-                android:textSize="17sp"
+                android:textSize="17dp"
                 android:textStyle="bold">
             </TextView>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
                     android:id="@+id/size"

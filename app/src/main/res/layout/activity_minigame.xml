@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".minigame"
+    android:background="#EFDEDE"
     android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/header"
@@ -15,7 +16,7 @@
             android:id="@+id/trove"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:src="@drawable/hvt_back"
+            android:src="@drawable/s_trove"
             android:layout_gravity="center"
             android:layout_marginLeft="5dp">
         </ImageView>
@@ -295,8 +296,8 @@
             </LinearLayout>
             <Button
                 android:id="@+id/start"
-                android:layout_width="160dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/hvt_round_date2"
                 android:text="Xác nhận"
                 android:gravity="center"

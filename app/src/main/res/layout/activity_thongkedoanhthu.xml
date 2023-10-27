@@ -53,6 +53,7 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/backhomeshop"
             android:layout_width="85dp"
             android:layout_height="65dp"
             android:layout_alignParentEnd="true"

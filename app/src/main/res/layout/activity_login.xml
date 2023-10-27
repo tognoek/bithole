@@ -134,13 +134,12 @@
             android:layout_marginLeft="25dp"
             android:textColor="#272727"/>
         <Button
-            android:id="@+id/btndangnhap"
-            android:layout_marginLeft="130dp"
-            android:layout_marginRight="130dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:layout_width="match_parent"
+            android:id="@+id/btloginhome"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:text="Đăng nhập" />
         <TextView
             android:layout_marginTop="20dp"
@@ -166,6 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:src="@drawable/google"
+            android:padding="10dp"
             android:background="#F1F1F1"/>
 
         <TextView
@@ -193,10 +193,12 @@
             android:id="@+id/fb"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
+            android:padding="10dp"
             android:src="@drawable/fb1"
             android:background="#F1F1F1"/>
 
         <TextView
+            android:id="@+id/made"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_toRightOf="@id/fb"
@@ -212,7 +214,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="Bạn không có tài khoản?"
         android:textColor="#272727"
@@ -220,7 +222,7 @@
         app:layout_constraintTop_toBottomOf="@+id/loginfb" />
 
     <Button
-        android:id="@+id/dangky"
+        android:id="@+id/btsignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
