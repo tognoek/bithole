@@ -35,7 +35,8 @@ public class detail extends AppCompatActivity {
 
         linear_muangay = findViewById(R.id.f_muasam);
         linear_muangay.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), activity_thanhtoan.class))
+                startActivity(new Intent(getApplicationContext(), activity_trangchu.class))
         );
+        findViewById(R.id.f_giohang).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), GioHang.class)));
     }
 }

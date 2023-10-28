@@ -335,17 +335,24 @@
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#DC7C7C"
-                    android:paddingBottom="30dp"
-                    android:orientation="vertical"
-                    android:layout_marginTop="10dp">
+                    android:background="@color/pink"
+                    android:layout_height="wrap_content">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="Đề cử cho bạn"
+                        android:textSize="20dp"
                         style="@style/option"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/pink"
+                    android:paddingBottom="30dp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp">
+
                     <TableLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -354,6 +361,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <LinearLayout
+                                android:id="@+id/sanpham"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -785,6 +793,12 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+    <LinearLayout
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/white"/>
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"

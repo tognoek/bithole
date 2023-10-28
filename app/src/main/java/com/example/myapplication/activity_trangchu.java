@@ -4,9 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class activity_trangchu extends AppCompatActivity {
 
@@ -58,5 +62,18 @@ public class activity_trangchu extends AppCompatActivity {
         imageView.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), MaGiamGia.class))
         );
+        findViewById(R.id.sanpham).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), detail.class)));
+        EditText editText = findViewById(R.id.editTextInput); // Thay thế bằng ID của EditText trong layout của bạn
+
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_NULL) {
+                    startActivity(new Intent(getApplicationContext(), select.class));
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 }

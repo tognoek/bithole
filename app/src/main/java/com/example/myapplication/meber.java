@@ -1,19 +1,31 @@
 package com.example.myapplication;
 
-public class meber {
+import java.io.Serializable;
+
+public class meber  implements Serializable {
     private String name;
     private String masinhvien;
     private int image;
 
     private String[] listView;
 
-    public meber(String name, String masinhvien, int image, String[] listView) {
+    private String [] listName;
+
+    public meber(String name, String masinhvien, int image, String[] listView, String [] listName) {
         this.name = name;
         this.masinhvien = masinhvien;
         this.image = image;
         this.listView = listView;
+        this.listName = listName;
     }
 
+    public String[] getListName() {
+        return listName;
+    }
+
+    public void setListName(String[] listName) {
+        this.listName = listName;
+    }
 
     public String getName() {
         return name;

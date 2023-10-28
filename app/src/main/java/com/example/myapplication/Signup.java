@@ -36,12 +36,12 @@ public class Signup extends AppCompatActivity {
                 password = passwordtext.getText().toString();
                 passtwo = passtwotext.getText().toString();
                 if (user.isEmpty() || mail.isEmpty() || password.isEmpty() || passtwo.isEmpty()){
-                    showToast("Nhập Hết Dữ Liệu Đi Bạn Nè");
+                    showToast("Hãy nhập hết dữ liệu yêu cầu");
                 }else{
                     Account account = new Account(user, mail, password, group);
                     SQLITE myDb = new SQLITE(Signup.this);
                     if (myDb.Findauser(account)){
-                        showToast("Tài Khoản Đã Tồn Tại Nè");
+                        showToast("Tài khoản đã tồn tại");
                     }
                     else if (password.equals(passtwo)){
                         myDb.insert(account);
@@ -58,7 +58,7 @@ public class Signup extends AppCompatActivity {
                         }, 3000);
                     }
                     else{
-                        showToast("Sai Mật Khẩu Rồi Kìa");
+                        showToast("Sai mật khẩu xác nhận");
                     }
                 }
 

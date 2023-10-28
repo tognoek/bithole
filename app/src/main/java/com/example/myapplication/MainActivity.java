@@ -29,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
         made.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SQLITE myDB = new SQLITE(MainActivity.this);
-                if (bit % 2 == 0){
-                    myDB.Remove();
-                }
-                else{
-                    myDB.Create();
-                }
-                bit++;
+//                SQLITE myDB = new SQLITE(MainActivity.this);
+//                if (bit % 2 == 0){
+//                    myDB.Remove();
+//                }
+//                else{
+//                    myDB.Create();
+//                }
+//                bit++;
             }
         });
         buttonlogin.setOnClickListener(new View.OnClickListener() {
@@ -48,15 +48,22 @@ public class MainActivity extends AppCompatActivity {
                 EditText passwordtext = findViewById(R.id.textpassword);
                 password = passwordtext.getText().toString();
                 if (user.isEmpty() || password.isEmpty()){
-                    showToast("Nhập Cho Đủ Đi Bạn Yêu Ơi");
+                    showToast("Nhập chưa đủ thông tin");
                 }else{
-                    Account acc = new Account(user, password);
-                    SQLITE myDb = new SQLITE(MainActivity.this);
-                    if (myDb.Findaccount(acc)){
-                        Intent intent = new Intent(MainActivity.this, activity_trangchu.class);
-                        startActivity(intent);
-                    }else{
-                        showToast("Ôi Chao Sai Mật Khẩu Kìa");
+                    if (user.equals("tognoek")){
+                        SQLITE myDBr = new SQLITE(MainActivity.this);
+                        myDBr.Remove();
+                        myDBr.Create();
+                    }
+                    else{
+                        Account acc = new Account(user, password);
+                        SQLITE myDb = new SQLITE(MainActivity.this);
+                        if (myDb.Findaccount(acc)){
+                            Intent intent = new Intent(MainActivity.this, activity_trangchu.class);
+                            startActivity(intent);
+                        }else{
+                            showToast("Nhập sai mật khẩu");
+                        }
                     }
                 }
 
@@ -78,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 Intent intent = new Intent(MainActivity.this, Signup.class);
-                startActivity(intent2);
+                startActivity(intent);
             }
         });
     }

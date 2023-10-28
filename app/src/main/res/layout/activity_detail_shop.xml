@@ -304,7 +304,7 @@
                             android:layout_marginStart="40dp"
                             android:layout_marginEnd="30dp"
                             android:layout_marginBottom="10dp"
-                            android:text="Chào mừng bạn đến với của hàng của chúng thôi.\n Theo dõi chúng tôi để có thêm phiếu giảm giá và nhận thông báo về các mặt hàng mới nhất.\n Chào mừng bạn đến với của hàng của chúng thôi.\n Theo dõi chúng tôi để có thêm phiếu giảm giá và nhận thông báo về các mặt hàng mới nhất.Chào mừng bạn đến với của hàng của chúng thôi.\n Theo dõi chúng tôi để có thêm phiếu giảm giá và nhận thông báo về các mặt hàng mới nhất.Chào mừng bạn đến với của hàng của chúng thôi.\n Theo dõi chúng tôi để có thêm phiếu giảm giá và nhận thông báo về các mặt hàng mới nhất."/>
+                            android:text="Xin chào mừng bạn tới với shop của chúng tôi. Chúng tôi luôn đưa đến cho bán nhưng sản phẩm tốt nhất có thể \nĐể đáp ứng nhu cầu sử dụng bản có thể tìm hiểu thêm về shop thông qua các nên tảng mạng xã hội như Facebook và Tiktok"/>
                 </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
