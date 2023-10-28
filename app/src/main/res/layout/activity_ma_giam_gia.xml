@@ -16,7 +16,7 @@
             android:id="@+id/header1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#E683B6"
+            android:background="@color/pink"
             android:padding="5dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp">

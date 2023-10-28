@@ -28,7 +28,23 @@ public class SQLITE extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         return database.rawQuery(Sql, null);
     }
-
+    public int getRowCount() {
+        try{
+            String query = "SELECT * FROM account";
+            SQLiteDatabase Data = this.getReadableDatabase();
+            Cursor cursor = null;
+            if (Data != null){
+                cursor = Data.rawQuery(query, null);
+            }
+            if (cursor != null){
+                return 1;
+            }
+            return 0;
+        }
+        catch (Exception e){
+            return 0;
+        }
+    }
     public void insert(Account account){
         SQLiteDatabase Data = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -47,17 +63,22 @@ public class SQLITE extends SQLiteOpenHelper {
     }
 
     public boolean Findaccount(Account account) {
-        String query = "SELECT * FROM account WHERE [user] = '" + account.getUser() + "'";
-        SQLiteDatabase Data = this.getReadableDatabase();
-        Cursor cursor = null;
-        if (Data != null){
-            cursor = Data.rawQuery(query, null);
-        }
-        if (cursor != null){
-            cursor.moveToNext();
-            if (cursor.getString(3).toString().equals(account.getPassword())){
-                return true;
+        try{
+            String query = "SELECT * FROM account WHERE [user] = '" + account.getUser() + "'";
+            SQLiteDatabase Data = this.getReadableDatabase();
+            Cursor cursor = null;
+            if (Data != null){
+                cursor = Data.rawQuery(query, null);
             }
+            if (cursor != null){
+                cursor.moveToNext();
+                if (cursor.getString(3).toString().equals(account.getPassword())){
+                    return true;
+                }
+            }
+        }
+        catch (Exception e){
+            return false;
         }
         return false;
     }
@@ -83,7 +104,6 @@ public class SQLITE extends SQLiteOpenHelper {
     public void Remove(){
         SQLiteDatabase Data = this.getWritableDatabase();
         Data.execSQL("DROP TABLE IF EXISTS account");
-        Toast.makeText(context, "Remove Table account", Toast.LENGTH_SHORT).show();
     }
 
     public void Create(){
@@ -96,7 +116,6 @@ public class SQLITE extends SQLiteOpenHelper {
                 "    [group] INTEGER\n" +
                 ");\n");
         Account acc = new Account("admin", "admin@gmail.com", "thayhuy", 101);
-        Toast.makeText(context, "Create Table account", Toast.LENGTH_SHORT).show();
         insert(acc);
     }
 
@@ -109,8 +128,6 @@ public class SQLITE extends SQLiteOpenHelper {
                 "    password VARCHAR(25),\n" +
                 "    [group] INTEGER\n" +
                 ");\n");
-        Account acc = new Account("admin", "admin@gmail.com", "thayhuy", 101);
-        insert(acc);
     }
 
     @Override

@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     else{
                         Account acc = new Account(user, password);
                         SQLITE myDb = new SQLITE(MainActivity.this);
-                        if (myDb.Findaccount(acc)){
+                        if (myDb.getRowCount() > 0 && myDb.Findaccount(acc)){
                             Intent intent = new Intent(MainActivity.this, activity_trangchu.class);
                             startActivity(intent);
                         }else{

@@ -39,7 +39,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="100dp"
                 android:layout_toEndOf="@id/img_trove"
-                android:text="Mã giảm giá"
+                android:text="Giỏ hàng"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:gravity="center"/>

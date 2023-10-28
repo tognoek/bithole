@@ -8,7 +8,7 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="#FFD7E5"
+        android:background="@color/pink"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical">
@@ -227,7 +227,7 @@
             android:layout_height="30dp"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:background="#FFD7E5"
+            android:background="@color/pink"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/thanhtoan">
 

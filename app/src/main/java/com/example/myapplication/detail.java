@@ -38,5 +38,6 @@ public class detail extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), activity_trangchu.class))
         );
         findViewById(R.id.f_giohang).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), GioHang.class)));
+        findViewById(R.id.muangay).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), activity_thanhtoan.class)));
     }
 }
