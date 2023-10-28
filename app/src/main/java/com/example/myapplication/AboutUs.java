@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,16 +18,16 @@ public class AboutUs extends AppCompatActivity {
     String name[] = {"Hồ Thái Sơn", "Đặng Văn Thống", "Lê Hữu Thi", "Hoàng Văn Thông", "Đoàn Trung Kiên"};
     String masv[] = {"21115053120141", "21115053120150", "2115053120147", "21115053120149", "2115053120122"};
 
-    String listView[][] = {{"CaiDatActivity"},
-                            {"thongke"},
-                            {"GioHang"},
-                            {"minigame"},
-                            {"MainActivity"}};
-    String listName[][] = {{"Cài Đặt"},
-                            {"Thống Kê"},
-                            {"Giỏ Hàng"},
-                            {"Mini Game"},
-                            {"Đăng Nhập"}};
+    String listView[][] = {{"CaiDatActivity", "NguoiDungActivity", "DangSanPhamActivity", "HoTroActivity"},
+                            {"thongke", "select", "detail", "detail_shop"},
+                            {"GioHang", "LichSuMuaHang", "Voucher", "MaGiamGia"},
+                            {"minigame", "thongbao", "thongkedoanhthu", "thongtingiaohang"},
+                            {"MainActivity", "Signup", "activity_trangchu", "activity_quanlybaidang", "activity_thanhtoan"}};
+    String listName[][] = {{"Cài Đặt", "NGười Dùng", "Đăng Sản Phẩm", "Hỗ Trợ Khách Hàng"},
+                            {"Thống Kê", "Danh Mục Sản Phẩm", "Thông Tin Sản Phẩm", "Thông Tin Shop"},
+                            {"Giỏ Hàng", "Lịch Sử Mua Hàng", "Ví Thanh Toán", "Mã Giảm Giá"},
+                            {"Mini Game", "Thông Báo", "Thống Kê Doanh Thu", "Thông Tin Giao Hàng"},
+                            {"Đăng Nhập", "Đăng Ký", "Trang Chủ", "Quản Lý Bài Đăng", "Thanh Toán"}};
     ArrayList<meber> data = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,10 @@ public class AboutUs extends AppCompatActivity {
         viewgui.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                Intent intent = new Intent(getApplicationContext(), DatailMember.class);
+                meber PP = data.get(i);
+                intent.putExtra("member", PP);
+                startActivity(intent);
             }
         });
     }
