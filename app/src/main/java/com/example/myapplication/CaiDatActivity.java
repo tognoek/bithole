@@ -40,5 +40,6 @@ public class CaiDatActivity extends AppCompatActivity {
         relative_s_toi.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), NguoiDungActivity.class))
         );
+        findViewById(R.id.aboutus).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), AboutUs.class)));
     }
 }

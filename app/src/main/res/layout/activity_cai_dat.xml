@@ -444,6 +444,17 @@
                 android:padding="5dp"
                 android:text="Phiên bản 1.1.1"
                 android:textStyle="italic" />
+            <TextView
+                android:id="@+id/aboutus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:text="Infomation About Us"
+                android:textColor="#6590FF"
+                android:textSize="25dp"
+                android:background="#F8D6D6"
+                android:layout_gravity="center"
+                android:textStyle="italic" />
         </LinearLayout>
 
 

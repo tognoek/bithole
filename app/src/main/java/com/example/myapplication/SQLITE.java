@@ -109,6 +109,8 @@ public class SQLITE extends SQLiteOpenHelper {
                 "    password VARCHAR(25),\n" +
                 "    [group] INTEGER\n" +
                 ");\n");
+        Account acc = new Account("admin", "admin@gmail.com", "thayhuy", 101);
+        insert(acc);
     }
 
     @Override

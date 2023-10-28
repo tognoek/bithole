@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,8 +67,18 @@ public class MainActivity extends AppCompatActivity {
         buttonsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent1 = new Intent();
+                intent1.setAction(Intent.ACTION_SENDTO);
+                intent1.putExtra("sms_body", "Dang Van Thong");
+                intent1.setData(Uri.parse("sms:0943152171"));
+
+                Intent intent2 = new Intent();
+                intent2.setAction(Intent.ACTION_CALL);
+                intent2.setData(Uri.parse("tel:0943152171"));
+
+
                 Intent intent = new Intent(MainActivity.this, Signup.class);
-                startActivity(intent);
+                startActivity(intent2);
             }
         });
     }
