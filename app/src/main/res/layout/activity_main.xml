@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:layout_toRightOf="@id/iconuser"
-                android:hint="Tên đăng nhập"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
@@ -139,7 +139,7 @@
                 android:layout_margin="10dp"
                 android:textColor="#272727"/>
             <Button
-                android:id="@+id/btloginhome"
+                android:id="@+id/btlogin"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:layout_width="0dp"

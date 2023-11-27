@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:layout_toRightOf="@id/iconuser"
-                android:hint="Tên đăng nhập"
+                android:hint="Tên hiển thị"
                 android:inputType="textEmailAddress"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"

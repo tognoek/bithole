@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,7 +12,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Firebase;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+
 public class Signup extends AppCompatActivity {
+
+    private EditText user, mail, password, passwordRequest;
+    private Button buttonLogin, buttonRegister;
+    private ProgressDialog progressDialog;
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
@@ -20,59 +34,87 @@ public class Signup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        Button buttonregister = findViewById(R.id.btregister);
-        buttonregister.setOnClickListener(new View.OnClickListener() {
+        anhXa();
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String user, mail, password, passtwo;
-                Integer group;
-                group = 1;
-                EditText usertext = findViewById(R.id.textuser);
-                user = usertext.getText().toString();
-                EditText mailtext = findViewById(R.id.textmail);
-                EditText passtwotext = findViewById(R.id.textconfirm);
-                mail = mailtext.getText().toString();
-                EditText passwordtext = findViewById(R.id.textpassword);
-                password = passwordtext.getText().toString();
-                passtwo = passtwotext.getText().toString();
-                if (user.isEmpty() || mail.isEmpty() || password.isEmpty() || passtwo.isEmpty()){
-                    showToast("Hãy nhập hết dữ liệu yêu cầu");
-                }else{
-                    Account account = new Account(user, mail, password, group);
-                    SQLITE myDb = new SQLITE(Signup.this);
-                    if (myDb.Findauser(account)){
-                        showToast("Tài khoản đã tồn tại");
-                    }
-                    else if (password.equals(passtwo)){
-                        myDb.insert(account);
-                        usertext.setText("");
-                        mailtext.setText("");
-                        passwordtext.setText("");
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent intent = new Intent(Signup.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        }, 3000);
-                    }
-                    else{
-                        showToast("Sai mật khẩu xác nhận");
-                    }
+                if (checkPasswordConfirm()){
+                    onClickSignUp();
                 }
-
+                else{
+                    Toast.makeText(Signup.this, "Sai mật khẩu nhập lần 2", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
 
-        Button buttonlogin = findViewById(R.id.btlogin);
-        buttonlogin.setOnClickListener(new View.OnClickListener() {
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Signup.this, MainActivity.class);
                 startActivity(intent);
             }
         });
+    }
+
+    private boolean checkPasswordConfirm(){
+        String passWordOne = password.getText().toString().trim();
+        String passWordTwo = passwordRequest.getText().toString().trim();
+        if (!passWordOne.isEmpty() && !passWordTwo.isEmpty() && passWordTwo.equals(passWordOne)){
+            return true;
+        }
+        return  false;
+    }
+    private void anhXa(){
+        progressDialog = new ProgressDialog(this);
+        user = findViewById(R.id.textuser);
+        mail = findViewById(R.id.textmail);
+        password = findViewById(R.id.textpassword);
+        passwordRequest = findViewById(R.id.textconfirm);
+
+
+
+        buttonRegister = findViewById(R.id.btregister);
+        buttonLogin = findViewById(R.id.btlogin);
+    }
+    private void onClickSignUp() {
+        String emailText = mail.getText().toString().trim();
+        String passwordText = password.getText().toString().trim();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        progressDialog.show();
+        mAuth.createUserWithEmailAndPassword(emailText, passwordText)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser fUser = mAuth.getCurrentUser();
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(user.getText().toString().trim())
+                                    .build();
+                            if (fUser != null){
+                                fUser.updateProfile(profileUpdates)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    progressDialog.dismiss();
+                                                    Intent intent = new Intent(Signup.this, activity_trangchu.class);
+                                                    startActivity(intent);
+                                                    finishAffinity();
+                                                }
+                                                else{
+                                                    Toast.makeText(Signup.this, "Authentication failed.",
+                                                            Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                            }
+                        } else {
+                            Toast.makeText(Signup.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
     }
 }
