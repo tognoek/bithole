@@ -213,19 +213,82 @@
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/share"/>
                     <ImageView
+                        android:id="@+id/clickDanhgia"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/sharetwo"/>
+                        android:src="@drawable/binhluan"/>
                 </LinearLayout>
+            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/space10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/primePrd"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#7C7C7C" />
+            <LinearLayout
+                android:id="@+id/space11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/space10"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Đánh giá"
+                    android:textSize="25dp"
+                    android:gravity="center"
+                    />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                    <!-- TODO put user's comments here -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycleView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </FrameLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <EditText
+                        android:id="@+id/inputName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/rectangle_rounded"
+                        android:hint="Nhập đánh gia tại dây"
+                        android:inputType="textShortMessage"
+                        android:maxLines="1"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp" />
+
+                    <Button
+                        android:id="@+id/btnSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:text="Đăng"
+                        />
+                </LinearLayout>
+
             </LinearLayout>
             <RelativeLayout
                 android:id="@+id/space3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/primePrd"
+                app:layout_constraintTop_toBottomOf="@id/space11"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="10dp"
                 android:background="#7C7C7C" />
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/TopSell"

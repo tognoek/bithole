@@ -28,8 +28,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class detail extends AppCompatActivity {
-    private ImageView imageView_caidat, imageView_trove;
-    private LinearLayout linear_xemshop, linear_muangay, liner_giohang;
+    private ImageView imageView_caidat, imageView_trove, imageView_clickDanhgia;
+    private LinearLayout linear_xemshop, linear_muangay, liner_giohang, liner_danhgia;
     private TextView name, mota, dongia, soluong, shop;
     private SanPham sanPham;
     private ExpandableHeightGridView gridView;
@@ -61,6 +61,18 @@ public class detail extends AppCompatActivity {
             }
         });
 
+        imageView_clickDanhgia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(liner_danhgia.getVisibility() == View.VISIBLE){
+                    liner_danhgia.setVisibility(View.GONE);
+                }
+                else
+                {
+                    liner_danhgia.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
     }
 
@@ -176,5 +188,7 @@ public class detail extends AppCompatActivity {
         soluong = findViewById(R.id.soluong);
         shop = findViewById(R.id.textNameShop);
         liner_giohang = findViewById(R.id.f_giohang);
+        imageView_clickDanhgia = findViewById(R.id.clickDanhgia);
+        liner_danhgia = findViewById(R.id.space11);
     }
 }
