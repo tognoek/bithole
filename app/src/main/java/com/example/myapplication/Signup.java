@@ -91,13 +91,13 @@ public class Signup extends AppCompatActivity {
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                     .setDisplayName(user.getText().toString().trim())
                                     .build();
+                            progressDialog.dismiss();
                             if (fUser != null){
                                 fUser.updateProfile(profileUpdates)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    progressDialog.dismiss();
                                                     Intent intent = new Intent(Signup.this, activity_trangchu.class);
                                                     startActivity(intent);
                                                     finishAffinity();

@@ -306,12 +306,14 @@
                     android:paddingStart="10dp">
 
                     <EditText
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Tiêu đề bài đăng"
                         android:background="@null"/>
 
                     <EditText
+                        android:id="@+id/luuyName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="*"
@@ -341,12 +343,14 @@
                     android:paddingStart="10dp">
 
                     <EditText
+                        android:id="@+id/mota"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Mô tả chi tiết \n - Xuất xứ, tình trạng cụ thể, kích thước,.....\n - Chất liệu, thời gian sử dụng,....."
                         android:background="@null"/>
 
                     <EditText
+                        android:id="@+id/luuyMota"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="*"
@@ -374,12 +378,14 @@
                     android:paddingStart="10dp">
 
                     <EditText
+                        android:id="@+id/donGia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Giá bán"
                         android:background="@null"/>
 
                     <EditText
+                        android:id="@+id/luuyDonGia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="*"
@@ -500,6 +506,7 @@
                     android:focusable="true"
                     />
                 <TextView
+                    android:id="@+id/push"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/s_radius_textbox"
