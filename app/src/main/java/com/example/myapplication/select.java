@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,7 +29,6 @@ public class select extends AppCompatActivity {
     private ImageView imageView_caidat;
     private ImageView imageView_trove;
     private LinearLayout linear_chitietsp;
-
     private ExpandableHeightGridView gridView;
     private AdapterSanPham adapterSanPham;
     private ArrayList<SanPham> listSanPham;
@@ -40,10 +40,8 @@ public class select extends AppCompatActivity {
         nutNhan();
         doDuLieuVaoAdapter();
         doDuLieu();
-
         onClickGridView();
     }
-
     private void onClickGridView() {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
