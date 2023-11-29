@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.adapter.AdapterComment;
+import com.example.myapplication.thuvien.ComMent;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
 import com.example.myapplication.thuvien.FormatVND;
 import com.example.myapplication.thuvien.ListCard;
@@ -39,9 +41,11 @@ public class detail extends AppCompatActivity {
 
     private Button dangbinhluan;
     private SanPham sanPham;
-    private ExpandableHeightGridView gridView;
+    private ExpandableHeightGridView gridView, gridViewComment;
     private AdapterSanPham adapterSanPham;
+    private AdapterComment adapterComment;
     private ArrayList<SanPham> listSanPham;
+    private ArrayList<ComMent> listComMent;
     private ArrayList<ListCard> listCards;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,8 @@ public class detail extends AppCompatActivity {
         doDuLieuVaoAdapter();
         doDuLieu();
         onClickGridView();
+        doDuLieuVaoAdapterComMent();
+        comMent();
 
         //AddProductToCart
         liner_giohang.setOnClickListener(new View.OnClickListener() {
@@ -222,6 +228,8 @@ public class detail extends AppCompatActivity {
     private void anhXa(){
         gridView = (ExpandableHeightGridView) findViewById(R.id.listSanPham);
         gridView.setExpanded(true);
+        gridViewComment = (ExpandableHeightGridView) findViewById(R.id.gridComment);
+        gridViewComment.setExpanded(true);
         linear_muangay = findViewById(R.id.f_muasam);
         imageView_caidat = findViewById(R.id.img_caidat);
         imageView_trove = findViewById(R.id.img_trove);
@@ -236,32 +244,33 @@ public class detail extends AppCompatActivity {
         liner_danhgia = findViewById(R.id.space11);
         binhluan = findViewById(R.id.noidungBL);
         dangbinhluan = findViewById(R.id.btnDangBL);
+
     }
-    private void addComment() {
+    private void doDuLieuVaoAdapterComMent() {
+        listComMent = new ArrayList<>();
+        adapterComment= new AdapterComment(this, R.layout.layout_comment, listComMent);
+        gridViewComment.setAdapter(adapterComment);
+    }
+    private void comMent() {
         String idUser = PublicFunciton.getIdUser();
         int idProduct = sanPham.getId();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference("BinhLuan");
-        DatabaseReference databaseReferenceUser = databaseReference.child(idUser);
-        databaseReferenceUser.child(String.valueOf(idProduct)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        DatabaseReference databaseReferenceUser = databaseReference.child(String.valueOf(idProduct));
+        databaseReferenceUser.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Toast.makeText(detail.this, "Faild", Toast.LENGTH_SHORT).show();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    ComMent comMent = postSnapshot.getValue(ComMent.class);
+                    listComMent.add(comMent);
                 }
-                else {
-                    if (task.getResult().getValue() != null){
-                        Toast.makeText(detail.this, "Cập nhật vào giỏ hàng", Toast.LENGTH_SHORT).show();
-                        int soLuong = Integer.parseInt(task.getResult().getValue().toString());
-                        databaseReferenceUser.child(String.valueOf(idProduct)).setValue(soLuong + 1);
-                    }
-                    else{
-                        Toast.makeText(detail.this, "Thêm mới vào giỏ hàng", Toast.LENGTH_SHORT).show();
-                        databaseReferenceUser.child(String.valueOf(idProduct)).setValue(1);
-                    }
-                }
+                adapterComment.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(detail.this, "Fail", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }

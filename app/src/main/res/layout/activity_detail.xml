@@ -245,17 +245,13 @@
                     android:textSize="25dp"
                     android:gravity="center"
                     />
-                <FrameLayout
+                <com.example.myapplication.thuvien.ExpandableHeightGridView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-                    <!-- TODO put user's comments here -->
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycleView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:id="@+id/gridComment">
 
-                </FrameLayout>
+                </com.example.myapplication.thuvien.ExpandableHeightGridView>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
