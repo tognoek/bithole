@@ -40,7 +40,6 @@ public class select extends AppCompatActivity {
         nutNhan();
         doDuLieuVaoAdapter();
         doDuLieu();
-
         onClickGridView();
     }
 
@@ -100,4 +99,5 @@ public class select extends AppCompatActivity {
         imageView_trove = findViewById(R.id.img_trove);
         linear_chitietsp = findViewById(R.id.chitiet_sp);
     }
+
 }

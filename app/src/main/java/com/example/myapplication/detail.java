@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,6 +33,9 @@ public class detail extends AppCompatActivity {
     private ImageView imageView_caidat, imageView_trove, imageView_clickDanhgia;
     private LinearLayout linear_xemshop, linear_muangay, liner_giohang, liner_danhgia;
     private TextView name, mota, dongia, soluong, shop;
+    private EditText binhluan;
+
+    private Button dangbinhluan;
     private SanPham sanPham;
     private ExpandableHeightGridView gridView;
     private AdapterSanPham adapterSanPham;
@@ -59,8 +64,8 @@ public class detail extends AppCompatActivity {
             public void onClick(View view) {
                 addCart();
             }
-        });
 
+        });
         imageView_clickDanhgia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -190,5 +195,34 @@ public class detail extends AppCompatActivity {
         liner_giohang = findViewById(R.id.f_giohang);
         imageView_clickDanhgia = findViewById(R.id.clickDanhgia);
         liner_danhgia = findViewById(R.id.space11);
+        binhluan = findViewById(R.id.noidungBL);
+        dangbinhluan = findViewById(R.id.btnDangBL);
+    }
+    private void addComment() {
+        String idUser = PublicFunciton.getIdUser();
+        int idProduct = sanPham.getId();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("BinhLuan");
+        DatabaseReference databaseReferenceUser = databaseReference.child(idUser);
+        databaseReferenceUser.child(String.valueOf(idProduct)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Toast.makeText(detail.this, "Faild", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    if (task.getResult().getValue() != null){
+                        Toast.makeText(detail.this, "Cập nhật vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                        int soLuong = Integer.parseInt(task.getResult().getValue().toString());
+                        databaseReferenceUser.child(String.valueOf(idProduct)).setValue(soLuong + 1);
+                    }
+                    else{
+                        Toast.makeText(detail.this, "Thêm mới vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                        databaseReferenceUser.child(String.valueOf(idProduct)).setValue(1);
+                    }
+                }
+            }
+        });
+
     }
 }
