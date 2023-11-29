@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
 import com.example.myapplication.thuvien.FormatVND;
+import com.example.myapplication.thuvien.ListCard;
 import com.example.myapplication.thuvien.PublicFunciton;
 import com.example.myapplication.thuvien.SanPham;
 import com.google.android.gms.tasks.OnCanceledListener;
@@ -35,6 +37,7 @@ public class detail extends AppCompatActivity {
     private ExpandableHeightGridView gridView;
     private AdapterSanPham adapterSanPham;
     private ArrayList<SanPham> listSanPham;
+    private ArrayList<ListCard> listCards;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,28 +82,64 @@ public class detail extends AppCompatActivity {
     private void addCart() {
         String idUser = PublicFunciton.getIdUser();
         int idProduct = sanPham.getId();
+        listCards = new ArrayList<>();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference("GioHang");
         DatabaseReference databaseReferenceUser = databaseReference.child(idUser);
-        databaseReferenceUser.child(String.valueOf(idProduct)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+
+        databaseReferenceUser.addListenerForSingleValueEvent (new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Toast.makeText(detail.this, "Faild", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    if (task.getResult().getValue() != null){
-                        Toast.makeText(detail.this, "Cập nhật vào giỏ hàng", Toast.LENGTH_SHORT).show();
-                        int soLuong = Integer.parseInt(task.getResult().getValue().toString());
-                        databaseReferenceUser.child(String.valueOf(idProduct)).setValue(soLuong + 1);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int i = 0;
+                boolean Update = false;
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    ListCard card = postSnapshot.getValue(ListCard.class);
+                    listCards.add(card);
+                    if (card.getId() == idProduct && !Update){
+                        Update = true;
+                        card.setSoluong(card.getSoluong() + 1);
+                        databaseReferenceUser.child(String.valueOf(i)).setValue(card);
                     }
-                    else{
-                        Toast.makeText(detail.this, "Thêm mới vào giỏ hàng", Toast.LENGTH_SHORT).show();
-                        databaseReferenceUser.child(String.valueOf(idProduct)).setValue(1);
-                    }
+                    i = i + 1;
                 }
+                if (!Update){
+                    ListCard card = new ListCard(idProduct, 1);
+                    databaseReferenceUser.child(String.valueOf(i)).setValue(card);
+                }
+                Toast.makeText(detail.this, "" + listCards.size(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(detail.this, "Fail", Toast.LENGTH_SHORT).show();
             }
         });
+//        for (int i = 0; i < listCards.size(); i++){
+//            if (listCards.get(i).getId() == idProduct){
+//                ListCard cartAdd = listCards.get(i);
+//                cartAdd.setSoluong(listCards.get(i).getSoluong() + 1);
+//                databaseReferenceUser.setValue(cartAdd);
+//            }
+//        }
+//        databaseReferenceUser.child(String.valueOf(idProduct)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Toast.makeText(detail.this, "Faild", Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    if (task.getResult().getValue() != null){
+//                        Toast.makeText(detail.this, "Cập nhật vào giỏ hàng", Toast.LENGTH_SHORT).show();
+//                        int soLuong = Integer.parseInt(task.getResult().getValue().toString());
+//                        databaseReferenceUser.child(String.valueOf(idProduct)).setValue(soLuong + 1);
+//                    }
+//                    else{
+//                        Toast.makeText(detail.this, "Thêm mới vào giỏ hàng", Toast.LENGTH_SHORT).show();
+//                        databaseReferenceUser.child(String.valueOf(idProduct)).setValue(1);
+//                    }
+//                }
+//            }
+//        });
 
     }
 
