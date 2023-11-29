@@ -88,6 +88,43 @@ public class detail extends AppCompatActivity {
             }
         });
 
+        dangBinhLuan();
+
+    }
+
+    private void dangBinhLuan() {
+        dangbinhluan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String noidung= binhluan.getText().toString().trim();
+                ComMent comMent = new ComMent(PublicFunciton.getNameUser(), noidung);
+                addComMent(comMent);
+            }
+        });
+    }
+
+    private void addComMent(ComMent comMent) {
+        int idProduct = sanPham.getId();
+        listComMent.clear();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("BinhLuan");
+        DatabaseReference databaseReferenceUser = databaseReference.child(String.valueOf(idProduct));
+        databaseReferenceUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    ComMent comMent = postSnapshot.getValue(ComMent.class);
+                    listComMent.add(comMent);
+                }
+                listComMent.add(comMent);
+                databaseReference.child(String.valueOf(idProduct)).child(String.valueOf(listComMent.size())).setValue(comMent);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(detail.this, "Fail", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void addCart() {
@@ -260,10 +297,12 @@ public class detail extends AppCompatActivity {
         databaseReferenceUser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listComMent.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     ComMent comMent = postSnapshot.getValue(ComMent.class);
                     listComMent.add(comMent);
                 }
+                Log.d("size list comment", "" + listComMent.size());
                 adapterComment.notifyDataSetChanged();
             }
 

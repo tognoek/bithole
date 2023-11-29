@@ -2,11 +2,11 @@ package com.example.myapplication.thuvien;
 
 public class ComMent {
     private String comment;
-    private String iduser;
+    private String name;
 
-    public ComMent(String comment, String iduser) {
+    public ComMent(String name, String comment) {
         this.comment = comment;
-        this.iduser = iduser;
+        this.name = name;
     }
     public ComMent() {
     }
@@ -19,11 +19,11 @@ public class ComMent {
         this.comment = comment;
     }
 
-    public String getIduser() {
-        return iduser;
+    public String getName() {
+        return name;
     }
 
-    public void setIduser(String iduser) {
-        this.iduser = iduser;
+    public void setName(String iduser) {
+        this.name = iduser;
     }
 }

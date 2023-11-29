@@ -41,7 +41,7 @@ public class AdapterComment extends ArrayAdapter {
         TextView noidung = convertView.findViewById(R.id.noidungbl);
         TextView user = convertView.findViewById(R.id.tenUserBL);
         noidung.setText(itemnew.getComment());
-        user.setText(itemnew.getIduser());
+        user.setText(itemnew.getName());
         return convertView;
     }
 
