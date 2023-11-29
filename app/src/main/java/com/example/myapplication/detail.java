@@ -14,7 +14,11 @@ import android.widget.Toast;
 
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
 import com.example.myapplication.thuvien.FormatVND;
+import com.example.myapplication.thuvien.PublicFunciton;
 import com.example.myapplication.thuvien.SanPham;
+import com.google.android.gms.tasks.OnCanceledListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +29,7 @@ import java.util.ArrayList;
 
 public class detail extends AppCompatActivity {
     private ImageView imageView_caidat, imageView_trove;
-    private LinearLayout linear_xemshop, linear_muangay;
+    private LinearLayout linear_xemshop, linear_muangay, liner_giohang;
     private TextView name, mota, dongia, soluong, shop;
     private SanPham sanPham;
     private ExpandableHeightGridView gridView;
@@ -38,19 +42,57 @@ public class detail extends AppCompatActivity {
 
         anhXa();
         onClick();
+        //Get Product Detail
+        getDetail();
+
         //Set Product Detail
-        setDetailProduct();
+        setProductDetail();
 
         //GridView
         doDuLieuVaoAdapter();
         doDuLieu();
         onClickGridView();
 
+        //AddProductToCart
+        liner_giohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addCart();
+            }
+        });
+
 
     }
 
-    private void setDetailProduct() {
-        sanPham= getDetail();
+    private void addCart() {
+        String idUser = PublicFunciton.getIdUser();
+        int idProduct = sanPham.getId();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("GioHang");
+        DatabaseReference databaseReferenceUser = databaseReference.child(idUser);
+        databaseReferenceUser.child(String.valueOf(idProduct)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Toast.makeText(detail.this, "Faild", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    if (task.getResult().getValue() != null){
+                        Toast.makeText(detail.this, "Cập nhật vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                        int soLuong = Integer.parseInt(task.getResult().getValue().toString());
+                        databaseReferenceUser.child(String.valueOf(idProduct)).setValue(soLuong + 1);
+                    }
+                    else{
+                        Toast.makeText(detail.this, "Thêm mới vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                        databaseReferenceUser.child(String.valueOf(idProduct)).setValue(1);
+                    }
+                }
+            }
+        });
+
+    }
+
+    private void setProductDetail() {
         name.setText(sanPham.getName());
         mota.setText(sanPham.getMota());
         dongia.setText((new FormatVND(String.valueOf(sanPham.getDongia())).getVND()));
@@ -58,9 +100,9 @@ public class detail extends AppCompatActivity {
         shop.setText(sanPham.getShop());
     }
 
-    private SanPham getDetail() {
+    private void getDetail() {
         Intent intent = getIntent();
-        return (SanPham) intent.getSerializableExtra("SanPham");
+        sanPham =  (SanPham) intent.getSerializableExtra("SanPham");
     }
 
     private void onClick() {
@@ -133,5 +175,6 @@ public class detail extends AppCompatActivity {
         dongia = findViewById(R.id.dongia);
         soluong = findViewById(R.id.soluong);
         shop = findViewById(R.id.textNameShop);
+        liner_giohang = findViewById(R.id.f_giohang);
     }
 }

@@ -26,7 +26,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class DangSanPhamActivity extends AppCompatActivity {
-
     private ImageView imageView_trove;
     private EditText editTextName, editTextMoTa, editTextDonGia;
     private
@@ -41,11 +40,7 @@ public class DangSanPhamActivity extends AppCompatActivity {
         onClick();
 
         onClickPush();
-
-
     }
-
-
     private void pushProductFunction(int idProduct) {
         //Set Values Product
         String name = editTextName.getText().toString().trim();

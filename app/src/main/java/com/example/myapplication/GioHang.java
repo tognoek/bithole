@@ -15,14 +15,22 @@ public class GioHang extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gio_hang);
+        anhXa();
+        onClick();
 
-        imageView_trove = findViewById(R.id.img_trove);
+
+    }
+
+    private void onClick(){
         imageView_trove.setOnClickListener(view ->
                 getOnBackPressedDispatcher().onBackPressed()
         );
-
-        linear_thanhtoan = findViewById(R.id.thanhtoan);
         linear_thanhtoan.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), activity_thanhtoan.class)));
+    }
+
+    private void anhXa(){
+        linear_thanhtoan = findViewById(R.id.thanhtoan);
+        imageView_trove = findViewById(R.id.img_trove);
     }
 }

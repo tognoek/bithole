@@ -32,7 +32,6 @@ public class activity_trangchu extends AppCompatActivity {
     private EditText editText;
     private LinearLayout thongbao, linear_danhmuc, linear_giohang, linear_toi;
 
-
     private ExpandableHeightGridView gridView;
     private AdapterSanPham adapterSanPham;
     private ArrayList<SanPham> listSanPham;
@@ -111,7 +110,6 @@ public class activity_trangchu extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), select.class))
         );
 
-        linear_giohang = findViewById(R.id.f_giohang);
         linear_giohang.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), GioHang.class))
         );
@@ -145,6 +143,6 @@ public class activity_trangchu extends AppCompatActivity {
         linear_toi = findViewById(R.id.f_toi);
         linear_danhmuc = findViewById(R.id.f_danhmuc);
         editText = findViewById(R.id.editTextInput);
-
+        linear_giohang = findViewById(R.id.f_giohang);
     }
 }
