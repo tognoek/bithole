@@ -262,34 +262,13 @@ public class detail extends AppCompatActivity {
     }
 
 
-    private void anhXa(){
-        gridView = (ExpandableHeightGridView) findViewById(R.id.listSanPham);
-        gridView.setExpanded(true);
-        gridViewComment = (ExpandableHeightGridView) findViewById(R.id.gridComment);
-        gridViewComment.setExpanded(true);
-        linear_muangay = findViewById(R.id.f_muasam);
-        imageView_caidat = findViewById(R.id.img_caidat);
-        imageView_trove = findViewById(R.id.img_trove);
-        linear_xemshop = findViewById(R.id.xemshop);
-        name = findViewById(R.id.namePrd);
-        mota = findViewById(R.id.mota);
-        dongia = findViewById(R.id.dongia);
-        soluong = findViewById(R.id.soluong);
-        shop = findViewById(R.id.textNameShop);
-        liner_giohang = findViewById(R.id.f_giohang);
-        imageView_clickDanhgia = findViewById(R.id.clickDanhgia);
-        liner_danhgia = findViewById(R.id.space11);
-        binhluan = findViewById(R.id.noidungBL);
-        dangbinhluan = findViewById(R.id.btnDangBL);
 
-    }
     private void doDuLieuVaoAdapterComMent() {
         listComMent = new ArrayList<>();
         adapterComment= new AdapterComment(this, R.layout.layout_comment, listComMent);
         gridViewComment.setAdapter(adapterComment);
     }
     private void comMent() {
-        String idUser = PublicFunciton.getIdUser();
         int idProduct = sanPham.getId();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference("BinhLuan");
@@ -311,5 +290,26 @@ public class detail extends AppCompatActivity {
                 Toast.makeText(detail.this, "Fail", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    private void anhXa(){
+        gridView = (ExpandableHeightGridView) findViewById(R.id.listSanPham);
+        gridView.setExpanded(true);
+        gridViewComment = (ExpandableHeightGridView) findViewById(R.id.gridComment);
+        gridViewComment.setExpanded(true);
+        linear_muangay = findViewById(R.id.f_muasam);
+        imageView_caidat = findViewById(R.id.img_caidat);
+        imageView_trove = findViewById(R.id.img_trove);
+        linear_xemshop = findViewById(R.id.xemshop);
+        name = findViewById(R.id.namePrd);
+        mota = findViewById(R.id.mota);
+        dongia = findViewById(R.id.dongia);
+        soluong = findViewById(R.id.soluong);
+        shop = findViewById(R.id.textNameShop);
+        liner_giohang = findViewById(R.id.f_giohang);
+        imageView_clickDanhgia = findViewById(R.id.clickDanhgia);
+        liner_danhgia = findViewById(R.id.space11);
+        binhluan = findViewById(R.id.noidungBL);
+        dangbinhluan = findViewById(R.id.btnDangBL);
+
     }
 }
