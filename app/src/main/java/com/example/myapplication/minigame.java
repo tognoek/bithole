@@ -34,9 +34,16 @@ public class minigame extends AppCompatActivity {
         txtthoigian = findViewById(R.id.thoigian);
 
         Calendar calendar = Calendar.getInstance();
-        // Thêm 1 ngày để có được ngày mai
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        // Chuyển đổi thành đối tượng Date
+//        // Thêm 1 ngày để có được ngày mai
+//        calendar.add(Calendar.DAY_OF_YEAR, 1);
+//        // Chuyển đổi thành đối tượng Date
+        Calendar targetTime = Calendar.getInstance();
+        targetTime.set(Calendar.HOUR_OF_DAY, 12);
+        targetTime.set(Calendar.MINUTE, 0);
+        targetTime.set(Calendar.SECOND, 0);
+        targetTime.set(Calendar.MILLISECOND, 0);
+        targetTime.add(Calendar.DAY_OF_MONTH, 1); // Thêm 1 ngày
+
         Date tomorrow = calendar.getTime();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());

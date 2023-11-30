@@ -373,5 +373,25 @@
                 android:layout_gravity="center">
             </TextView>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/hvt_round_date1">
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/hvt_themmoi_ic"
+                android:layout_gravity="center">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Tìm thêm lượt mới"
+                android:layout_gravity="center">
+            </TextView>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
