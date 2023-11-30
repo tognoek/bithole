@@ -144,18 +144,18 @@
                 android:textStyle="bold">
             </TextView>
             <TextView
+                android:id="@+id/thoigian"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="Phiên quay ngày 24 tháng 10"
                 android:background="@drawable/hvt_round_date"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="5dp">
             </TextView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/countdown_timer"
+                android:id="@+id/tvCountdown"
                 android:text="00:00:00"
                 android:textSize="35sp"
                 android:textStyle="bold"
@@ -179,13 +179,15 @@
                         android:src="@drawable/hvt_caret_up_solid"
                         android:layout_gravity="center">
                     </ImageView>
-                    <TextView
+                    <EditText
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
+                        android:inputType="number"
+                        android:maxLength="1"
                         android:gravity="center"
                         android:background="@drawable/hvt_round_date1">
-                    </TextView>
+                    </EditText>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -205,13 +207,15 @@
                         android:src="@drawable/hvt_caret_up_solid"
                         android:layout_gravity="center">
                     </ImageView>
-                    <TextView
+                    <EditText
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
+                        android:inputType="number"
+                        android:maxLength="1"
                         android:gravity="center"
                         android:background="@drawable/hvt_round_date1">
-                    </TextView>
+                    </EditText>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -230,13 +234,15 @@
                         android:src="@drawable/hvt_caret_up_solid"
                         android:layout_gravity="center">
                     </ImageView>
-                    <TextView
+                    <EditText
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
+                        android:inputType="number"
+                        android:maxLength="1"
                         android:gravity="center"
                         android:background="@drawable/hvt_round_date1">
-                    </TextView>
+                    </EditText>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -255,13 +261,15 @@
                         android:src="@drawable/hvt_caret_up_solid"
                         android:layout_gravity="center">
                     </ImageView>
-                    <TextView
+                    <EditText
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
+                        android:inputType="number"
+                        android:maxLength="1"
                         android:gravity="center"
                         android:background="@drawable/hvt_round_date1">
-                    </TextView>
+                    </EditText>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -279,13 +287,15 @@
                         android:src="@drawable/hvt_caret_up_solid"
                         android:layout_gravity="center">
                     </ImageView>
-                    <TextView
+                    <EditText
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
+                        android:maxLength="1"
+                        android:inputType="number"
                         android:gravity="center"
                         android:background="@drawable/hvt_round_date1">
-                    </TextView>
+                    </EditText>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -294,16 +304,16 @@
                     </ImageView>
                 </LinearLayout>
             </LinearLayout>
-            <Button
+            <TextView
                 android:id="@+id/start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="130dp"
+                android:layout_height="35dp"
                 android:background="@drawable/hvt_round_date2"
                 android:text="Xác nhận"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp">
-            </Button>
+            </TextView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -360,26 +370,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="Lịch sử chọn số"
-                android:layout_gravity="center">
-            </TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/hvt_round_date1">
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:src="@drawable/hvt_themmoi_ic"
-                android:layout_gravity="center">
-            </ImageView>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Tìm thêm lượt quay"
                 android:layout_gravity="center">
             </TextView>
         </LinearLayout>
