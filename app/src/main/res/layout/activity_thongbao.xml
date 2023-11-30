@@ -23,6 +23,7 @@
             android:layout_toRightOf="@id/thongbao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="Thông Báo"
             android:textSize="30sp"
             android:layout_gravity="center"
@@ -47,247 +48,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Mới"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:textStyle="bold">
-            </TextView>
-            <LinearLayout
+                android:text="Thông báo mới"
+                android:textSize="25dp"
+                />
+            <com.example.myapplication.thuvien.ExpandableHeightGridView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/hvt_round_item">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/hvt_hehe"
-                    android:layout_gravity="center"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="COOLMATE SIÊU SALE THÁNG 10"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Giảm 5000đ phí vận chuyển đối với các đơn hàng giá trị từ 25000đ trở lên Áp dụng trong 1 ngày từ khi lấy mã"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/hvt_round_item">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/hvt_event"
-                    android:layout_gravity="center"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="NHANH! VOUCHER 20/10 SẮP TỚI"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Giảm 5000đ phí vận chuyển đối với các đơn hàng giá trị từ 25000đ trở lên Áp dụng trong 1 ngày từ khi lấy mã"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/hvt_round_item">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/hvt_hihi"
-                    android:layout_gravity="center"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="VOUCHER XỊN VẪN CÒN NÈ BẠN ƠI"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Giảm 5000đ phí vận chuyển đối với các đơn hàng giá trị từ 25000đ trở lên Áp dụng trong 1 ngày từ khi lấy mã"/>
-                </LinearLayout>
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trước đó"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp">
-            </TextView>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/hvt_round_item">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/hvt_logo"
-                    android:layout_gravity="center"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="NÓI ĐI BẠN ƠI, BITHOLE NGHE HẾT"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Giảm 5000đ phí vận chuyển đối với các đơn hàng giá trị từ 25000đ trở lên Áp dụng trong 1 ngày từ khi lấy mã"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/hvt_round_item">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/hvt_logo"
-                    android:layout_gravity="center"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Voucher Giảm phí vận chuyển"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Giảm 5000đ phí vận chuyển đối với các đơn hàng giá trị từ 25000đ trở lên Áp dụng trong 1 ngày từ khi lấy mã"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/hvt_round_item">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/hvt_logo"
-                    android:layout_gravity="center"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Voucher Giảm phí vận chuyển"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Giảm 5000đ phí vận chuyển đối với các đơn hàng giá trị từ 25000đ trở lên Áp dụng trong 1 ngày từ khi lấy mã"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/hvt_round_item">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/hvt_logo"
-                    android:layout_gravity="center"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Voucher Giảm phí vận chuyển"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Giảm 5000đ phí vận chuyển đối với các đơn hàng giá trị từ 25000đ trở lên Áp dụng trong 1 ngày từ khi lấy mã"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/hvt_round_item">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/hvt_logo"
-                    android:layout_gravity="center"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Voucher Giảm phí vận chuyển"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Giảm 5000đ phí vận chuyển đối với các đơn hàng giá trị từ 25000đ trở lên Áp dụng trong 1 ngày từ khi lấy mã"/>
-                </LinearLayout>
-            </LinearLayout>
+                android:padding="5dp"
+                android:id="@+id/gridThongBao">
+
+            </com.example.myapplication.thuvien.ExpandableHeightGridView>
+
         </LinearLayout>
     </ScrollView>
     <LinearLayout

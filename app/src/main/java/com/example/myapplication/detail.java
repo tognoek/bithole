@@ -8,11 +8,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.adapter.AdapterComment;
+import com.example.myapplication.thuvien.ComMent;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
 import com.example.myapplication.thuvien.FormatVND;
 import com.example.myapplication.thuvien.ListCard;
@@ -33,10 +37,15 @@ public class detail extends AppCompatActivity {
     private ImageView imageView_caidat, imageView_trove, imageView_clickDanhgia;
     private LinearLayout linear_xemshop, linear_muangay, liner_giohang, liner_danhgia;
     private TextView name, mota, dongia, soluong, shop;
+    private EditText binhluan;
+
+    private Button dangbinhluan;
     private SanPham sanPham;
-    private ExpandableHeightGridView gridView;
+    private ExpandableHeightGridView gridView, gridViewComment;
     private AdapterSanPham adapterSanPham;
+    private AdapterComment adapterComment;
     private ArrayList<SanPham> listSanPham;
+    private ArrayList<ComMent> listComMent;
     private ArrayList<ListCard> listCards;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +64,8 @@ public class detail extends AppCompatActivity {
         doDuLieuVaoAdapter();
         doDuLieu();
         onClickGridView();
+        doDuLieuVaoAdapterComMent();
+        comMent();
 
         //AddProductToCart
         liner_giohang.setOnClickListener(new View.OnClickListener() {
@@ -62,8 +73,8 @@ public class detail extends AppCompatActivity {
             public void onClick(View view) {
                 addCart();
             }
-        });
 
+        });
         imageView_clickDanhgia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +88,43 @@ public class detail extends AppCompatActivity {
             }
         });
 
+        dangBinhLuan();
+
+    }
+
+    private void dangBinhLuan() {
+        dangbinhluan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String noidung= binhluan.getText().toString().trim();
+                ComMent comMent = new ComMent(PublicFunciton.getNameUser(), noidung);
+                addComMent(comMent);
+            }
+        });
+    }
+
+    private void addComMent(ComMent comMent) {
+        int idProduct = sanPham.getId();
+        listComMent.clear();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("BinhLuan");
+        DatabaseReference databaseReferenceUser = databaseReference.child(String.valueOf(idProduct));
+        databaseReferenceUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    ComMent comMent = postSnapshot.getValue(ComMent.class);
+                    listComMent.add(comMent);
+                }
+                listComMent.add(comMent);
+                databaseReference.child(String.valueOf(idProduct)).child(String.valueOf(listComMent.size())).setValue(comMent);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(detail.this, "Fail", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void addCart() {
@@ -214,9 +262,40 @@ public class detail extends AppCompatActivity {
     }
 
 
+
+    private void doDuLieuVaoAdapterComMent() {
+        listComMent = new ArrayList<>();
+        adapterComment= new AdapterComment(this, R.layout.layout_comment, listComMent);
+        gridViewComment.setAdapter(adapterComment);
+    }
+    private void comMent() {
+        int idProduct = sanPham.getId();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("BinhLuan");
+        DatabaseReference databaseReferenceUser = databaseReference.child(String.valueOf(idProduct));
+        databaseReferenceUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listComMent.clear();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    ComMent comMent = postSnapshot.getValue(ComMent.class);
+                    listComMent.add(comMent);
+                }
+                Log.d("size list comment", "" + listComMent.size());
+                adapterComment.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(detail.this, "Fail", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     private void anhXa(){
         gridView = (ExpandableHeightGridView) findViewById(R.id.listSanPham);
         gridView.setExpanded(true);
+        gridViewComment = (ExpandableHeightGridView) findViewById(R.id.gridComment);
+        gridViewComment.setExpanded(true);
         linear_muangay = findViewById(R.id.f_muasam);
         imageView_caidat = findViewById(R.id.img_caidat);
         imageView_trove = findViewById(R.id.img_trove);
@@ -229,5 +308,8 @@ public class detail extends AppCompatActivity {
         liner_giohang = findViewById(R.id.f_giohang);
         imageView_clickDanhgia = findViewById(R.id.clickDanhgia);
         liner_danhgia = findViewById(R.id.space11);
+        binhluan = findViewById(R.id.noidungBL);
+        dangbinhluan = findViewById(R.id.btnDangBL);
+
     }
 }
