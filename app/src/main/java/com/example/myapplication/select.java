@@ -7,17 +7,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.myapplication.adapter.AdapterSanPham;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
-import com.example.myapplication.thuvien.GridViewScrollable;
 import com.example.myapplication.thuvien.SanPham;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
