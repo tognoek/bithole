@@ -113,7 +113,7 @@
             android:padding="15dp"
             android:background="@color/white"
             android:visibility="gone"
-            android:hint="Hồ Thái Sơn"
+            android:hint="Tên người dùng"
             android:layout_marginTop="1dp"/>
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -231,6 +231,7 @@
             android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/pink"
             android:text="Lưu"
             android:textSize="20dp"
             android:gravity="center"

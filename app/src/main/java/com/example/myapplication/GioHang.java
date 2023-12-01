@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.adapter.AdapterCart;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
+import com.example.myapplication.thuvien.FormatVND;
 import com.example.myapplication.thuvien.ListCard;
 import com.example.myapplication.thuvien.PublicFunciton;
 import com.example.myapplication.thuvien.SanPham;
@@ -27,6 +30,7 @@ import java.util.List;
 public class GioHang extends AppCompatActivity {
 
     private ImageView imageView_trove;
+    private TextView textView_tongtien;
     private LinearLayout linear_thanhtoan;
     private ExpandableHeightGridView gridView;
     private AdapterCart adapterSanPham;
@@ -69,6 +73,16 @@ public class GioHang extends AppCompatActivity {
         });
     }
 
+    private void tongTien(){
+        double tong = 0;
+        for (Cart sanPham :listSanPham){
+            tong += sanPham.getSoluong() * sanPham.getDongia();
+        }
+        Log.d("aaa", "tongTien: " + tong);
+        String tongString = new FormatVND(String.valueOf(tong)).getVND();
+        textView_tongtien.setText(tongString);
+    }
+
     private void doDuLieu(List<ListCard> listCards) {
         listSanPham.clear();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -89,6 +103,7 @@ public class GioHang extends AppCompatActivity {
 
                     }
                 }
+                tongTien();
                 adapterSanPham.notifyDataSetChanged();
             }
 
@@ -111,5 +126,6 @@ public class GioHang extends AppCompatActivity {
         gridView.setExpanded(true);
         linear_thanhtoan = findViewById(R.id.thanhtoan);
         imageView_trove = findViewById(R.id.img_trove);
+        textView_tongtien = findViewById(R.id.tongtien);
     }
 }

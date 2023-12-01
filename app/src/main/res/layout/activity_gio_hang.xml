@@ -97,7 +97,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -106,44 +106,49 @@
         android:background="@color/pink"
         android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/lht_img_7"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
+            android:padding="7dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chọn tất cả"
+                android:text="Tổng tiền :"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 android:layout_gravity="center"/>
             <TextView
+                android:id="@+id/tongtien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="18dp"
                 android:text="340.000đ"
                 android:textStyle="bold"
                 android:layout_gravity="center"/>
-            <LinearLayout
-                android:id="@+id/thanhtoan"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/lht_round"
-                android:backgroundTint="#E30B0B"
-                android:orientation="vertical"
-                android:gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Thanh toán (2)"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center" />
-            </LinearLayout>
+
         </LinearLayout>
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/thanhtoan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            android:padding="8dp"
+            android:background="@drawable/lht_round"
+            android:backgroundTint="#E30B0B"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thanh toán"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_gravity="center" />
+        </LinearLayout>
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

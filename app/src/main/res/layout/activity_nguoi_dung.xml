@@ -93,22 +93,27 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/white"
                 android:padding="8dp">
-
-                <ImageView
-                    android:id="@+id/circle_user"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center"
-                    android:paddingEnd="5dp"
-                    android:src="@drawable/s_circle_user" />
+                <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/circle_usert"
+                    app:cardCornerRadius="90dp">
+                    <ImageView
+                        android:id="@+id/circle_user"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:paddingEnd="5dp"
+                        android:src="@drawable/s_circle_user" />
+                </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
                 <LinearLayout
                     android:id="@+id/ttuser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/circle_user"
+                    android:layout_toRightOf="@id/circle_usert"
                     android:orientation="vertical"
                     android:paddingLeft="5dp">
 

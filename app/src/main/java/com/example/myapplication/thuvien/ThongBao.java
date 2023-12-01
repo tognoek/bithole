@@ -4,11 +4,13 @@ public class ThongBao {
     private String tieude;
     private String hinhanh;
     private String mota;
+    private String loaithongbao;
 
-    public ThongBao(String tieude, String hinhanh, String mota) {
+    public ThongBao(String tieude, String hinhanh, String mota, String loaithongbao) {
         this.tieude = tieude;
         this.hinhanh = hinhanh;
         this.mota = mota;
+        this.loaithongbao = loaithongbao;
     }
     public ThongBao() {
     }
@@ -35,5 +37,13 @@ public class ThongBao {
 
     public void setMota(String mota) {
         this.mota = mota;
+    }
+
+    public String getLoaithongbao() {
+        return loaithongbao;
+    }
+
+    public void setLoaithongbao(String loaithongbao) {
+        this.loaithongbao = loaithongbao;
     }
 }
