@@ -20,7 +20,7 @@ public class NguoiDungActivity extends AppCompatActivity {
 
     private ImageView imageView_caidat, imageView_hotro, imageView_trove, imageView_giohang;
 
-    private LinearLayout linear_trangchu, linear_danhmuc, linear_thongbao, linear_giohang, linear_vi, linear_lichsumua;
+    private LinearLayout linear_trangchu, linear_danhmuc, linear_thongbao, linear_giohang, linear_vi, linear_lichsumua, linear_ttuser;
 
     private TextView textViewNameUser;
     private RelativeLayout relative_donhangcuatoi;
@@ -83,6 +83,8 @@ public class NguoiDungActivity extends AppCompatActivity {
         linear_lichsumua.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), LichSuMuaHang.class))
         );
+        linear_ttuser.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), ThongTinNguoiDungActivity.class)));
 
         relative_donhangcuatoi.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), thongtingiaohang.class))
@@ -103,6 +105,7 @@ public class NguoiDungActivity extends AppCompatActivity {
         linear_trangchu = findViewById(R.id.f_muasam);
         linear_giohang = findViewById(R.id.f_giohang);
         linear_danhmuc = findViewById(R.id.f_danhmuc);
+        linear_ttuser = findViewById(R.id.ttuser);
         imageView_trove = findViewById(R.id.img_trove);
         imageView_giohang = findViewById(R.id.img_giohang);
         imageView_hotro = findViewById(R.id.img_hotro);
