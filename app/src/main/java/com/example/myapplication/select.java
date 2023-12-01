@@ -36,7 +36,8 @@ public class select extends AppCompatActivity {
     private ExpandableHeightGridView gridView;
     private AdapterSanPham adapterSanPham;
     private ArrayList<SanPham> listSanPham;
-    private ArrayList<SanPham> listTimKiem;
+    private ArrayList<SanPham> listSPLuuTru;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,11 +61,11 @@ public class select extends AppCompatActivity {
 
     private void doDuLieuVaoAdapter() {
         listSanPham = new ArrayList<>();
-//        adapterSanPham = new AdapterSanPham(this, R.layout.layout_item, listSanPham);
-//        gridView.setAdapter(adapterSanPham);
-        listTimKiem = new ArrayList<>(listSanPham);
-        adapterSanPham = new AdapterSanPham(this, R.layout.layout_item, listTimKiem);
+        adapterSanPham = new AdapterSanPham(this, R.layout.layout_item, listSanPham);
         gridView.setAdapter(adapterSanPham);
+//        listTimKiem = new ArrayList<>(listSanPham);
+//        adapterSanPham = new AdapterSanPham(this, R.layout.layout_item, listTimKiem);
+//        gridView.setAdapter(adapterSanPham);
     }
 
     private void doDuLieu() {
@@ -78,7 +79,8 @@ public class select extends AppCompatActivity {
                     SanPham sanPham = postSnapshot.getValue(SanPham.class);
                     listSanPham.add(sanPham);
                 }
-//                adapterSanPham.notifyDataSetChanged();
+                listSPLuuTru.addAll(listSanPham);
+                adapterSanPham.notifyDataSetChanged();
             }
 
             @Override
@@ -123,14 +125,16 @@ public class select extends AppCompatActivity {
         imageView_trove = findViewById(R.id.img_trove);
         linear_chitietsp = findViewById(R.id.chitiet_sp);
         inputText = findViewById(R.id.editTextInput);
+        listSPLuuTru = new ArrayList<>();
     }
     private void filter(CharSequence text){
+        ArrayList<SanPham> listTimKiem = new ArrayList<>();
         listTimKiem.clear();
         String query = text.toString().toLowerCase().trim();
         if(query.isEmpty()){
-            listTimKiem.addAll(listSanPham);
+            listTimKiem.addAll(listSPLuuTru);
         }else {
-            for(SanPham sanPham : listSanPham){
+            for(SanPham sanPham : listSPLuuTru){
                 boolean isMatch = true;
                 String[] keys = query.split("\\s+");
                 for(String key : keys){
@@ -145,6 +149,9 @@ public class select extends AppCompatActivity {
 
             }
         }
+        listSanPham.clear();
+        listSanPham.addAll(listTimKiem);
         adapterSanPham.notifyDataSetChanged();
     }
+
 }
