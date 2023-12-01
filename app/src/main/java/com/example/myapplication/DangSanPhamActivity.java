@@ -70,7 +70,7 @@ public class DangSanPhamActivity extends AppCompatActivity {
     private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setAction(Intent.ACTION_PICK);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
 

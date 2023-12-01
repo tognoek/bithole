@@ -1,21 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TextView
-        android:id="@+id/tenUserBL"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <com.google.android.material.circularreveal.cardview.CircularRevealCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HoThaiSon"
-        android:textSize="30dp"
-        />
-    <TextView
-        android:id="@+id/noidungbl"
+        android:id="@+id/icon_user"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardCornerRadius="90dp">
+        <ImageView
+            android:id="@+id/imageuser"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/s_circle_user"/>
+    </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+    <LinearLayout
+        app:layout_constraintStart_toEndOf="@id/icon_user"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        >
+        <TextView
+            android:id="@+id/tenUserBL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ten"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            />
+        <TextView
+            android:id="@+id/timeBL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:textStyle="italic"
+            android:textSize="10dp"/>
+        <TextView
+            android:id="@+id/noidungbl"
+            android:paddingTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Noi dung"
+            android:textStyle="normal"
+            android:textSize="13dp"
+            />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/btnlike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Noi dung"
-        android:textStyle="italic"
-        android:textSize="20dp"
-        />
-</LinearLayout>
+        android:src="@drawable/icon_liketruoc"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

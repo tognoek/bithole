@@ -1,5 +1,8 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_REF;
+import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_USER_REF;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class ThongTinNguoiDungActivity extends AppCompatActivity {
 
@@ -48,6 +52,14 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
         editText_tenuser = findViewById(R.id.edittenuser);
         imageView_trove = findViewById(R.id.img_trove);
         imageView_user = findViewById(R.id.imageuser);
+        PRODUCT_IMAGE_USER_REF.child(PublicFunciton.getIdUser()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if (uri != null){
+                    Picasso.get().load(uri).into(imageView_user);
+                }
+            }
+        });
         button_luu =findViewById(R.id.btnluu);
 
         imageView_trove.setOnClickListener(view ->
@@ -99,7 +111,7 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
     public void setValueFirebase() {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        String imageName = PublicFunciton.getIdUser() + ".jpg";
+        String imageName = PublicFunciton.getIdUser();
         StorageReference imageRef = storageRef.child("images/" + imageName);
         imageRef.putFile(anhsanpham)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

@@ -3,10 +3,14 @@ package com.example.myapplication.thuvien;
 public class ComMent {
     private String comment;
     private String name;
+    private String id;
 
-    public ComMent(String name, String comment) {
+    private String time;
+    public ComMent(String name, String comment, String id, String time) {
         this.comment = comment;
         this.name = name;
+        this.id  = id;
+        this.time = time;
     }
     public ComMent() {
     }
@@ -25,5 +29,21 @@ public class ComMent {
 
     public void setName(String iduser) {
         this.name = iduser;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

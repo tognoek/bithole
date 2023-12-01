@@ -1,5 +1,7 @@
 package com.example.myapplication.adapter;
 
+import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_REF;
+
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
@@ -29,7 +31,6 @@ public class AdapterSanPham extends ArrayAdapter {
     int idLayout;
     ArrayList<SanPham> myList;
 
-    private static final StorageReference PRODUCT_IMAGE_REF = FirebaseStorage.getInstance("gs://thong-ab907.appspot.com").getReference("image");
 
     public AdapterSanPham(@NonNull Activity context, int idLayout, ArrayList<SanPham> myList) {
         super(context, idLayout, myList);

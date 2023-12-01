@@ -45,21 +45,24 @@
         android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@id/header"
         >
-        <ImageView
-
-            android:id="@+id/imageuser"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_centerHorizontal="true"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/s_circle_user" />
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:layout_width="wrap_content"
+            app:cardCornerRadius="90dp"
+            android:id="@+id/imageuser1"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+            <ImageView
+                android:id="@+id/imageuser"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:src="@drawable/s_circle_user"/>
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imageuser"
+            android:layout_below="@id/imageuser1"
             android:layout_marginTop="20dp"
             android:background="#808080"
             android:gravity="center"
@@ -228,11 +231,8 @@
             android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
             android:text="Lưu"
             android:textSize="20dp"
-            android:background="@color/white"
             android:gravity="center"
             android:layout_gravity="center"/>
     </LinearLayout>

@@ -1,8 +1,11 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_USER_REF;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,12 +16,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.myapplication.thuvien.PublicFunciton;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 public class NguoiDungActivity extends AppCompatActivity {
 
-    private ImageView imageView_caidat, imageView_hotro, imageView_trove, imageView_giohang;
+    private ImageView imageView_caidat, imageView_hotro, imageView_trove, imageView_giohang, image_user;
 
     private LinearLayout linear_trangchu, linear_danhmuc, linear_thongbao, linear_giohang, linear_vi, linear_lichsumua, linear_ttuser;
 
@@ -36,7 +41,14 @@ public class NguoiDungActivity extends AppCompatActivity {
         anhXa();
         onClick();
         setNameUser();
-
+        PRODUCT_IMAGE_USER_REF.child(PublicFunciton.getIdUser()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if (uri != null){
+                    Picasso.get().load(uri).into(image_user);
+                }
+            }
+        });
     }
 
     private void setNameUser() {
@@ -110,5 +122,6 @@ public class NguoiDungActivity extends AppCompatActivity {
         imageView_giohang = findViewById(R.id.img_giohang);
         imageView_hotro = findViewById(R.id.img_hotro);
         imageView_caidat = findViewById(R.id.img_caidat);
+        image_user = findViewById(R.id.circle_user);
     }
 }
