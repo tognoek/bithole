@@ -11,6 +11,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.adapter.ArrayViewUs;
+
 import java.util.ArrayList;
 
 public class DatailMember extends AppCompatActivity {
