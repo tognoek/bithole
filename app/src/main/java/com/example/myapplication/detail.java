@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,25 +18,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.adapter.AdapterComment;
+import com.example.myapplication.adapter.AdapterSanPham;
 import com.example.myapplication.thuvien.ComMent;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
+import com.example.myapplication.thuvien.FormatTime;
 import com.example.myapplication.thuvien.FormatVND;
 import com.example.myapplication.thuvien.ListCard;
 import com.example.myapplication.thuvien.PublicFunciton;
 import com.example.myapplication.thuvien.SanPham;
-import com.google.android.gms.tasks.OnCanceledListener;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class detail extends AppCompatActivity {
-    private ImageView imageView_caidat, imageView_trove, imageView_clickDanhgia;
+    private ImageView imageView_caidat, imageView_trove, imageView_clickDanhgia, imageView_likeBL;
     private LinearLayout linear_xemshop, linear_muangay, liner_giohang, liner_danhgia;
     private TextView name, mota, dongia, soluong, shop;
     private EditText binhluan;
@@ -87,8 +92,13 @@ public class detail extends AppCompatActivity {
                 }
             }
         });
-
         dangBinhLuan();
+        adapterComment.setHanderButton(new AdapterComment.HanderButton() {
+            @Override
+            public void setOnlickLike(int positon) {
+                Log.d("aaaa", "setOnlickLike: " + positon);
+            }
+        });
 
     }
 
@@ -97,8 +107,16 @@ public class detail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String noidung= binhluan.getText().toString().trim();
-                ComMent comMent = new ComMent(PublicFunciton.getNameUser(), noidung);
+                LocalDateTime currentDateTime = LocalDateTime.now();
+
+                // Format the date and time (optional)
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                String formattedDateTime = currentDateTime.format(formatter);
+                String time = new FormatTime(formattedDateTime).getTime();
+                ComMent comMent = new ComMent(PublicFunciton.getNameUser(), noidung, PublicFunciton.getIdUser(), time);
                 addComMent(comMent);
+
+                binhluan.setText("");
             }
         });
     }
@@ -299,6 +317,7 @@ public class detail extends AppCompatActivity {
         linear_muangay = findViewById(R.id.f_muasam);
         imageView_caidat = findViewById(R.id.img_caidat);
         imageView_trove = findViewById(R.id.img_trove);
+        imageView_likeBL = findViewById(R.id.btnlike);
         linear_xemshop = findViewById(R.id.xemshop);
         name = findViewById(R.id.namePrd);
         mota = findViewById(R.id.mota);

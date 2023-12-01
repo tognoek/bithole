@@ -4,12 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFD7E5"
     tools:context=".SecondActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome"
+        android:text="WELCOME"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="#FFD7E5"
         android:layout_centerHorizontal="true"
         android:textSize="35dp"/>
 
@@ -17,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/name"
+        android:textStyle="bold"
         android:text="name"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
@@ -27,6 +32,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/email"
         android:text="email"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_below="@+id/name"
         android:gravity="center"
@@ -38,7 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/signout"
-        android:text="Sign out"
+        android:background="@color/black"
+        android:text="Đi tới trang chủ"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"/>
 

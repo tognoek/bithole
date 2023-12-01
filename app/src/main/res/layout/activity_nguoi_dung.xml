@@ -105,6 +105,7 @@
                     android:src="@drawable/s_circle_user" />
 
                 <LinearLayout
+                    android:id="@+id/ttuser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/circle_user"
