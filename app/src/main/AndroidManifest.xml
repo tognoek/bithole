@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -13,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
+        <activity
+            android:name=".SecondActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
@@ -46,9 +51,9 @@
         <activity
             android:name=".activity_dangky"
             android:exported="false" />
-        <activity
-            android:name=".activity_login"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activity_login"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".minigame"
             android:exported="false" />
@@ -104,7 +109,7 @@
         </service>
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity_login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
