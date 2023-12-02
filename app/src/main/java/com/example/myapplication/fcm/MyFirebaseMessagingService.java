@@ -9,8 +9,8 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
-import com.example.myapplication.MainActivity;
-import com.example.myapplication.MyApplication;
+import com.example.myapplication.taikhoan.MainActivity;
+import com.example.myapplication.nome.MyApplication;
 import com.example.myapplication.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;

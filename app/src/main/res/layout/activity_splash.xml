@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/pink_two"
     tools:context=".SplashActivity">
     <LinearLayout
         android:layout_width="wrap_content"
@@ -13,16 +14,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
-        <ImageView
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="50dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/logo"/>
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/logo"/>
+        </androidx.cardview.widget.CardView>
         <TextView
+            android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/welcome_to_bithole"
             android:layout_gravity="center_horizontal"
-            android:textSize="20dp"/>
+            android:textSize="25dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.adapter.AdapterSanPham;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
-import com.example.myapplication.thuvien.SanPham;
+import com.example.myapplication.entity.SanPham;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

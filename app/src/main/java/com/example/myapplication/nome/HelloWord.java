@@ -1,10 +1,13 @@
-package com.example.myapplication;
+package com.example.myapplication.nome;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.myapplication.taikhoan.MainActivity;
+import com.example.myapplication.R;
 
 public class HelloWord extends AppCompatActivity {
 

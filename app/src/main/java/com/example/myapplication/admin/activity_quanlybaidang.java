@@ -1,21 +1,31 @@
-package com.example.myapplication;
+package com.example.myapplication.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class thongke extends AppCompatActivity {
+import com.example.myapplication.R;
+
+public class activity_quanlybaidang extends AppCompatActivity {
+
+    private ImageView imageView_trove;
+
     private LinearLayout linear_dangbai;
     private LinearLayout linear_doanhthu;
 
-    private LinearLayout linear_qlbaidang;
-
+    private LinearLayout linear_nhapxuat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thongkr);
+        setContentView(R.layout.activity_quanlybaidang);
+
+        imageView_trove = findViewById(R.id.img_trove);
+        imageView_trove.setOnClickListener(view ->
+                getOnBackPressedDispatcher().onBackPressed()
+        );
 
         linear_dangbai = findViewById(R.id.f_dangbai);
         linear_dangbai.setOnClickListener(view ->
@@ -27,10 +37,9 @@ public class thongke extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), thongkedoanhthu.class))
         );
 
-        linear_qlbaidang = findViewById(R.id.f_qlbaidang);
-        linear_qlbaidang.setOnClickListener(view ->
+        linear_nhapxuat = findViewById(R.id.f_nhapxuat);
+        linear_nhapxuat.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), thongke.class))
         );
-        findViewById(R.id.logoapp).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), detail_shop.class)));
     }
 }

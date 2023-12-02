@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.nome;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.R;
+import com.example.myapplication.ViewUs;
 import com.example.myapplication.adapter.ArrayViewUs;
 
 import java.util.ArrayList;

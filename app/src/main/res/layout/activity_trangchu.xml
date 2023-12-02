@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".taikhoan.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
@@ -345,24 +345,14 @@
                         android:textSize="20dp"
                         style="@style/option"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/pink"
-                    android:paddingBottom="30dp"
-                    android:orientation="vertical"
-                    android:layout_marginTop="10dp">
-
-
-
-                </LinearLayout>
-
                 <com.example.myapplication.thuvien.ExpandableHeightGridView
                     android:id="@+id/listSanPham"
+                    android:background="#E8C8C8C8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="true"
                     android:isScrollContainer="false"
+                    android:paddingBottom="20dp"
                     android:numColumns="2" />
             </LinearLayout>
         </LinearLayout>

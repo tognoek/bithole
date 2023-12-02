@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink"
-    tools:context=".activity_dangky">
+    tools:context=".nome.activity_dangky">
 
     <LinearLayout
         android:id="@+id/linearLayout13"
@@ -55,7 +55,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="122dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
@@ -65,7 +65,7 @@
             android:layout_height="45dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:background="#FEB6CF">
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/iconuser"
@@ -97,7 +97,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="25dp"
-            android:background="#FEB6CF">
+            android:background="@color/white">>
 
             <ImageView
                 android:id="@+id/iconemail"
@@ -128,7 +128,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="25dp"
-            android:background="#FEB6CF">
+            android:background="@color/white">>
 
             <ImageView
                 android:id="@+id/iconpass"
@@ -159,7 +159,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="25dp"
-            android:background="#FEB6CF">
+            android:background="@color/white">>
 
             <ImageView
                 android:id="@+id/iconconfirm"
@@ -184,12 +184,14 @@
                 android:textColorHint="#4C4C4C"
                 android:textSize="15sp"/>
         </RelativeLayout>
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btregister"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="70dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
             android:background="@color/white"
             android:text="Đăng Ký" />
 

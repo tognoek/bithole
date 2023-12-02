@@ -1,4 +1,4 @@
-package com.example.myapplication.thuvien;
+package com.example.myapplication.entity;
 
 import java.io.Serializable;
 
@@ -11,11 +11,20 @@ public class SanPham implements Serializable {
     private String hinhanh;
 
     private  String shop;
+    private String idshop;
 
     public SanPham() {
     }
 
-    public SanPham(int id, String name, String mota, double dongia, int soluong, String hinhanh, String shop) {
+    public String getIdshop() {
+        return idshop;
+    }
+
+    public void setIdshop(String idshop) {
+        this.idshop = idshop;
+    }
+
+    public SanPham(int id, String name, String mota, double dongia, int soluong, String hinhanh, String shop, String idshop) {
         this.id = id;
         this.name = name;
         this.mota = mota;
@@ -23,6 +32,7 @@ public class SanPham implements Serializable {
         this.soluong = soluong;
         this.hinhanh = hinhanh;
         this.shop = shop;
+        this.idshop = idshop;
     }
 
     public String getShop() {

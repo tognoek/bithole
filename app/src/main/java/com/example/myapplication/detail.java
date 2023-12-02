@@ -1,11 +1,16 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_REF;
+import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_USER_REF;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,31 +24,34 @@ import android.widget.Toast;
 
 import com.example.myapplication.adapter.AdapterComment;
 import com.example.myapplication.adapter.AdapterSanPham;
-import com.example.myapplication.thuvien.ComMent;
+import com.example.myapplication.entity.ComMent;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
 import com.example.myapplication.thuvien.FormatTime;
 import com.example.myapplication.thuvien.FormatVND;
-import com.example.myapplication.thuvien.ListCard;
+import com.example.myapplication.entity.ListCard;
 import com.example.myapplication.thuvien.PublicFunciton;
-import com.example.myapplication.thuvien.SanPham;
+import com.example.myapplication.entity.SanPham;
+import com.example.myapplication.entity.Shop;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
 
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class detail extends AppCompatActivity {
-    private ImageView imageView_caidat, imageView_trove, imageView_clickDanhgia, imageView_likeBL;
+    private ImageView imageView_caidat, imageView_trove, imageView_clickDanhgia, imageView_likeBL, imageshop, image1, image2, image3;
     private LinearLayout linear_xemshop, linear_muangay, liner_giohang, liner_danhgia;
     private TextView name, mota, dongia, soluong, shop;
     private EditText binhluan;
-
     private Button dangbinhluan;
     private SanPham sanPham;
     private ExpandableHeightGridView gridView, gridViewComment;
@@ -70,9 +78,37 @@ public class detail extends AppCompatActivity {
         doDuLieu();
         onClickGridView();
         doDuLieuVaoAdapterComMent();
+
+
+
         comMent();
+        xemShop();
+        danhGia();
+        dangBinhLuan();
 
         //AddProductToCart
+        gioHang();
+        adapterComment.setHanderButton(new AdapterComment.HanderButton() {
+            @Override
+            public void setOnlickLike(int positon) {
+                Log.d("aaaa", "setOnlickLike: " + positon);
+            }
+        });
+
+    }
+
+    private void xemShop() {
+        linear_xemshop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(detail.this, detail_shop.class);
+                intent.putExtra("shop", new Shop(sanPham.getIdshop(), sanPham.getIdshop()));
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void gioHang() {
         liner_giohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +116,9 @@ public class detail extends AppCompatActivity {
             }
 
         });
+    }
+
+    private void danhGia() {
         imageView_clickDanhgia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,14 +131,6 @@ public class detail extends AppCompatActivity {
                 }
             }
         });
-        dangBinhLuan();
-        adapterComment.setHanderButton(new AdapterComment.HanderButton() {
-            @Override
-            public void setOnlickLike(int positon) {
-                Log.d("aaaa", "setOnlickLike: " + positon);
-            }
-        });
-
     }
 
     private void dangBinhLuan() {
@@ -213,8 +244,45 @@ public class detail extends AppCompatActivity {
         name.setText(sanPham.getName());
         mota.setText(sanPham.getMota());
         dongia.setText((new FormatVND(String.valueOf(sanPham.getDongia())).getVND()));
-        soluong.setText("Đã bán: " + String.valueOf(sanPham.getSoluong()));
-        shop.setText(sanPham.getShop());
+        soluong.setText("Số lượng: " + String.valueOf(sanPham.getSoluong()));
+        PRODUCT_IMAGE_USER_REF.child(sanPham.getIdshop()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if (uri != null){
+                    Picasso.get().load(uri).into(imageshop);
+                }
+            }
+        });
+        PRODUCT_IMAGE_REF.child(sanPham.getHinhanh()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                RequestCreator uriImage = Picasso.get().load(uri);
+                uriImage.into(image1);
+                Drawable drawable = image1.getDrawable();
+
+                if (drawable != null) {
+                    Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+                    image2.setImageBitmap(bitmap);
+                } else {
+                }
+            }
+        });
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("User");
+        DatabaseReference user = databaseReference.child(sanPham.getIdshop());
+        user.child("ten").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.d("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    shop.setText(String.valueOf(task.getResult().getValue()));
+//                    returnString = String.valueOf(task.getResult().getValue());
+                }
+            }
+        });
     }
 
     private void getDetail() {
@@ -229,14 +297,6 @@ public class detail extends AppCompatActivity {
 
         imageView_trove.setOnClickListener(view ->
                 getOnBackPressedDispatcher().onBackPressed()
-        );
-
-        linear_xemshop.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), detail_shop.class))
-        );
-
-        linear_muangay.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), activity_trangchu.class))
         );
         findViewById(R.id.f_giohang).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), GioHang.class)));
         findViewById(R.id.muangay).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), activity_thanhtoan.class)));
@@ -329,6 +389,9 @@ public class detail extends AppCompatActivity {
         liner_danhgia = findViewById(R.id.space11);
         binhluan = findViewById(R.id.noidungBL);
         dangbinhluan = findViewById(R.id.btnDangBL);
-
+        imageshop = findViewById(R.id.imageshop);
+        image1 = findViewById(R.id.image1);
+        image2 = findViewById(R.id.image2);
+        image3 = findViewById(R.id.image);
     }
 }

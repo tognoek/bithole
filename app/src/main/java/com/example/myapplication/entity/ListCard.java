@@ -1,4 +1,4 @@
-package com.example.myapplication.thuvien;
+package com.example.myapplication.entity;
 
 public class ListCard {
     private int id;

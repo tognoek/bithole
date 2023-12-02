@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.taikhoan;
 
 import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_USER_REF;
 
@@ -9,16 +9,23 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.myapplication.CaiDatActivity;
+import com.example.myapplication.GioHang;
+import com.example.myapplication.HoTroActivity;
+import com.example.myapplication.LichSuMuaHang;
+import com.example.myapplication.R;
+import com.example.myapplication.Voucher;
+import com.example.myapplication.activity_trangchu;
+import com.example.myapplication.select;
+import com.example.myapplication.thongbao;
+import com.example.myapplication.thongtingiaohang;
 import com.example.myapplication.thuvien.PublicFunciton;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 public class NguoiDungActivity extends AppCompatActivity {
@@ -40,7 +47,17 @@ public class NguoiDungActivity extends AppCompatActivity {
 
         anhXa();
         onClick();
-        setNameUser();
+
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        setDetails();
+    }
+
+    private void setDetails() {
+        textViewNameUser.setText(PublicFunciton.getNameUser());
         PRODUCT_IMAGE_USER_REF.child(PublicFunciton.getIdUser()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -49,10 +66,6 @@ public class NguoiDungActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void setNameUser() {
-        textViewNameUser.setText(PublicFunciton.getNameUser());
     }
 
     private void onClick(){
@@ -95,8 +108,14 @@ public class NguoiDungActivity extends AppCompatActivity {
         linear_lichsumua.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), LichSuMuaHang.class))
         );
-        linear_ttuser.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), ThongTinNguoiDungActivity.class)));
+        linear_ttuser.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View view) {
+                                                 startActivity(new Intent(NguoiDungActivity.this, ThongTinNguoiDungActivity.class));
+                                             }
+                                         }
+
+        );
 
         relative_donhangcuatoi.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), thongtingiaohang.class))

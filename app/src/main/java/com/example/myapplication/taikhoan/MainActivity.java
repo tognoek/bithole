@@ -1,7 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.taikhoan;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -10,9 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.myapplication.R;
+import com.example.myapplication.activity_trangchu;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -29,11 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private  Button signUp, logIn;
 
     private ProgressDialog progressDialog;
-
-    private Button button_dangky;
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
-    ImageView googleBtn;
+    RelativeLayout googleBtn;
 
 
     @Override
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         anhXa();
 
-        googleBtn = findViewById(R.id.google);
+        googleBtn = findViewById(R.id.logingoogle);
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this,gso);
@@ -59,25 +58,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button_dangky = findViewById(R.id.btsignup);
-        button_dangky.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), activity_dangky.class))
+        signUp.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), Signup.class))
         );
+        logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkLogIn();
+            }
+        });
     }
-
-    void SignIn(){
+    private void SignIn(){
         Intent signInIntent = gsc.getSignInIntent();
         startActivityForResult(signInIntent,1000);
     }
-
-//        logIn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                checkLogIn();
-//            }
-//        });
-//    }
-
 
     private void anhXa(){
         progressDialog = new ProgressDialog(this);
@@ -106,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     void navigateToSecondActivity(){
         finish();
-        Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+        Intent intent = new Intent(MainActivity.this, activity_trangchu.class);
         startActivity(intent);
     }
     private void checkLogIn() {

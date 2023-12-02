@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="costum">#B3B3B3</color>
     <color name="input">#8F959494</color>
-    <color name="pink">#E8ED9B9B</color>
+    <color name="pink">#E8EEB1B1</color>
+    <color name="pink_two">#DCFABFBF</color>
     <color name="red">#ff0000</color>
 </resources>

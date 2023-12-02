@@ -9,9 +9,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.myapplication.nome.AboutUs;
+import com.example.myapplication.taikhoan.NguoiDungActivity;
 import com.example.myapplication.thuvien.PublicFunciton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class CaiDatActivity extends AppCompatActivity {
 

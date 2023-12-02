@@ -96,6 +96,7 @@
         app:layout_constraintBottom_toTopOf="@id/spam3"
         android:layout_height="0dp">
         <com.example.myapplication.thuvien.ExpandableHeightGridView
+            android:background="#E8C8C8C8"
             android:id="@+id/listSanPham"
             tools:listitem="@layout/layout_item"
             android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.nome;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.myapplication.R;
+import com.example.myapplication.SecondActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -75,7 +77,7 @@ public class activity_login extends AppCompatActivity {
 
     void navigateToSecondActivity(){
         finish();
-        Intent intent = new Intent(activity_login.this,SecondActivity.class);
+        Intent intent = new Intent(activity_login.this, SecondActivity.class);
         startActivity(intent);
     }
 

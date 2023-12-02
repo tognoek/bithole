@@ -3,8 +3,6 @@ package com.example.myapplication.adapter;
 import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_USER_REF;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,18 +11,20 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.example.myapplication.R;
-import com.example.myapplication.thuvien.ComMent;
-import com.example.myapplication.thuvien.PublicFunciton;
-import com.example.myapplication.thuvien.SanPham;
+import com.example.myapplication.entity.ComMent;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -81,7 +81,24 @@ public class AdapterComment extends ArrayAdapter {
 
         noidung.setText(itemnew.getComment());
         time.setText(itemnew.getTime());
-        user.setText(itemnew.getName());
+//        UserRecord userRecord = FirebaseAuth.getInstance().(itemnew.getId());
+//        user.setText(itemnew.getName());
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("User");
+        DatabaseReference userRef = databaseReference.child(itemnew.getId());
+        userRef.child("ten").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.d("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    user.setText(String.valueOf(task.getResult().getValue()));
+//                    returnString = String.valueOf(task.getResult().getValue());
+                }
+            }
+        });
         return convertView;
     }
 

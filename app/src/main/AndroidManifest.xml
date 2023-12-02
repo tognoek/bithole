@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".MyApplication"
+        android:name=".nome.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,16 +16,16 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".ThongTinNguoiDungActivity"
+            android:name=".taikhoan.ThongTinNguoiDungActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".taikhoan.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".DatailMember"
+            android:name=".nome.DatailMember"
             android:exported="false" />
         <activity
-            android:name=".AboutUs"
+            android:name=".nome.AboutUs"
             android:exported="false" />
         <activity
             android:name=".Voucher"
@@ -45,22 +45,22 @@
             android:name=".activity_thanhtoan"
             android:exported="false" />
         <activity
-            android:name=".activity_quanlybaidang"
+            android:name=".admin.activity_quanlybaidang"
             android:exported="false" />
         <activity
             android:name=".activity_trangchu"
             android:exported="false" />
         <activity
-            android:name=".activity_dangky"
+            android:name=".nome.activity_dangky"
             android:exported="false" />
         <activity
-            android:name=".activity_login"
+            android:name=".nome.activity_login"
             android:exported="false" />
         <activity
             android:name=".minigame"
             android:exported="false" />
         <activity
-            android:name=".thongkedoanhthu"
+            android:name=".admin.thongkedoanhthu"
             android:exported="false" />
         <activity
             android:name=".thongtingiaohang"
@@ -69,19 +69,19 @@
             android:name=".thongbao"
             android:exported="false" />
         <activity
-            android:name=".thongke"
+            android:name=".admin.thongke"
             android:exported="false" />
         <activity
             android:name=".select"
             android:exported="false" />
         <activity
-            android:name=".DangSanPhamActivity"
+            android:name=".admin.DangSanPhamActivity"
             android:exported="false" />
         <activity
             android:name=".detail"
             android:exported="false" />
         <activity
-            android:name=".NguoiDungActivity"
+            android:name=".taikhoan.NguoiDungActivity"
             android:exported="false" />
         <activity
             android:name=".CaiDatActivity"
@@ -93,13 +93,13 @@
             android:name=".detail_shop"
             android:exported="false" />
         <activity
-            android:name=".Home"
+            android:name=".nome.Home"
             android:exported="false" />
         <activity
-            android:name=".HelloWord"
+            android:name=".nome.HelloWord"
             android:exported="false" />
         <activity
-            android:name=".Signup"
+            android:name=".taikhoan.Signup"
             android:exported="false" />
 
         <service

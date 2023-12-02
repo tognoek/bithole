@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.nome;
 public class Account {
     private String user;
     private String mail;

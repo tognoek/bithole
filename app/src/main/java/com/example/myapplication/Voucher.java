@@ -6,11 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.myapplication.thuvien.PublicFunciton;
-import com.example.myapplication.thuvien.SanPham;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.myapplication.entity.SanPham;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,8 +28,6 @@ public class Voucher extends AppCompatActivity {
 
         anhXa();
         onClick();
-        pushFireBaseFunction();
-        pushSoLuong();
 
 
 
@@ -48,7 +44,7 @@ public class Voucher extends AppCompatActivity {
         DatabaseReference databaseReference = firebaseDatabase.getReference("SanPham");
         List<SanPham> sanPhamList = new ArrayList<>();
         for (int i = 0; i < 20; i++){
-            SanPham sanPham = new SanPham(i, "Đồ áo nữ siêu xinh", "Đẹp vô cùng nhưng mà đừng có mua do gia qua la đắt", 222222, 222, "hinhanh", PublicFunciton.getNameUser());
+            SanPham sanPham = new SanPham(i, "Đồ áo nữ siêu xinh", "Đẹp vô cùng nhưng mà đừng có mua do gia qua la đắt", 222222, 222, "hinhanh", PublicFunciton.getNameUser(), PublicFunciton.getIdUser());
             sanPhamList.add(sanPham);
         }
         databaseReference.setValue(sanPhamList);

@@ -1,4 +1,4 @@
-package com.example.myapplication.thuvien;
+package com.example.myapplication.entity;
 
 import java.io.Serializable;
 

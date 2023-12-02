@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink"
-    tools:context=".activity_login">
+    tools:context=".nome.activity_login">
 
 
     <LinearLayout
@@ -57,7 +57,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="102dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
@@ -67,7 +67,7 @@
             android:layout_height="45dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:background="#FEB6CF">
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/iconuser"
@@ -99,7 +99,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="25dp"
-            android:background="#FEB6CF">
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/iconpass"
@@ -138,7 +138,7 @@
                 android:textSize="18dp"
                 android:layout_margin="10dp"
                 android:textColor="#272727"/>
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btlogin"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
@@ -184,36 +184,6 @@
             android:textSize="20dp"
             android:textStyle="bold"/>
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_marginTop="10dp"
-        android:id="@+id/loginfb"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logingoogle"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp">
-
-        <ImageView
-            android:id="@+id/fb"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:src="@drawable/fb1"
-            android:padding="5dp"
-            android:background="#F1F1F1"/>
-
-        <TextView
-            android:id="@+id/made"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_toRightOf="@id/fb"
-            android:background="#F1F1F1"
-            android:gravity="center"
-            android:text="Tiếp tục với FaceBook"
-            android:textColor="#3E3C3C"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-    </RelativeLayout>
 
     <TextView
         android:id="@+id/textView"
@@ -224,20 +194,22 @@
         android:text="Bạn không có tài khoản?"
         android:textColor="#272727"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginfb" />
+        app:layout_constraintTop_toBottomOf="@id/logingoogle" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btsignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#005A5757"
         android:text="Đăng ký"
         android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:cornerRadius="0dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />

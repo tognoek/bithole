@@ -1,4 +1,4 @@
-package com.example.myapplication.thuvien;
+package com.example.myapplication.entity;
 
 public class ThongBao {
     private String tieude;

@@ -3,8 +3,6 @@ package com.example.myapplication.adapter;
 import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_REF;
 
 import android.app.Activity;
-import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.myapplication.R;
-import com.example.myapplication.thuvien.SanPham;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.example.myapplication.entity.SanPham;
+import com.example.myapplication.thuvien.FormatVND;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -55,7 +50,7 @@ public class AdapterSanPham extends ArrayAdapter {
         ImageView hinhAnhImageView = convertView.findViewById(R.id.hinhanh);
 
         ten.setText(itemnew.getName());
-        dongia.setText(String.valueOf(itemnew.getDongia()));
+        dongia.setText(new FormatVND(String.valueOf(itemnew.getDongia())).getVND());
         soluong.setText(String.valueOf(itemnew.getSoluong()));
 
         if (!itemnew.getHinhanh().equals("null"))

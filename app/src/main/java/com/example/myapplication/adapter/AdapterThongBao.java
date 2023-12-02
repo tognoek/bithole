@@ -3,7 +3,6 @@ package com.example.myapplication.adapter;
 import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_REF;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.myapplication.R;
-import com.example.myapplication.thuvien.ThongBao;
+import com.example.myapplication.entity.ThongBao;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

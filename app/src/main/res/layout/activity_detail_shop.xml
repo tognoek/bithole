@@ -65,6 +65,7 @@
             app:cardCornerRadius="55dp">
 
             <ImageView
+                android:id="@+id/imageShop"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:src="@drawable/logo" />

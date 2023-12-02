@@ -12,9 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.myapplication.adapter.AdapterThongBao;
+import com.example.myapplication.taikhoan.NguoiDungActivity;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
-import com.example.myapplication.thuvien.PublicFunciton;
-import com.example.myapplication.thuvien.ThongBao;
+import com.example.myapplication.entity.ThongBao;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,7 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class thongbao extends AppCompatActivity {
 
@@ -84,7 +83,7 @@ public class thongbao extends AppCompatActivity {
         thongtin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),NguoiDungActivity.class);
+                Intent intent = new Intent(getApplicationContext(), NguoiDungActivity.class);
                 startActivity(intent);
             }
         });

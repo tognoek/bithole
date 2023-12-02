@@ -1,10 +1,14 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_USER_REF;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -13,20 +17,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.adapter.AdapterSanPham;
+import com.example.myapplication.admin.thongkedoanhthu;
+import com.example.myapplication.taikhoan.NguoiDungActivity;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
-import com.example.myapplication.thuvien.SanPham;
+import com.example.myapplication.entity.SanPham;
+import com.example.myapplication.entity.Shop;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class detail_shop extends AppCompatActivity {
-    private ImageView imageView_caidat, imageView_trove;
+    private ImageView imageView_caidat, imageView_trove, imageShop;
     private LinearLayout linear_trangchu, linear_danhmuc, linear_thongbao, linear_giohang, linear_toi;
-    private TextView textView_doanhthu;
+    private TextView textView_doanhthu, textNameShop;
     private ExpandableHeightGridView gridView;
     private AdapterSanPham adapterSanPham;
     private ArrayList<SanPham> listSanPham;
@@ -38,10 +49,40 @@ public class detail_shop extends AppCompatActivity {
         anhXa();
         onClick();
 
+        setDetailsShop();
+
         //GridView
         doDuLieuVaoAdapter();
         doDuLieu();
         onClickGridView();
+    }
+
+    private void setDetailsShop() {
+        Intent intent = getIntent();
+        Shop shop = (Shop) intent.getSerializableExtra("shop");
+        PRODUCT_IMAGE_USER_REF.child(shop.getId()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if (uri != null){
+                    Picasso.get().load(uri).into(imageShop);
+                }
+            }
+        });
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("User");
+        DatabaseReference userRef = databaseReference.child(shop.getId());
+        userRef.child("ten").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.d("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    textNameShop.setText(String.valueOf(task.getResult().getValue()));
+//                    returnString = String.valueOf(task.getResult().getValue());
+                }
+            }
+        });
     }
 
     private void onClickGridView() {
@@ -126,5 +167,7 @@ public class detail_shop extends AppCompatActivity {
         linear_trangchu = findViewById(R.id.f_muasam);
         imageView_caidat = findViewById(R.id.img_caidat);
         imageView_trove = findViewById(R.id.img_trove);
+        imageShop = findViewById(R.id.imageShop);
+        textNameShop = findViewById(R.id.textNameShop);
     }
 }

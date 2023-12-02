@@ -1,13 +1,13 @@
-package com.example.myapplication.thuvien;
+package com.example.myapplication.entity;
 
 public class User {
-    private String anh;
+    private String id;
     private String ten;
     private String gioitinh;
     private String sdt;
 
-    public User(String anh, String ten, String gioitinh, String sdt) {
-        this.anh = anh;
+    public User(String id, String ten, String gioitinh, String sdt) {
+        this.id = id;
         this.ten = ten;
         this.gioitinh = gioitinh;
         this.sdt = sdt;
@@ -16,12 +16,12 @@ public class User {
 
     }
 
-    public String getAnh() {
-        return anh;
+    public String getId() {
+        return id;
     }
 
-    public void setAnh(String anh) {
-        this.anh = anh;
+    public void setId(String anh) {
+        this.id = anh;
     }
 
     public String getTen() {
