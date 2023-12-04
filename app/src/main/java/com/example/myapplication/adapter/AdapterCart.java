@@ -1,10 +1,15 @@
 package com.example.myapplication.adapter;
 
+import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_REF;
+import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_USER_REF;
+
 import android.app.Activity;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +17,11 @@ import androidx.annotation.Nullable;
 
 import com.example.myapplication.R;
 import com.example.myapplication.entity.Cart;
+import com.example.myapplication.thuvien.FormatVND;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -41,11 +51,30 @@ public class AdapterCart extends ArrayAdapter {
         TextView ten = convertView.findViewById(R.id.tenSanPham);
         TextView dongia = convertView.findViewById(R.id.donGia);
         TextView soluong = convertView.findViewById(R.id.soLuong);
+        ImageView anh = convertView.findViewById(R.id.hinhanhSanPham);
+        ImageView logo = convertView.findViewById(R.id.logoShop);
 
         tenShop.setText(itemnew.getShop());
         ten.setText(itemnew.getName());
-        dongia.setText(String.valueOf(itemnew.getDongia()));
-        soluong.setText(String.valueOf(itemnew.getSoluong()));
+        dongia.setText(new FormatVND(String.valueOf(itemnew.getDongia())).getVND());
+        soluong.setText("Số lượng: " + String.valueOf(itemnew.getSoluong()));
+        PRODUCT_IMAGE_REF.child(itemnew.getHinhanh()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if (uri != null){
+                    Picasso.get().load(uri).into(anh);
+                }
+            }
+        });
+
+        PRODUCT_IMAGE_USER_REF.child(itemnew.getIdShop()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if (uri != null){
+                    Picasso.get().load(uri).into(logo);
+                }
+            }
+        });
 
 
         return convertView;

@@ -37,7 +37,7 @@ import java.util.ArrayList;
 public class detail_shop extends AppCompatActivity {
     private ImageView imageView_caidat, imageView_trove, imageShop;
     private LinearLayout linear_trangchu, linear_danhmuc, linear_thongbao, linear_giohang, linear_toi;
-    private TextView textView_doanhthu, textNameShop;
+    private TextView nameShop;
     private ExpandableHeightGridView gridView;
     private AdapterSanPham adapterSanPham;
     private ArrayList<SanPham> listSanPham;
@@ -60,6 +60,7 @@ public class detail_shop extends AppCompatActivity {
     private void setDetailsShop() {
         Intent intent = getIntent();
         Shop shop = (Shop) intent.getSerializableExtra("shop");
+        assert shop != null;
         PRODUCT_IMAGE_USER_REF.child(shop.getId()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -78,8 +79,7 @@ public class detail_shop extends AppCompatActivity {
                     Log.d("firebase", "Error getting data", task.getException());
                 }
                 else {
-                    textNameShop.setText(String.valueOf(task.getResult().getValue()));
-//                    returnString = String.valueOf(task.getResult().getValue());
+                    nameShop.setText(String.valueOf(task.getResult().getValue()));
                 }
             }
         });
@@ -151,7 +151,7 @@ public class detail_shop extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), NguoiDungActivity.class))
         );
 
-        textView_doanhthu.setOnClickListener(view ->
+        nameShop.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), thongkedoanhthu.class))
         );
     }
@@ -159,7 +159,6 @@ public class detail_shop extends AppCompatActivity {
     private void anhXa(){
         gridView = (ExpandableHeightGridView) findViewById(R.id.listSanPham);
         gridView.setExpanded(true);
-        textView_doanhthu = findViewById(R.id.textNameShop);
         linear_toi = findViewById(R.id.f_toi);
         linear_giohang = findViewById(R.id.f_giohang);
         linear_thongbao = findViewById(R.id.f_thongbao);
@@ -168,6 +167,6 @@ public class detail_shop extends AppCompatActivity {
         imageView_caidat = findViewById(R.id.img_caidat);
         imageView_trove = findViewById(R.id.img_trove);
         imageShop = findViewById(R.id.imageShop);
-        textNameShop = findViewById(R.id.textNameShop);
+        nameShop = findViewById(R.id.textNameShop);
     }
 }

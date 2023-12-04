@@ -11,11 +11,12 @@ public class Cart implements Serializable {
     private String hinhanh;
 
     private  String shop;
+    private String idShop;
 
     public Cart() {
     }
 
-    public Cart(int id, String name, String mota, double dongia, int soluong, String hinhanh, String shop) {
+    public Cart(int id, String name, String mota, double dongia, int soluong, String hinhanh, String shop, String idShop) {
         this.id = id;
         this.name = name;
         this.mota = mota;
@@ -23,6 +24,7 @@ public class Cart implements Serializable {
         this.soluong = soluong;
         this.hinhanh = hinhanh;
         this.shop = shop;
+        this.idShop = idShop;
     }
 
     public String getShop() {
@@ -81,4 +83,11 @@ public class Cart implements Serializable {
         this.hinhanh = hinhanh;
     }
 
+    public String getIdShop() {
+        return idShop;
+    }
+
+    public void setIdShop(String idShop) {
+        this.idShop = idShop;
+    }
 }

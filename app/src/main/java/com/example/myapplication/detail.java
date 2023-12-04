@@ -102,7 +102,7 @@ public class detail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(detail.this, detail_shop.class);
-                intent.putExtra("shop", new Shop(sanPham.getIdshop(), sanPham.getIdshop()));
+                intent.putExtra("shop", new Shop(sanPham.getIdshop(), sanPham.getShop()));
                 startActivity(intent);
             }
         });
@@ -211,32 +211,6 @@ public class detail extends AppCompatActivity {
                 Toast.makeText(detail.this, "Fail", Toast.LENGTH_SHORT).show();
             }
         });
-//        for (int i = 0; i < listCards.size(); i++){
-//            if (listCards.get(i).getId() == idProduct){
-//                ListCard cartAdd = listCards.get(i);
-//                cartAdd.setSoluong(listCards.get(i).getSoluong() + 1);
-//                databaseReferenceUser.setValue(cartAdd);
-//            }
-//        }
-//        databaseReferenceUser.child(String.valueOf(idProduct)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                if (!task.isSuccessful()) {
-//                    Toast.makeText(detail.this, "Faild", Toast.LENGTH_SHORT).show();
-//                }
-//                else {
-//                    if (task.getResult().getValue() != null){
-//                        Toast.makeText(detail.this, "Cập nhật vào giỏ hàng", Toast.LENGTH_SHORT).show();
-//                        int soLuong = Integer.parseInt(task.getResult().getValue().toString());
-//                        databaseReferenceUser.child(String.valueOf(idProduct)).setValue(soLuong + 1);
-//                    }
-//                    else{
-//                        Toast.makeText(detail.this, "Thêm mới vào giỏ hàng", Toast.LENGTH_SHORT).show();
-//                        databaseReferenceUser.child(String.valueOf(idProduct)).setValue(1);
-//                    }
-//                }
-//            }
-//        });
 
     }
 
@@ -278,6 +252,7 @@ public class detail extends AppCompatActivity {
                     Log.d("firebase", "Error getting data", task.getException());
                 }
                 else {
+                    Log.d("name Shop", "onComplete: " + task.getResult().getValue());
                     shop.setText(String.valueOf(task.getResult().getValue()));
 //                    returnString = String.valueOf(task.getResult().getValue());
                 }
@@ -383,7 +358,7 @@ public class detail extends AppCompatActivity {
         mota = findViewById(R.id.mota);
         dongia = findViewById(R.id.dongia);
         soluong = findViewById(R.id.soluong);
-        shop = findViewById(R.id.textNameShop);
+        shop = findViewById(R.id.text_name_shop);
         liner_giohang = findViewById(R.id.f_giohang);
         imageView_clickDanhgia = findViewById(R.id.clickDanhgia);
         liner_danhgia = findViewById(R.id.space11);

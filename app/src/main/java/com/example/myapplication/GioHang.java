@@ -96,7 +96,7 @@ public class GioHang extends AppCompatActivity {
                     if (sanPham != null){
                         for (int t = 0; t < listCards.size(); t++){
                             if (sanPham.getId() == listCards.get(t).getId()){
-                                Cart cart = new Cart(sanPham.getId(), sanPham.getName(), sanPham.getMota(), sanPham.getDongia(), listCards.get(t).getSoluong(), sanPham.getHinhanh(), sanPham.getShop());
+                                Cart cart = new Cart(sanPham.getId(), sanPham.getName(), sanPham.getMota(), sanPham.getDongia(), listCards.get(t).getSoluong(), sanPham.getHinhanh(), sanPham.getShop(), sanPham.getIdshop());
                                 listSanPham.add(cart);
                             }
                         }
