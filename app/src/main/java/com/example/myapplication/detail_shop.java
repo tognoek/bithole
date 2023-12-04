@@ -37,6 +37,7 @@ import java.util.ArrayList;
 public class detail_shop extends AppCompatActivity {
     private ImageView imageView_caidat, imageView_trove, imageShop;
     private LinearLayout linear_trangchu, linear_danhmuc, linear_thongbao, linear_giohang, linear_toi;
+    private Shop shop;
     private TextView nameShop;
     private ExpandableHeightGridView gridView;
     private AdapterSanPham adapterSanPham;
@@ -59,7 +60,7 @@ public class detail_shop extends AppCompatActivity {
 
     private void setDetailsShop() {
         Intent intent = getIntent();
-        Shop shop = (Shop) intent.getSerializableExtra("shop");
+        shop = (Shop) intent.getSerializableExtra("shop");
         assert shop != null;
         PRODUCT_IMAGE_USER_REF.child(shop.getId()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -102,15 +103,17 @@ public class detail_shop extends AppCompatActivity {
     }
 
     private void doDuLieu() {
-        listSanPham.clear();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference("SanPham");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listSanPham.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     SanPham sanPham = postSnapshot.getValue(SanPham.class);
-                    listSanPham.add(sanPham);
+                    if (sanPham.getIdshop().equals(shop.getId())){
+                        listSanPham.add(sanPham);
+                    }
                 }
                 adapterSanPham.notifyDataSetChanged();
             }

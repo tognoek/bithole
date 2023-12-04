@@ -68,12 +68,12 @@ public class activity_trangchu extends AppCompatActivity {
     }
 
     private void doDuLieu() {
-        listSanPham.clear();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference("SanPham");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listSanPham.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     SanPham sanPham = postSnapshot.getValue(SanPham.class);
                     if (sanPham != null){

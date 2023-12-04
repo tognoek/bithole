@@ -75,7 +75,7 @@
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/icon_user" />
+                android:src="@drawable/baseline_perm_identity_24_user" />
 
             <EditText
                 android:id="@+id/textuser"
@@ -107,7 +107,7 @@
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/icon_password" />
+                android:src="@drawable/baseline_key_24_pass" />
 
             <EditText
                 android:id="@+id/textpassword"
@@ -130,6 +130,7 @@
             android:layout_margin="30dp"
             android:orientation="horizontal">
             <TextView
+                android:layout_gravity="center"
                 android:id="@+id/nextpage"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -140,7 +141,6 @@
                 android:textColor="#272727"/>
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btlogin"
-                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_weight="1"

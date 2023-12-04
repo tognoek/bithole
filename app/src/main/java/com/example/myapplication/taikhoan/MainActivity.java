@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.activity_trangchu;
+import com.example.myapplication.thuvien.PublicFunciton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -116,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Intent intent = new Intent(MainActivity.this, activity_trangchu.class);
                             startActivity(intent);
+                            Log.d("idUserSignup", "onComplete: " + PublicFunciton.getIdUser());
                             finishAffinity();
                         } else {
                             Toast.makeText(MainActivity.this, "Authentication failed.",
