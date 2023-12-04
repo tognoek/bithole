@@ -74,8 +74,21 @@ public class AdapterComment extends ArrayAdapter {
             @Override
             public void onClick(View view) {
                 handerButton.setOnlickLike(position);
-                buttonlike.setImageResource(R.drawable.icon_like);
-                buttonlike.setTag(R.drawable.like);
+                if (buttonlike.getTag() != null){
+                    Log.d("tag button like", "onClick: " + Integer.parseInt(String.valueOf(buttonlike.getTag())));
+                    if (Integer.parseInt(String.valueOf(buttonlike.getTag())) == like_truoc){
+                        buttonlike.setImageResource(R.drawable.icon_like);
+                        buttonlike.setTag(like);
+                    }
+                    else{
+                        buttonlike.setImageResource(R.drawable.icon_liketruoc);
+                        buttonlike.setTag(like_truoc);
+                    }
+                }
+                else{
+                    buttonlike.setImageResource(R.drawable.icon_like);
+                    buttonlike.setTag(like);
+                }
             }
         });
 

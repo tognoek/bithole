@@ -191,7 +191,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="Bạn không có tài khoản?"
+        android:text="Bạn không có tài khoản ?"
         android:textColor="#272727"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logingoogle" />
