@@ -14,14 +14,16 @@
         android:background="@color/pink">
         <ImageView
             android:id="@+id/trove"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
             android:src="@drawable/s_trove"
             android:layout_gravity="center"
             android:layout_marginLeft="5dp">
         </ImageView>
         <TextView
             android:layout_width="wrap_content"
+            android:paddingTop="5dp"
             android:layout_height="wrap_content"
             android:text="ƯU ĐÃI CỦA SHOP"
             android:layout_centerHorizontal="true"

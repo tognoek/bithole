@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.myapplication.adapter.AdapterSanPham;
 import com.example.myapplication.taikhoan.NguoiDungActivity;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
@@ -29,10 +28,9 @@ import java.util.ArrayList;
 
 public class activity_trangchu extends AppCompatActivity {
 
-    private ImageView miniGame, imageView;
+    private LinearLayout linear_miniGame, linear_magiamgia;
     private EditText editText;
     private LinearLayout thongbao, linear_danhmuc, linear_giohang, linear_toi;
-
     private ExpandableHeightGridView gridView;
     private AdapterSanPham adapterSanPham;
     private ArrayList<SanPham> listSanPham;
@@ -92,7 +90,7 @@ public class activity_trangchu extends AppCompatActivity {
         });
     }
     private void onClick(){
-        miniGame.setOnClickListener(new View.OnClickListener() {
+        linear_miniGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),minigame.class);
@@ -119,7 +117,7 @@ public class activity_trangchu extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), NguoiDungActivity.class))
         );
 
-        imageView.setOnClickListener(view ->
+        linear_magiamgia.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), MaGiamGia.class))
         );
 
@@ -138,9 +136,9 @@ public class activity_trangchu extends AppCompatActivity {
     private void anhXa(){
         gridView = (ExpandableHeightGridView)findViewById(R.id.listSanPham);
         gridView.setExpanded(true);
-        miniGame = (ImageView) findViewById(R.id.minigame);
+        linear_miniGame = (LinearLayout) findViewById(R.id.minigame);
         thongbao = (LinearLayout) findViewById(R.id.f_thongbao);
-        imageView = findViewById(R.id.f_magiamgia);
+        linear_magiamgia = findViewById(R.id.magiamgia);
         linear_toi = findViewById(R.id.f_toi);
         linear_danhmuc = findViewById(R.id.f_danhmuc);
         editText = findViewById(R.id.editTextInput);

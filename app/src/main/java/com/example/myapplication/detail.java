@@ -17,11 +17,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.adapter.AdapterCart;
 import com.example.myapplication.adapter.AdapterComment;
 import com.example.myapplication.adapter.AdapterSanPham;
 import com.example.myapplication.entity.ComMent;
@@ -48,9 +50,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class detail extends AppCompatActivity {
-    private ImageView imageView_caidat, imageView_trove, imageView_clickDanhgia, imageView_likeBL, imageshop, image1, image2, image3;
+    private ImageView imageView_trove, imageView_clickDanhgia, imageView_likeBL, imageshop, image1, image2, image3;
     private LinearLayout linear_xemshop, linear_muangay, liner_giohang, liner_danhgia;
-    private TextView name, mota, dongia, soluong, shop;
+    private FrameLayout frame_vaogiohang;
+    private TextView name, mota, dongia, soluong, shop, textView_soluongtronggio;
     private EditText binhluan;
     private Button dangbinhluan;
     private SanPham sanPham;
@@ -266,8 +269,8 @@ public class detail extends AppCompatActivity {
     }
 
     private void onClick() {
-        imageView_caidat.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), CaiDatActivity.class))
+        frame_vaogiohang.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), GioHang.class))
         );
 
         imageView_trove.setOnClickListener(view ->
@@ -350,7 +353,7 @@ public class detail extends AppCompatActivity {
         gridViewComment = (ExpandableHeightGridView) findViewById(R.id.gridComment);
         gridViewComment.setExpanded(true);
         linear_muangay = findViewById(R.id.f_muasam);
-        imageView_caidat = findViewById(R.id.img_caidat);
+        frame_vaogiohang = findViewById(R.id.img_giohang);
         imageView_trove = findViewById(R.id.img_trove);
         imageView_likeBL = findViewById(R.id.btnlike);
         linear_xemshop = findViewById(R.id.xemshop);
@@ -367,6 +370,8 @@ public class detail extends AppCompatActivity {
         imageshop = findViewById(R.id.imageshop);
         image1 = findViewById(R.id.image1);
         image2 = findViewById(R.id.image2);
-        image3 = findViewById(R.id.image);
+        image3 = findViewById(R.id.image3);
+        textView_soluongtronggio = findViewById(R.id.soluong_giohang);
     }
+
 }

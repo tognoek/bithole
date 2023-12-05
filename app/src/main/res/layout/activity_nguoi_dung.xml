@@ -21,6 +21,7 @@
             android:id="@+id/textview1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/img_trove"
             android:text="Tôi"
             android:textSize="25dp"
@@ -32,6 +33,7 @@
             android:onClick="goBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:background="?android:attr/selectableItemBackground"
@@ -246,31 +248,31 @@
                 <TableRow>
 
                     <LinearLayout
-                        android:id="@+id/phieudanhgia"
+                        android:id="@+id/f_dangbai"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="8"
-                            android:textSize="20dp" />
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/toi_dangbai"/>
 
                         <TextView
-                            android:layout_width="50dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Phiếu giảm giá"
+                            android:text="Đăng sản phẩm"
                             android:textSize="12dp" />
                     </LinearLayout>
+
 
                     <LinearLayout
                         android:id="@+id/lichsumua"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/phieudanhgia"
+                        android:layout_toRightOf="@id/f_dangbai"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -286,6 +288,7 @@
                             android:text="Lịch sử mua"
                             android:textSize="12dp" />
                     </LinearLayout>
+
 
                     <LinearLayout
                         android:id="@+id/vi"
@@ -303,13 +306,14 @@
                         <TextView
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
                             android:gravity="center"
                             android:text="Ví"
                             android:textSize="12dp" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/thequatang"
+                        android:id="@+id/f_magiamgia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/vi"
@@ -320,15 +324,33 @@
                             android:layout_width="35dp"
                             android:layout_height="35dp"
                             android:src="@drawable/s_thequatang" />
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Mã giảm giá"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/thongkedoanhthu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/f_dangbai"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/s_thongke" />
 
                         <TextView
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Điểm"
+                            android:text="Thống kê"
                             android:textSize="12dp" />
                     </LinearLayout>
-
                 </TableRow>
             </TableLayout>
 
@@ -406,7 +428,7 @@
                         <ImageView
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="5dp"
                             android:src="@drawable/s_xuly" />
 
                         <TextView

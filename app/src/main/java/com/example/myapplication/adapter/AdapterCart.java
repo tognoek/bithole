@@ -79,4 +79,7 @@ public class AdapterCart extends ArrayAdapter {
 
         return convertView;
     }
+    public int getCount(){
+        return super.getCount();
+    }
 }

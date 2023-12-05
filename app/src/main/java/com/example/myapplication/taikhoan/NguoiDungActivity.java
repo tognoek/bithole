@@ -18,9 +18,13 @@ import com.example.myapplication.CaiDatActivity;
 import com.example.myapplication.GioHang;
 import com.example.myapplication.HoTroActivity;
 import com.example.myapplication.LichSuMuaHang;
+import com.example.myapplication.MaGiamGia;
 import com.example.myapplication.R;
 import com.example.myapplication.Voucher;
 import com.example.myapplication.activity_trangchu;
+import com.example.myapplication.admin.DangSanPhamActivity;
+import com.example.myapplication.admin.thongkedoanhthu;
+import com.example.myapplication.minigame;
 import com.example.myapplication.select;
 import com.example.myapplication.thongbao;
 import com.example.myapplication.thongtingiaohang;
@@ -32,7 +36,8 @@ public class NguoiDungActivity extends AppCompatActivity {
 
     private ImageView imageView_caidat, imageView_hotro, imageView_trove, imageView_giohang, image_user;
 
-    private LinearLayout linear_trangchu, linear_danhmuc, linear_thongbao, linear_giohang, linear_vi, linear_lichsumua, linear_ttuser;
+    private LinearLayout linear_trangchu, linear_danhmuc, linear_thongbao, linear_giohang, linear_vi, linear_lichsumua,
+            linear_ttuser, linear_dangbai, linear_magiamgia, linear_minigame, linear_thongkedoanhthu;
 
     private TextView textViewNameUser;
     private RelativeLayout relative_donhangcuatoi;
@@ -108,6 +113,18 @@ public class NguoiDungActivity extends AppCompatActivity {
         linear_lichsumua.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), LichSuMuaHang.class))
         );
+        linear_dangbai.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), DangSanPhamActivity.class))
+        );
+        linear_magiamgia.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), MaGiamGia.class))
+        );
+        linear_minigame.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), minigame.class))
+        );
+        linear_thongkedoanhthu.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), thongkedoanhthu.class))
+        );
         linear_ttuser.setOnClickListener(new View.OnClickListener() {
                                              @Override
                                              public void onClick(View view) {
@@ -137,6 +154,10 @@ public class NguoiDungActivity extends AppCompatActivity {
         linear_giohang = findViewById(R.id.f_giohang);
         linear_danhmuc = findViewById(R.id.f_danhmuc);
         linear_ttuser = findViewById(R.id.ttuser);
+        linear_dangbai = findViewById(R.id.f_dangbai);
+        linear_magiamgia = findViewById(R.id.f_magiamgia);
+        linear_minigame = findViewById(R.id.santhuong);
+        linear_thongkedoanhthu = findViewById(R.id.thongkedoanhthu);
         imageView_trove = findViewById(R.id.img_trove);
         imageView_giohang = findViewById(R.id.img_giohang);
         imageView_hotro = findViewById(R.id.img_hotro);

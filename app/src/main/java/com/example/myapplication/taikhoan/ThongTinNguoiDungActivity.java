@@ -1,6 +1,7 @@
 package com.example.myapplication.taikhoan;
 
 import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_USER_REF;
+import static com.example.myapplication.thuvien.PublicFunciton.getNameUser;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
@@ -42,6 +44,7 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
     private EditText editText_tenuser;
     private Button button_luu;
     private ImageView imageView_trove, imageView_user;
+    private TextView textView_tenuserBandau;
     Uri anhsanpham;
 
     @Override
@@ -105,6 +108,7 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
     }
 
     private void hienThi() {
+        textView_tenuserBandau.setText(getNameUser());
         relativeLayout_tenuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -197,6 +201,7 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
         editText_tenuser = findViewById(R.id.edittenuser);
         imageView_trove = findViewById(R.id.img_trove);
         imageView_user = findViewById(R.id.imageuser);
-        button_luu =findViewById(R.id.btnluu);
+        button_luu = findViewById(R.id.btnluu);
+        textView_tenuserBandau = findViewById(R.id.tennguoidung);
     }
 }

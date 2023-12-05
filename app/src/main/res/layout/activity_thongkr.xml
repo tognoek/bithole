@@ -13,14 +13,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/pink">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/logoshop"
+        <ImageView
+            android:id="@+id/icontrove"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/s_trove"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/logoshop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/icontrove"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
             app:cardCornerRadius="40dp">
             <ImageView
                 android:layout_width="match_parent"
@@ -34,8 +45,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:orientation="vertical"
-            android:layout_marginStart="20dp"
-            app:layout_constraintEnd_toStartOf="@id/logoapp">
+            android:layout_marginStart="20dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,15 +67,7 @@
                     style="@style/setting_line" />
             </LinearLayout>
         </LinearLayout>
-        <ImageView
-            android:id="@+id/logoapp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="5dp"
-            android:src="@drawable/logo"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:id="@+id/select_dialog_listview"
@@ -436,12 +438,13 @@
                             android:layout_height="25dp"
                             android:src="@drawable/up"
                             android:layout_gravity="center_vertical"/>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:text="312.238đ"
-                            android:textColor="#4CAF50"
-                            android:layout_gravity="center_vertical"/>
+                            android:textColor="#4CAF50" />
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -525,8 +528,8 @@
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    
-    
+
+
     <LinearLayout
         android:id="@+id/footer"
         app:layout_constraintStart_toStartOf="parent"
@@ -536,90 +539,98 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="5dp"
+        android:weightSum="4"
         android:background="@color/pink">
-    <LinearLayout
-        android:id="@+id/f_doanhthu_k"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="5dp">
-        <ImageView
-            android:layout_width="52dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:src="@drawable/doanhthu">
-        </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/f_dangbai"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Doanh Thu"
-            android:layout_gravity="center"
-            android:textSize="18dp">
-        </TextView>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/f_dangbai"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="15dp">
-        <ImageView
-            android:layout_width="52dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:src="@drawable/post">
-        </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="1dp">
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:src="@drawable/post">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đăng Bài"
+                android:layout_gravity="center"
+                android:textSize="15dp">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/f_qlbaidang"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Đăng Bài"
-            android:layout_gravity="center"
-            android:textSize="18dp">
-        </TextView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="15dp">
-        <ImageView
-            android:layout_width="52dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:src="@drawable/thongke">
-        </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp">
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:src="@drawable/img">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QL Bài Đăng"
+                android:layout_gravity="center"
+                android:textSize="15dp">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/f_doanhthu_k"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Nhập Xuất"
-            android:layout_gravity="center"
-            android:textSize="18dp">
-        </TextView>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/f_qlbaidang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="15dp">
-        <ImageView
-            android:layout_width="52dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:src="@drawable/img">
-        </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp">
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:src="@drawable/doanhthu">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doanh Thu"
+                android:layout_gravity="center"
+                android:textSize="15dp">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/f_nhapxuat"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="QL Bài Đăng"
-            android:layout_gravity="center"
-            android:textSize="16dp">
-        </TextView>
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp">
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:src="@drawable/thongke">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhập Xuất"
+                android:layout_gravity="center"
+                android:textSize="15dp">
+            </TextView>
+        </LinearLayout>
+
     </LinearLayout>
-    </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

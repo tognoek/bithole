@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.myapplication.adapter.AdapterSanPham;
+import com.example.myapplication.taikhoan.NguoiDungActivity;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
 import com.example.myapplication.entity.SanPham;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 public class select extends AppCompatActivity {
     private ImageView imageView_caidat;
     private ImageView imageView_trove;
-    private LinearLayout linear_chitietsp;
+    private LinearLayout linear_chitietsp, linear_thongbao, linear_giohang, linear_toi, linear_trangchu;
     private EditText inputText;
     private ExpandableHeightGridView gridView;
     private AdapterSanPham adapterSanPham;
@@ -42,9 +43,17 @@ public class select extends AppCompatActivity {
         setContentView(R.layout.activity_select);
         anhXa();
         nutNhan();
+        onClick();
         doDuLieuVaoAdapter();
         doDuLieu();
         onClickGridView();
+    }
+
+    private void onClick(){
+        linear_trangchu.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), activity_trangchu.class)));
+        linear_thongbao.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), thongbao.class)));
+        linear_giohang.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), GioHang.class)));
+        linear_toi.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), NguoiDungActivity.class)));
     }
     private void onClickGridView() {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -122,6 +131,10 @@ public class select extends AppCompatActivity {
         imageView_caidat = findViewById(R.id.img_caidat);
         imageView_trove = findViewById(R.id.img_trove);
         linear_chitietsp = findViewById(R.id.chitiet_sp);
+        linear_giohang = findViewById(R.id.f_giohang);
+        linear_toi = findViewById(R.id.f_toi);
+        linear_thongbao = findViewById(R.id.f_thongbao);
+        linear_trangchu = findViewById(R.id.f_muasam);
         inputText = findViewById(R.id.editTextInput);
         listSPLuuTru = new ArrayList<>();
     }

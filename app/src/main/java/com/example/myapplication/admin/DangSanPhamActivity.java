@@ -28,7 +28,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import java.io.IOException;
 
 public class DangSanPhamActivity extends AppCompatActivity {
-    private ImageView imageView_trove, imageView;
+    private ImageView imageView_trove, imageView, imageView_qlbaidang;
     private EditText editTextName, editTextMoTa, editTextDonGia, luuyName, luuyMota, luuyDonGia, editTextSoLuong;
     private TextView loadiamge;
     private Uri filePath;
@@ -154,6 +154,8 @@ public class DangSanPhamActivity extends AppCompatActivity {
     private void onClick(){
         imageView_trove.setOnClickListener(view ->
                 getOnBackPressedDispatcher().onBackPressed());
+        imageView_qlbaidang.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), activity_quanlybaidang.class)));
     }
 
 
@@ -167,6 +169,7 @@ public class DangSanPhamActivity extends AppCompatActivity {
         buttonPush = findViewById(R.id.push);
         loadiamge = findViewById(R.id.loadiamge);
         imageView = findViewById(R.id.imageview);
+        imageView_qlbaidang = findViewById(R.id.img_qldangbai);
         editTextSoLuong = findViewById(R.id.soluong);
     }
 }

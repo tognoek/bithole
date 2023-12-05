@@ -154,9 +154,6 @@ public class detail_shop extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), NguoiDungActivity.class))
         );
 
-        nameShop.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), thongkedoanhthu.class))
-        );
     }
 
     private void anhXa(){

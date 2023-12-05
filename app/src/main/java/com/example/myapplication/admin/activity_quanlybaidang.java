@@ -12,11 +12,7 @@ import com.example.myapplication.R;
 public class activity_quanlybaidang extends AppCompatActivity {
 
     private ImageView imageView_trove;
-
-    private LinearLayout linear_dangbai;
-    private LinearLayout linear_doanhthu;
-
-    private LinearLayout linear_nhapxuat;
+    private LinearLayout linear_dangbai, linear_doanhthu, linear_nhapxuat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

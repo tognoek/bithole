@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/img_dangbai"
+            android:id="@+id/img_qldangbai"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentTop="true"
@@ -25,12 +25,13 @@
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            app:srcCompat="@drawable/s_dangbai" />
+            app:srcCompat="@drawable/img" />
 
         <ImageView
             android:id="@+id/img_trove"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:background="?android:attr/selectableItemBackground"
@@ -43,11 +44,12 @@
             android:id="@+id/textview1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@id/img_trove"
             android:text="Đăng sản phẩm"
             android:textColor="@color/black"
-            android:textSize="25dp"
+            android:textSize="23dp"
             android:textStyle="bold" />
     </RelativeLayout>
 
@@ -188,7 +190,7 @@
                 android:paddingBottom="5dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingStart="10dp">
@@ -197,6 +199,7 @@
                         android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
                         android:hint="Tiêu đề bài đăng"
                         android:background="@null"/>
 
@@ -224,7 +227,7 @@
 
                 <LinearLayout
                     android:id="@+id/textmota"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingStart="10dp">
@@ -233,6 +236,7 @@
                         android:id="@+id/mota"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
                         android:hint="Mô tả chi tiết \n - Xuất xứ, tình trạng cụ thể, kích thước,.....\n - Chất liệu, thời gian sử dụng,....."
                         android:background="@null"/>
 
