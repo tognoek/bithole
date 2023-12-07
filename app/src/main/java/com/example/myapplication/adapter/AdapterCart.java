@@ -18,9 +18,15 @@ import androidx.annotation.Nullable;
 import com.example.myapplication.R;
 import com.example.myapplication.entity.Cart;
 import com.example.myapplication.thuvien.FormatVND;
+import com.example.myapplication.thuvien.PublicFunciton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -30,6 +36,8 @@ public class AdapterCart extends ArrayAdapter {
     Activity context;
     int idLayout;
     ArrayList<Cart> myList;
+    private Runnable onDataSetChanged;
+    private final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("GioHang").child(PublicFunciton.getIdUser());
 
     public AdapterCart(@NonNull Activity context, int idLayout, ArrayList<Cart> myList) {
         super(context, idLayout, myList);
@@ -39,11 +47,12 @@ public class AdapterCart extends ArrayAdapter {
     }
 
     @NonNull
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup
             parent) {
         LayoutInflater myInflactor = context.getLayoutInflater();
         convertView = myInflactor.inflate(idLayout,null);
-        Cart itemnew = myList.get(position);
+
+        final Cart itemnew = myList.get(position);
 
 
         //Anh Xa
@@ -53,6 +62,8 @@ public class AdapterCart extends ArrayAdapter {
         TextView soluong = convertView.findViewById(R.id.soLuong);
         ImageView anh = convertView.findViewById(R.id.hinhanhSanPham);
         ImageView logo = convertView.findViewById(R.id.logoShop);
+        ImageView xoa = convertView.findViewById(R.id.img_xoa);
+        xoa.setOnClickListener(v -> removeCart(position));
 
         tenShop.setText(itemnew.getShop());
         ten.setText(itemnew.getName());
@@ -76,10 +87,36 @@ public class AdapterCart extends ArrayAdapter {
             }
         });
 
-
         return convertView;
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+        if (onDataSetChanged != null)
+            onDataSetChanged.run();
+    }
+
+    public void setOnDataSetChanged(Runnable onDataSetChanged) {
+        this.onDataSetChanged = onDataSetChanged;
     }
     public int getCount(){
         return super.getCount();
+    }
+
+    private void removeCart(int position) {
+        final Cart cart = myList.remove(position);
+        databaseReference.orderByChild("id").equalTo(cart.getId()).limitToFirst(1).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1 : snapshot.getChildren())
+                    snapshot1.getRef().removeValue().addOnSuccessListener(nothing -> notifyDataSetChanged());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

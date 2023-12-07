@@ -148,6 +148,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/gioitinh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -162,27 +163,73 @@
                 android:textSize="18dp" />
 
             <ImageView style="@style/setting_line" />
-        </RelativeLayout>
 
+        </RelativeLayout>
+        <RadioGroup
+            android:id="@+id/rabutton_gioitinh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:visibility="gone"
+            android:layout_below="@id/gioitinh"
+            android:paddingStart="10dp">
+            <RadioButton
+                android:id="@+id/radio_gioitinh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nam"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/radio_gioitinh1"
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nữ"
+                />
+        </RadioGroup>
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="15dp"
             android:background="@color/white"
             android:padding="15dp"
             android:clickable="true"
             android:focusable="true">
 
             <TextView
+                android:id="@+id/textns"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ngày sinh"
+                android:layout_centerVertical="true"
+                android:text="Ngày sinh :"
                 android:textSize="18dp" />
 
-            <ImageView style="@style/setting_line" />
-        </RelativeLayout>
+            <TextView
+                android:id="@+id/hienthi_Ngaysinh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/textns"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:textSize="18dp"
+                android:paddingEnd="5dp"
+                android:text=""
+                />
 
+            <ImageView
+                android:id="@+id/calendar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/info_calendar"
+                android:clickable="true"
+                android:focusable="true"/>
+        </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/sdt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -198,19 +245,29 @@
                 android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/hienthi_sdt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/nn_forward2"
                 android:layout_centerVertical="true"
                 android:paddingEnd="5dp"
-                android:text="*******71"
+                android:text=""
                 />
 
             <ImageView
                 android:id="@+id/nn_forward2"
                 style="@style/setting_line" />
         </RelativeLayout>
-
+        <EditText
+            android:id="@+id/editsdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:background="@color/white"
+            android:visibility="gone"
+            android:hint="Số điện thoại"
+            android:inputType="phone"
+            android:layout_marginTop="1dp"/>
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

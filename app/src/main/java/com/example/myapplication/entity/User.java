@@ -3,14 +3,16 @@ package com.example.myapplication.entity;
 public class User {
     private String id;
     private String ten;
-    private String gioitinh;
+    private boolean gioitinh;
     private String sdt;
+    private int ngaysinh;
 
-    public User(String id, String ten, String gioitinh, String sdt) {
+    public User(String id, String ten, boolean gioitinh, String sdt, int ngaysinh) {
         this.id = id;
         this.ten = ten;
         this.gioitinh = gioitinh;
         this.sdt = sdt;
+        this.ngaysinh = ngaysinh;
     }
     public User() {
 
@@ -32,11 +34,11 @@ public class User {
         this.ten = ten;
     }
 
-    public String getGioitinh() {
+    public boolean getGioitinh() {
         return gioitinh;
     }
 
-    public void setGioitinh(String gioitinh) {
+    public void setGioitinh(boolean gioitinh) {
         this.gioitinh = gioitinh;
     }
 
@@ -46,5 +48,13 @@ public class User {
 
     public void setSdt(String sdt) {
         this.sdt = sdt;
+    }
+
+    public int getNgaysinh() {
+        return ngaysinh;
+    }
+
+    public void setNgaysinh(int ngaysinh) {
+        this.ngaysinh = ngaysinh;
     }
 }

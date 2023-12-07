@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".thongbao"
     android:orientation="vertical">
     <RelativeLayout
@@ -13,8 +14,9 @@
         android:background="@color/pink">
         <ImageView
             android:id="@+id/thongbao"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
             android:src="@drawable/s_trove"
             android:layout_gravity="center"
             android:layout_marginLeft="15dp">
@@ -23,20 +25,13 @@
             android:layout_toRightOf="@id/thongbao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:textStyle="bold"
             android:text="Thông Báo"
             android:textSize="30sp"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp">
         </TextView>
-        <ImageView
-            android:id="@+id/giohang"
-            android:layout_alignParentEnd="true"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:src="@drawable/hvt_giohang_ic">
-        </ImageView>
     </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
@@ -72,14 +67,17 @@
         android:layout_alignParentBottom="true"
         android:background="@color/pink"
         android:orientation="horizontal"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:weightSum="5">
+        android:weightSum="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
         <LinearLayout
             android:id="@+id/f_muasam"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
@@ -89,7 +87,7 @@
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:src="@drawable/hvt_f_home" />
+                android:src="@drawable/s_f_home" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -103,6 +101,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
@@ -112,7 +112,7 @@
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:src="@drawable/hvt_f_danhmuc" />
+                android:src="@drawable/s_f_danhmuc" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -127,6 +127,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
@@ -136,13 +138,14 @@
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:src="@drawable/hvt_f_thongbao" />
+                android:src="@drawable/s_f_thongbao"
+                app:tint="@color/red" />
 
             <TextView
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:gravity="center"
                 android:text="Thông báo" />
         </LinearLayout>
@@ -151,6 +154,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
@@ -160,7 +165,7 @@
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:src="@drawable/hvt_f_giohang" />
+                android:src="@drawable/s_giohang" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -175,6 +180,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -183,7 +190,7 @@
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:src="@drawable/hvt_f_user" />
+                android:src="@drawable/s_f_user" />
 
             <TextView
                 android:layout_width="match_parent"

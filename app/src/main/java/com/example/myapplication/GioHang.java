@@ -103,7 +103,7 @@ public class GioHang extends AppCompatActivity {
 
                     }
                 }
-                tongTien();
+                adapterSanPham.setOnDataSetChanged(() -> tongTien());
                 adapterSanPham.notifyDataSetChanged();
             }
 

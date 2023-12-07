@@ -28,9 +28,7 @@ public class thongbao extends AppCompatActivity {
     private LinearLayout trangchu;
     private LinearLayout danhmuc;
     private LinearLayout giohang;
-    private ImageView giohangic;
     private LinearLayout thongtin;
-
     private ExpandableHeightGridView gridViewThongbao;
 
     private AdapterThongBao adapterThongBao;
@@ -48,7 +46,6 @@ public class thongbao extends AppCompatActivity {
         trangchu = (LinearLayout) findViewById(R.id.f_muasam);
         danhmuc = (LinearLayout) findViewById(R.id.f_danhmuc);
         giohang = (LinearLayout) findViewById(R.id.f_giohang);
-        giohangic = (ImageView) findViewById(R.id.giohang);
         thongtin = (LinearLayout) findViewById(R.id.f_toi);
         gridViewThongbao = (ExpandableHeightGridView) findViewById(R.id.gridThongBao);
         gridViewThongbao.setExpanded(true);
@@ -67,13 +64,6 @@ public class thongbao extends AppCompatActivity {
             }
         });
         giohang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),GioHang.class);
-                startActivity(intent);
-            }
-        });
-        giohangic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),GioHang.class);

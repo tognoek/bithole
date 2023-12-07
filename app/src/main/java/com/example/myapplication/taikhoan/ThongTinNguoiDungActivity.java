@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,14 +40,23 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.Calendar;
+
 public class ThongTinNguoiDungActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
-    private RelativeLayout relativeLayout_tenuser;
-    private EditText editText_tenuser;
+    private static final long ONE_YEAR_MILISECONDS = 31536000000L;
+    private RelativeLayout relativeLayout_tenuser, relativeLayout_gioitinh, relativeLayout_sdt;
+    private EditText editText_tenuser, editText_sdt;
     private Button button_luu;
-    private ImageView imageView_trove, imageView_user;
-    private TextView textView_tenuserBandau;
+    private RadioButton radioButton_gioitinh, radioButton_gioitinh1;
+    private RadioGroup radioGroup;
+    private ImageView imageView_trove, imageView_user, imageView_calendar;
+    private TextView textView_tenuserBandau, textView_ngaysinh, textView_sdt;
+    private DatePickerDialog datePickerDialog;
+    private static final DatabaseReference USER_DATABASE_REF = FirebaseDatabase.getInstance().getReference("User");
+
+    private int currentBirthday;
     Uri anhsanpham;
 
     @Override
@@ -75,6 +87,9 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
                                                }
                                            }
         );
+        imageView_calendar.setOnClickListener(nothing -> { if (!datePickerDialog.isShowing()) datePickerDialog.show(); });
+        datePickerDialog.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis() - ONE_YEAR_MILISECONDS);
+        datePickerDialog.setOnDateSetListener(this::setBirthday);
     }
 
     private void pushDetails() {
@@ -87,8 +102,47 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
             }
         });
         editText_tenuser.setText(PublicFunciton.getNameUser());
+        USER_DATABASE_REF.child(PublicFunciton.getIdUser()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                textView_tenuserBandau.setText(getNameUser());
+                setBirthday(null, user.getNgaysinh());
+                int length = user.getSdt().length();
+                if (length > 3)
+                    textView_sdt.setText("*".repeat(length - 3).concat(user.getSdt().substring(length - 3)));
+                else
+                    textView_sdt.setText(user.getSdt());
+                if (user.getGioitinh())
+                    radioButton_gioitinh.setChecked(true);
+                else
+                    radioButton_gioitinh1.setChecked(true);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 
+    private void setBirthday(@Nullable View v, int date) {
+        int year = date / 10000;
+        int month = (date % 10000) / 100;
+        int day = date % 100;
+        setBirthday(v, year, month, day);
+    }
+
+    private void setBirthday(@Nullable View v, int year, int month, int day) {
+        if (year == 0)
+            return;
+        Calendar birthday = Calendar.getInstance();
+        birthday.set(year, month, day);
+        datePickerDialog.getDatePicker().updateDate(year, month, day);
+        textView_ngaysinh.setText(android.text.format.DateFormat.getMediumDateFormat(this).format(birthday.getTime()));
+        currentBirthday = year * 10000 + month * 100 + day;
+    }
     private void updateInf() {
         button_luu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +162,6 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
     }
 
     private void hienThi() {
-        textView_tenuserBandau.setText(getNameUser());
         relativeLayout_tenuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,6 +174,31 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
                 }
             }
         });
+        relativeLayout_gioitinh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(radioGroup.getVisibility() == View.VISIBLE){
+                    radioGroup.setVisibility(View.GONE);
+                }
+                else
+                {
+                    radioGroup.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        relativeLayout_sdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(editText_sdt.getVisibility() == View.VISIBLE){
+                    editText_sdt.setVisibility(View.GONE);
+                }
+                else
+                {
+                    editText_sdt.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
 
     }
 
@@ -155,6 +233,9 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
                                 public void onSuccess(Uri downloadUri) {
                                     String imageUrl = PublicFunciton.getIdUser();
                                     String ten = editText_tenuser.getText().toString().trim();
+                                    boolean gioitinh = radioButton_gioitinh.isChecked();
+                                    String sdt = editText_sdt.getText().toString();
+                                    int ngaySinh = currentBirthday;
                                     String idUser = PublicFunciton.getIdUser();
                                     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
                                     FirebaseUser fUser = firebaseAuth.getCurrentUser();
@@ -164,7 +245,7 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
                                     if (fUser != null){
                                         fUser.updateProfile(profileUpdates);
                                     }
-                                    User user = new User(imageUrl, ten,"","");
+                                    User user = new User(imageUrl, ten, gioitinh, sdt, ngaySinh);
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                                     DatabaseReference userRef = database.getReference("User");
                                     userRef.child(idUser).setValue(user);
@@ -177,6 +258,9 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
         else{
             String imageUrl = PublicFunciton.getIdUser();
             String ten = editText_tenuser.getText().toString().trim();
+            boolean gioitinh = radioButton_gioitinh.isChecked();
+            String sdt = editText_sdt.getText().toString();
+            int ngaySinh = currentBirthday;
             String idUser = PublicFunciton.getIdUser();
             FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
             FirebaseUser fUser = firebaseAuth.getCurrentUser();
@@ -186,7 +270,7 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
             if (fUser != null){
                 fUser.updateProfile(profileUpdates);
             }
-            User user = new User(imageUrl,ten,"","");
+            User user = new User(imageUrl, ten, gioitinh, sdt, ngaySinh);
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference userRef = database.getReference("User");
             userRef.child(idUser).setValue(user);
@@ -198,10 +282,20 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
 
     private void anhXa(){
         relativeLayout_tenuser = findViewById(R.id.tenuser);
+        relativeLayout_gioitinh = findViewById(R.id.gioitinh);
+        relativeLayout_sdt = findViewById(R.id.sdt);
         editText_tenuser = findViewById(R.id.edittenuser);
+        editText_sdt = findViewById(R.id.editsdt);
         imageView_trove = findViewById(R.id.img_trove);
         imageView_user = findViewById(R.id.imageuser);
         button_luu = findViewById(R.id.btnluu);
         textView_tenuserBandau = findViewById(R.id.tennguoidung);
+        radioButton_gioitinh = findViewById(R.id.radio_gioitinh);
+        radioButton_gioitinh1 = findViewById(R.id.radio_gioitinh1);
+        radioGroup = findViewById(R.id.rabutton_gioitinh);
+        textView_ngaysinh = findViewById(R.id.hienthi_Ngaysinh);
+        textView_sdt = findViewById(R.id.hienthi_sdt);
+        imageView_calendar = findViewById(R.id.calendar);
+        datePickerDialog = new DatePickerDialog(this);
     }
 }
