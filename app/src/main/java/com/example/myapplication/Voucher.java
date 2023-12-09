@@ -44,7 +44,7 @@ public class Voucher extends AppCompatActivity {
         DatabaseReference databaseReference = firebaseDatabase.getReference("SanPham");
         List<SanPham> sanPhamList = new ArrayList<>();
         for (int i = 0; i < 20; i++){
-            SanPham sanPham = new SanPham(i, "Đồ áo nữ siêu xinh", "Đẹp vô cùng nhưng mà đừng có mua do gia qua la đắt", 222222, 222, "hinhanh", PublicFunciton.getNameUser(), PublicFunciton.getIdUser());
+            SanPham sanPham = new SanPham(i, "Đồ áo nữ siêu xinh", "Đẹp vô cùng nhưng mà đừng có mua do gia qua la đắt", 222222, 222, "hinhanh", PublicFunciton.getIdUser(), "1");
             sanPhamList.add(sanPham);
         }
         databaseReference.setValue(sanPhamList);

@@ -66,63 +66,8 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp">
-
-                <LinearLayout
-                    android:id="@+id/textdanhmuc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingStart="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Danh mục"
-                        android:textStyle="italic" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="*"
-                        android:textColor="#ED1C24"
-                        android:textStyle="italic" />
-                </LinearLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textdanhmuc"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/s_radius_textbox"
-                    android:paddingStart="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="10dp"
-                    android:paddingBottom="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Áo khoác" />
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="end"
-                        android:src="@drawable/s_nhanxuong"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"/>
-                </FrameLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
                 android:background="#E8E8E8"
                 android:padding="10dp">
 
@@ -178,10 +123,33 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp">
             </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/textdanhmuc"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/s_radius_textbox"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Danh mục"
+                    android:textSize="18dp"
+                    android:layout_marginStart="10dp" />
+                <Spinner
+                    android:id="@+id/danhmuc"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height="wrap_content">
+                </Spinner>
+            </LinearLayout>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textdanhmuc"
                 android:layout_margin="10dp"
                 android:background="@drawable/s_radius_textbox"
                 android:paddingStart="10dp"
@@ -197,19 +165,12 @@
 
                     <EditText
                         android:id="@+id/name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
+                        android:inputType="text"
                         android:hint="Tiêu đề bài đăng"
                         android:background="@null"/>
-
-                    <EditText
-                        android:id="@+id/luuyName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="*"
-                        android:textColor="#ED1C24"
-                        android:background="@null" />
                 </LinearLayout>
 
             </FrameLayout>
@@ -234,19 +195,11 @@
 
                     <EditText
                         android:id="@+id/mota"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="20dp"
-                        android:hint="Mô tả chi tiết \n - Xuất xứ, tình trạng cụ thể, kích thước,.....\n - Chất liệu, thời gian sử dụng,....."
+                        android:hint="Mô tả sản phẩm"
                         android:background="@null"/>
-
-                    <EditText
-                        android:id="@+id/luuyMota"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="*"
-                        android:textColor="#ED1C24"
-                        android:background="@null" />
                 </LinearLayout>
             </RelativeLayout>
             <FrameLayout
@@ -262,25 +215,18 @@
                 android:paddingBottom="5dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingStart="10dp">
 
                     <EditText
                         android:id="@+id/donGia"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Giá bán"
+                        android:inputType="number"
                         android:background="@null"/>
-
-                    <EditText
-                        android:id="@+id/luuyDonGia"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="*"
-                        android:textColor="#ED1C24"
-                        android:background="@null" />
                 </LinearLayout>
 
             </FrameLayout>
@@ -298,24 +244,18 @@
                 android:paddingBottom="5dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingStart="10dp">
 
                     <EditText
                         android:id="@+id/soluong"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Số lượng"
+                        android:inputType="number"
                         android:background="@null"/>
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="*"
-                        android:textColor="#ED1C24"
-                        android:background="@null" />
                 </LinearLayout>
             </FrameLayout>
             <LinearLayout
@@ -325,19 +265,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_gravity="center_horizontal">
-
-                <TextView
-                    android:id="@+id/loadiamge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/s_radius_textbox"
-                    android:layout_marginEnd="5dp"
-                    android:padding="10dp"
-                    android:text="XEM TRƯỚC"
-                    android:textColor="#F09B59"
-                    android:clickable="true"
-                    android:focusable="true"
-                    />
                 <TextView
                     android:id="@+id/push"
                     android:layout_width="wrap_content"

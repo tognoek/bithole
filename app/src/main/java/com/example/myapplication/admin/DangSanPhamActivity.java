@@ -10,30 +10,41 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.adapter.AdapterDanhMuc;
+import com.example.myapplication.entity.DanhMuc;
+import com.example.myapplication.shop.detail_shop;
+import com.example.myapplication.thuvien.CustomProgressDialog;
 import com.example.myapplication.thuvien.PublicFunciton;
 import com.example.myapplication.entity.SanPham;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class DangSanPhamActivity extends AppCompatActivity {
     private ImageView imageView_trove, imageView, imageView_qlbaidang;
-    private EditText editTextName, editTextMoTa, editTextDonGia, luuyName, luuyMota, luuyDonGia, editTextSoLuong;
-    private TextView loadiamge;
+    private EditText editTextName, editTextMoTa, editTextDonGia, editTextSoLuong;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 71;
     private TextView buttonPush;
+    private CustomProgressDialog customProgressDialog;
+    private Spinner danhmuc;
+    private AdapterDanhMuc adapterDanhMuc;
+    private ArrayList<DanhMuc> danhMucArrayList;
+    private String danhMucId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +54,52 @@ public class DangSanPhamActivity extends AppCompatActivity {
         onClick();
         loadImage();
         onClickPush();
-
+        danhMuc();
+        doDuLieuVaoDanhMuc();
+        getDanhMuc();
     }
 
+    private void getDanhMuc() {
+        danhmuc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                danhMucId = String.valueOf(danhMucArrayList.get(i).getId());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void danhMuc() {
+        danhMucId = "1";
+        danhMucArrayList = new ArrayList<>();
+        adapterDanhMuc = new AdapterDanhMuc(DangSanPhamActivity.this, R.layout.layout_select_dropdown, danhMucArrayList);
+        danhmuc.setAdapter(adapterDanhMuc);
+    }
+
+    private void doDuLieuVaoDanhMuc() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("DanhMuc");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                danhMucArrayList.clear();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    DanhMuc danhMuc = postSnapshot.getValue(DanhMuc.class);
+                    danhMucArrayList.add(danhMuc);
+                }
+                adapterDanhMuc.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(DangSanPhamActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     private void loadImage(){
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,66 +145,59 @@ public class DangSanPhamActivity extends AppCompatActivity {
         }
     }
 
-    private void pushProductFunction(int idProduct) {
+    private void pushProductFunction() {
         //Set Values Product
+        customProgressDialog = new CustomProgressDialog(this);
         String name = editTextName.getText().toString().trim();
         String mota = editTextMoTa.getText().toString().trim();
         double dongia = Double.parseDouble(editTextDonGia.getText().toString().trim());
         int soluong = Integer.parseInt(editTextSoLuong.getText().toString().trim());
         SanPham sanPham = new SanPham();
-        int id = idProduct;
-        sanPham.setId(id);
-        sanPham.setName(name);
-        sanPham.setMota(mota);
-        sanPham.setDongia(dongia);
-        if (filePath != null){
-            sanPham.setHinhanh(createNameImage(id));
-            upLoadImageFireBase(id);
-        }
-        else{
-            sanPham.setHinhanh("null");
-        }
-        sanPham.setSoluong(soluong);
-        sanPham.setShop(PublicFunciton.getNameUser());
-        sanPham.setIdshop(PublicFunciton.getIdUser());
 
         //Firebase
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("SanPham");
-        int pathObject = sanPham.getId();
-        databaseReference.child(String.valueOf(pathObject)).setValue(sanPham);
-        Toast.makeText(DangSanPhamActivity.this, "Đăng bài thành công", Toast.LENGTH_SHORT).show();
+        customProgressDialog.show();
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                sanPham.setId(Integer.parseInt(String.valueOf(snapshot.getChildrenCount())) + 1);
+                Log.d("Size listSanPham", "Size: " + snapshot.getChildrenCount());
+                sanPham.setName(name);
+                sanPham.setMota(mota);
+                sanPham.setDongia(dongia);
+                if (filePath != null){
+                    sanPham.setHinhanh(createNameImage(sanPham.getId()));
+                    upLoadImageFireBase(sanPham.getId());
+                }
+                else{
+                    sanPham.setHinhanh("null");
+                }
+                sanPham.setSoluong(soluong);
+                sanPham.setIdshop(PublicFunciton.getIdUser());
+                sanPham.setIddanhmuc(danhMucId);
+                int pathObject = sanPham.getId();
+                databaseReference.child(String.valueOf(pathObject)).setValue(sanPham);
+                customProgressDialog.dismiss();
+                Toast.makeText(DangSanPhamActivity.this, "Đăng bài thành công", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     private void onClickPush(){
         buttonPush.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFireBase();
+                pushProductFunction();
             }
         });
     }
-
-    private void getFireBase(){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database.getReference("SoLuong");
-        databaseReference.child("SanPham").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Toast.makeText(DangSanPhamActivity.this, "Error getting data", Toast.LENGTH_SHORT).show();
-                }
-                else {
-//                    Toast.makeText(DangSanPhamActivity.this, String.valueOf(task.getResult().getValue()), Toast.LENGTH_SHORT).show();
-                    pushProductFunction(Integer.parseInt(String.valueOf(task.getResult().getValue())) + 1);
-                    databaseReference.child("SanPham").setValue(Integer.parseInt(String.valueOf(task.getResult().getValue())) + 1);
-                }
-
-            }
-        });
-    }
-
-
     private void onClick(){
         imageView_trove.setOnClickListener(view ->
                 getOnBackPressedDispatcher().onBackPressed());
@@ -167,9 +214,9 @@ public class DangSanPhamActivity extends AppCompatActivity {
         editTextMoTa = findViewById(R.id.mota);
         editTextDonGia = findViewById(R.id.donGia);
         buttonPush = findViewById(R.id.push);
-        loadiamge = findViewById(R.id.loadiamge);
         imageView = findViewById(R.id.imageview);
         imageView_qlbaidang = findViewById(R.id.img_qldangbai);
         editTextSoLuong = findViewById(R.id.soluong);
+        danhmuc = findViewById(R.id.danhmuc);
     }
 }

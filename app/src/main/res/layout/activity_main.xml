@@ -73,7 +73,7 @@
                 android:id="@+id/iconuser"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/baseline_perm_identity_24_user" />
 
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:layout_toRightOf="@id/iconuser"
+                android:layout_toEndOf="@id/iconuser"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:paddingStart="10dp"
@@ -105,7 +105,7 @@
                 android:id="@+id/iconpass"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/baseline_key_24_pass" />
             <EditText
@@ -114,15 +114,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:layout_toRightOf="@id/iconpass"
-                android:hint="Mật khẩu"
+                android:layout_toEndOf="@id/iconpass"
+                android:hint="@string/matkhau"
                 android:inputType="textPassword"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="#4C4C4C"
-                android:textSize="15sp"
-                app:passwordToggleEnable="true"/>
+                android:textSize="15sp"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"

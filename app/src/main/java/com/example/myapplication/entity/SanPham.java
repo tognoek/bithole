@@ -9,38 +9,21 @@ public class SanPham implements Serializable {
     private double dongia;
     private int soluong;
     private String hinhanh;
-
-    private  String shop;
     private String idshop;
+    private String iddanhmuc;
 
     public SanPham() {
     }
 
-    public String getIdshop() {
-        return idshop;
-    }
-
-    public void setIdshop(String idshop) {
-        this.idshop = idshop;
-    }
-
-    public SanPham(int id, String name, String mota, double dongia, int soluong, String hinhanh, String shop, String idshop) {
+    public SanPham(int id, String name, String mota, double dongia, int soluong, String hinhanh, String idshop, String iddanhmuc) {
         this.id = id;
         this.name = name;
         this.mota = mota;
         this.dongia = dongia;
         this.soluong = soluong;
         this.hinhanh = hinhanh;
-        this.shop = shop;
         this.idshop = idshop;
-    }
-
-    public String getShop() {
-        return shop;
-    }
-
-    public void setShop(String shop) {
-        this.shop = shop;
+        this.iddanhmuc = iddanhmuc;
     }
 
     public int getId() {
@@ -91,4 +74,19 @@ public class SanPham implements Serializable {
         this.hinhanh = hinhanh;
     }
 
+    public String getIdshop() {
+        return idshop;
+    }
+
+    public void setIdshop(String idshop) {
+        this.idshop = idshop;
+    }
+
+    public String getIddanhmuc() {
+        return iddanhmuc;
+    }
+
+    public void setIddanhmuc(String iddanhmuc) {
+        this.iddanhmuc = iddanhmuc;
+    }
 }

@@ -10,29 +10,29 @@ public class Cart implements Serializable {
     private int soluong;
     private String hinhanh;
 
-    private  String shop;
     private String idShop;
+    private boolean check;
 
     public Cart() {
     }
 
-    public Cart(int id, String name, String mota, double dongia, int soluong, String hinhanh, String shop, String idShop) {
+    public Cart(int id, String name, String mota, double dongia, int soluong, String hinhanh, String idShop, boolean check) {
         this.id = id;
         this.name = name;
         this.mota = mota;
         this.dongia = dongia;
         this.soluong = soluong;
         this.hinhanh = hinhanh;
-        this.shop = shop;
         this.idShop = idShop;
+        this.check = check;
     }
 
-    public String getShop() {
-        return shop;
+    public boolean isCheck() {
+        return check;
     }
 
-    public void setShop(String shop) {
-        this.shop = shop;
+    public void setCheck(boolean check) {
+        this.check = check;
     }
 
     public int getId() {

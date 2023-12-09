@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".taikhoan.ResetPassword"
+            android:exported="false" />
+        <activity
             android:name=".taikhoan.ThongTinNguoiDungActivity"
             android:exported="false" />
         <activity
@@ -36,7 +39,8 @@
         <activity
             android:name=".LichSuMuaHang"
             android:exported="false" />
-        <activity android:name=".SecondActivity"
+        <activity
+            android:name=".SecondActivity"
             android:exported="false" />
         <activity
             android:name=".GioHang"
@@ -90,7 +94,7 @@
             android:name=".HoTroActivity"
             android:exported="false" />
         <activity
-            android:name=".detail_shop"
+            android:name=".shop.detail_shop"
             android:exported="false" />
         <activity
             android:name=".nome.Home"
@@ -119,9 +123,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
     </application>
 
 </manifest>

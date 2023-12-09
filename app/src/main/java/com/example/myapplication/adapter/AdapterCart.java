@@ -5,16 +5,21 @@ import static com.example.myapplication.thuvien.PublicFunciton.PRODUCT_IMAGE_USE
 
 import android.app.Activity;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Interface.OnItemCheckedChangeListener;
 import com.example.myapplication.R;
 import com.example.myapplication.entity.Cart;
 import com.example.myapplication.thuvien.FormatVND;
@@ -37,6 +42,8 @@ public class AdapterCart extends ArrayAdapter {
     int idLayout;
     ArrayList<Cart> myList;
     private Runnable onDataSetChanged;
+
+    private OnItemCheckedChangeListener onItemCheckedChangeListener;
     private final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("GioHang").child(PublicFunciton.getIdUser());
 
     public AdapterCart(@NonNull Activity context, int idLayout, ArrayList<Cart> myList) {
@@ -46,9 +53,14 @@ public class AdapterCart extends ArrayAdapter {
         this.myList = myList;
     }
 
+    public void setOnItemCheckedChangeListener(OnItemCheckedChangeListener listener) {
+        this.onItemCheckedChangeListener = listener;
+    }
+
     @NonNull
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup
             parent) {
+        RecyclerView.ViewHolder viewHolder;
         LayoutInflater myInflactor = context.getLayoutInflater();
         convertView = myInflactor.inflate(idLayout,null);
 
@@ -63,9 +75,23 @@ public class AdapterCart extends ArrayAdapter {
         ImageView anh = convertView.findViewById(R.id.hinhanhSanPham);
         ImageView logo = convertView.findViewById(R.id.logoShop);
         ImageView xoa = convertView.findViewById(R.id.img_xoa);
+        CheckBox check = convertView.findViewById(R.id.checkbox);
         xoa.setOnClickListener(v -> removeCart(position));
 
-        tenShop.setText(itemnew.getShop());
+        check.setChecked(itemnew.isCheck());
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReferenceUser = firebaseDatabase.getReference("User").child(itemnew.getIdShop());
+        databaseReferenceUser.child("ten").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful()){
+                    tenShop.setText(task.getResult().getValue().toString());
+                }else{
+                    Log.d("get name shop on cart", "Fail");
+                }
+            }
+        });
         ten.setText(itemnew.getName());
         dongia.setText(new FormatVND(String.valueOf(itemnew.getDongia())).getVND());
         soluong.setText("Số lượng: " + String.valueOf(itemnew.getSoluong()));
@@ -83,6 +109,19 @@ public class AdapterCart extends ArrayAdapter {
             public void onSuccess(Uri uri) {
                 if (uri != null){
                     Picasso.get().load(uri).into(logo);
+                }
+            }
+        });
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Log.d("check", "onClick: " + check.isChecked());
+//                check.setChecked(!check.isChecked());
+                Log.d("checkBoxCart", "Value: " + check.isChecked());
+                myList.get(position).setCheck(check.isChecked());
+                if (onItemCheckedChangeListener != null) {
+                    Log.d("checkOnItemCheckedChangeListener", "True");
+                    onItemCheckedChangeListener.onItemCheckedChanged(position, check.isChecked());
                 }
             }
         });
@@ -109,14 +148,28 @@ public class AdapterCart extends ArrayAdapter {
         databaseReference.orderByChild("id").equalTo(cart.getId()).limitToFirst(1).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snapshot1 : snapshot.getChildren())
-                    snapshot1.getRef().removeValue().addOnSuccessListener(nothing -> notifyDataSetChanged());
+                for (DataSnapshot snapshotValue : snapshot.getChildren())
+                {
+                    snapshotValue.getRef().removeValue().addOnSuccessListener(nothing -> notifyDataSetChanged());
+                    tongTien();
+                }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+    }
+
+
+    public double tongTien(){
+        double returnSum = 0.0;
+        for (int i = 0 ; i < myList.size(); i++){
+            Cart itemCart = myList.get(i);
+            if (itemCart.isCheck()){
+                returnSum = returnSum + itemCart.getDongia() * itemCart.getSoluong();
+            }
+        }
+        return returnSum;
     }
 }

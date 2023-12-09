@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Interface.OnItemCheckedChangeListener;
 import com.example.myapplication.adapter.AdapterCart;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
 import com.example.myapplication.thuvien.FormatVND;
@@ -27,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GioHang extends AppCompatActivity {
+public class GioHang extends AppCompatActivity implements OnItemCheckedChangeListener {
 
     private ImageView imageView_trove;
     private TextView textView_tongtien;
@@ -49,6 +50,7 @@ public class GioHang extends AppCompatActivity {
     private void doDuLieuVaoAdapter() {
         listSanPham = new ArrayList<>();
         adapterSanPham = new AdapterCart(this, R.layout.layout_cart, listSanPham);
+        adapterSanPham.setOnItemCheckedChangeListener(this);
         gridView.setAdapter(adapterSanPham);
     }
 
@@ -74,10 +76,7 @@ public class GioHang extends AppCompatActivity {
     }
 
     private void tongTien(){
-        double tong = 0;
-        for (Cart sanPham :listSanPham){
-            tong += sanPham.getSoluong() * sanPham.getDongia();
-        }
+        double tong = adapterSanPham.tongTien();
         Log.d("aaa", "tongTien: " + tong);
         String tongString = new FormatVND(String.valueOf(tong)).getVND();
         textView_tongtien.setText(tongString);
@@ -87,16 +86,15 @@ public class GioHang extends AppCompatActivity {
         listSanPham.clear();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference("SanPham");
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int k = 0;
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     SanPham sanPham = postSnapshot.getValue(SanPham.class);
                     if (sanPham != null){
                         for (int t = 0; t < listCards.size(); t++){
                             if (sanPham.getId() == listCards.get(t).getId()){
-                                Cart cart = new Cart(sanPham.getId(), sanPham.getName(), sanPham.getMota(), sanPham.getDongia(), listCards.get(t).getSoluong(), sanPham.getHinhanh(), sanPham.getShop(), sanPham.getIdshop());
+                                Cart cart = new Cart(sanPham.getId(), sanPham.getName(), sanPham.getMota(), sanPham.getDongia(), listCards.get(t).getSoluong(), sanPham.getHinhanh(), sanPham.getIdshop(), false);
                                 listSanPham.add(cart);
                             }
                         }
@@ -127,5 +125,10 @@ public class GioHang extends AppCompatActivity {
         linear_thanhtoan = findViewById(R.id.thanhtoan);
         imageView_trove = findViewById(R.id.img_trove);
         textView_tongtien = findViewById(R.id.tongtien);
+    }
+
+    @Override
+    public void onItemCheckedChanged(int position, boolean isChecked) {
+        tongTien();
     }
 }

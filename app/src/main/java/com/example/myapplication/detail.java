@@ -23,10 +23,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.adapter.AdapterCart;
 import com.example.myapplication.adapter.AdapterComment;
 import com.example.myapplication.adapter.AdapterSanPham;
 import com.example.myapplication.entity.ComMent;
+import com.example.myapplication.shop.detail_shop;
+import com.example.myapplication.thuvien.CustomProgressDialog;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
 import com.example.myapplication.thuvien.FormatTime;
 import com.example.myapplication.thuvien.FormatVND;
@@ -50,7 +51,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class detail extends AppCompatActivity {
-    private ImageView imageView_trove, imageView_clickDanhgia, imageView_likeBL, imageshop, image1, image2, image3;
+    private ImageView imageView_trove, imageView_clickDanhgia, imageshop, image1, image2, image3;
     private LinearLayout linear_xemshop, linear_muangay, liner_giohang, liner_danhgia;
     private FrameLayout frame_vaogiohang;
     private TextView name, mota, dongia, soluong, shop, textView_soluongtronggio;
@@ -63,6 +64,7 @@ public class detail extends AppCompatActivity {
     private ArrayList<SanPham> listSanPham;
     private ArrayList<ComMent> listComMent;
     private ArrayList<ListCard> listCards;
+    private CustomProgressDialog customProgressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +93,7 @@ public class detail extends AppCompatActivity {
 
         //AddProductToCart
         gioHang();
+        getSizeCartUser();
         adapterComment.setHanderButton(new AdapterComment.HanderButton() {
             @Override
             public void setOnlickLike(int positon) {
@@ -105,7 +108,7 @@ public class detail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(detail.this, detail_shop.class);
-                intent.putExtra("shop", new Shop(sanPham.getIdshop(), sanPham.getShop()));
+                intent.putExtra("shop", new Shop(sanPham.getIdshop()));
                 startActivity(intent);
             }
         });
@@ -155,6 +158,29 @@ public class detail extends AppCompatActivity {
         });
     }
 
+    private void getSizeCartUser(){
+        String idUser = PublicFunciton.getIdUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("GioHang");
+        DatabaseReference databaseReferenceCart = databaseReference.child(idUser);
+        databaseReferenceCart.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<ListCard> listNumberCards = new ArrayList<>();
+                for (DataSnapshot snapshotvalues : snapshot.getChildren()){
+                    ListCard listCard = snapshotvalues.getValue(ListCard.class);
+                    listNumberCards.add(listCard);
+                }
+                textView_soluongtronggio.setText(String.valueOf(listNumberCards.size()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     private void addComMent(ComMent comMent) {
         int idProduct = sanPham.getId();
         listComMent.clear();
@@ -186,7 +212,7 @@ public class detail extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference("GioHang");
         DatabaseReference databaseReferenceUser = databaseReference.child(idUser);
-
+        customProgressDialog.show();
         databaseReferenceUser.addListenerForSingleValueEvent (new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -195,6 +221,7 @@ public class detail extends AppCompatActivity {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     ListCard card = postSnapshot.getValue(ListCard.class);
                     listCards.add(card);
+                    assert card != null;
                     if (card.getId() == idProduct && !Update){
                         Update = true;
                         card.setSoluong(card.getSoluong() + 1);
@@ -206,7 +233,8 @@ public class detail extends AppCompatActivity {
                     ListCard card = new ListCard(idProduct, 1);
                     databaseReferenceUser.child(String.valueOf(i)).setValue(card);
                 }
-                Toast.makeText(detail.this, "" + listCards.size(), Toast.LENGTH_SHORT).show();
+                customProgressDialog.dismiss();
+                Toast.makeText(detail.this, "Đã thêm thành công sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -221,7 +249,7 @@ public class detail extends AppCompatActivity {
         name.setText(sanPham.getName());
         mota.setText(sanPham.getMota());
         dongia.setText((new FormatVND(String.valueOf(sanPham.getDongia())).getVND()));
-        soluong.setText("Số lượng: " + String.valueOf(sanPham.getSoluong()));
+        soluong.setText("Số lượng: " + sanPham.getSoluong());
         PRODUCT_IMAGE_USER_REF.child(sanPham.getIdshop()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -240,7 +268,6 @@ public class detail extends AppCompatActivity {
                 if (drawable != null) {
                     Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
                     image2.setImageBitmap(bitmap);
-                } else {
                 }
             }
         });
@@ -266,18 +293,6 @@ public class detail extends AppCompatActivity {
     private void getDetail() {
         Intent intent = getIntent();
         sanPham =  (SanPham) intent.getSerializableExtra("SanPham");
-    }
-
-    private void onClick() {
-        frame_vaogiohang.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), GioHang.class))
-        );
-
-        imageView_trove.setOnClickListener(view ->
-                getOnBackPressedDispatcher().onBackPressed()
-        );
-        findViewById(R.id.f_giohang).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), GioHang.class)));
-        findViewById(R.id.muangay).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), activity_thanhtoan.class)));
     }
 
     private void onClickGridView() {
@@ -347,7 +362,21 @@ public class detail extends AppCompatActivity {
             }
         });
     }
+
+    private void onClick() {
+        frame_vaogiohang.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), GioHang.class))
+        );
+
+        imageView_trove.setOnClickListener(view ->
+                getOnBackPressedDispatcher().onBackPressed()
+        );
+        findViewById(R.id.f_giohang).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), GioHang.class)));
+        findViewById(R.id.muangay).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), activity_thanhtoan.class)));
+        linear_muangay.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), activity_trangchu.class)));
+    }
     private void anhXa(){
+        customProgressDialog = new CustomProgressDialog(this);
         gridView = (ExpandableHeightGridView) findViewById(R.id.listSanPham);
         gridView.setExpanded(true);
         gridViewComment = (ExpandableHeightGridView) findViewById(R.id.gridComment);
@@ -355,7 +384,6 @@ public class detail extends AppCompatActivity {
         linear_muangay = findViewById(R.id.f_muasam);
         frame_vaogiohang = findViewById(R.id.img_giohang);
         imageView_trove = findViewById(R.id.img_trove);
-        imageView_likeBL = findViewById(R.id.btnlike);
         linear_xemshop = findViewById(R.id.xemshop);
         name = findViewById(R.id.namePrd);
         mota = findViewById(R.id.mota);

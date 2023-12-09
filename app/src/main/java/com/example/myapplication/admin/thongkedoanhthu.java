@@ -8,9 +8,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.myapplication.R;
-import com.example.myapplication.admin.activity_quanlybaidang;
-import com.example.myapplication.admin.thongke;
-import com.example.myapplication.detail_shop;
 
 public class thongkedoanhthu extends AppCompatActivity {
     private LinearLayout tknx, qlbaidang, dangbai;

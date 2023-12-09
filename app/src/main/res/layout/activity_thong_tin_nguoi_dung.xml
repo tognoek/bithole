@@ -117,8 +117,10 @@
             android:background="@color/white"
             android:visibility="gone"
             android:hint="Tên người dùng"
+            android:inputType="text"
             android:layout_marginTop="1dp"/>
         <RelativeLayout
+            android:id="@+id/relativeEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
@@ -139,7 +141,7 @@
                 android:layout_centerVertical="true"
                 android:paddingEnd="5dp"
                 android:textColor="#A6A6A6"
-                android:text="Thiết lập ngay"
+                android:text="Xem"
                 />
 
             <ImageView
@@ -147,6 +149,15 @@
                 style="@style/setting_line" />
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/editemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:background="@color/white"
+            android:visibility="gone"
+            android:hint="Email"
+            android:layout_marginTop="1dp"/>
         <RelativeLayout
             android:id="@+id/gioitinh"
             android:layout_width="wrap_content"
@@ -269,6 +280,7 @@
             android:inputType="phone"
             android:layout_marginTop="1dp"/>
         <RelativeLayout
+            android:id="@+id/rlpassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
@@ -280,12 +292,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Liên kết tài khoản"
+                android:text="Đổi mật khẩu"
                 android:textSize="18dp" />
 
             <ImageView style="@style/setting_line" />
         </RelativeLayout>
-            <androidx.appcompat.widget.AppCompatButton
+        <EditText
+            android:id="@+id/editpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:background="@color/white"
+            android:visibility="gone"
+            android:hint="Mật khẩu mới"
+            android:inputType="textPassword"
+            android:layout_marginTop="1dp"/>
+        <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnluu"
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"

@@ -24,9 +24,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.thuvien.CustomProgressDialog;
 import com.example.myapplication.thuvien.PublicFunciton;
 import com.example.myapplication.entity.User;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -46,18 +49,19 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final long ONE_YEAR_MILISECONDS = 31536000000L;
-    private RelativeLayout relativeLayout_tenuser, relativeLayout_gioitinh, relativeLayout_sdt;
-    private EditText editText_tenuser, editText_sdt;
+    private RelativeLayout relativeLayout_tenuser, relativeLayout_gioitinh, relativeLayout_sdt, relativeEmail, rlpassword;
+    private EditText editText_tenuser, editText_sdt, editpassword;
     private Button button_luu;
     private RadioButton radioButton_gioitinh, radioButton_gioitinh1;
     private RadioGroup radioGroup;
     private ImageView imageView_trove, imageView_user, imageView_calendar;
-    private TextView textView_tenuserBandau, textView_ngaysinh, textView_sdt;
+    private TextView textView_tenuserBandau, textView_ngaysinh, textView_sdt, editemail;
     private DatePickerDialog datePickerDialog;
     private static final DatabaseReference USER_DATABASE_REF = FirebaseDatabase.getInstance().getReference("User");
-
+    private User userDetail;
     private int currentBirthday;
-    Uri anhsanpham;
+    private Uri anhsanpham;
+    private CustomProgressDialog customProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,18 +106,22 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
             }
         });
         editText_tenuser.setText(PublicFunciton.getNameUser());
+        editemail.setText(PublicFunciton.getEmailUser());
         USER_DATABASE_REF.child(PublicFunciton.getIdUser()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                textView_tenuserBandau.setText(getNameUser());
-                setBirthday(null, user.getNgaysinh());
-                int length = user.getSdt().length();
-                if (length > 3)
-                    textView_sdt.setText("*".repeat(length - 3).concat(user.getSdt().substring(length - 3)));
+                userDetail = snapshot.getValue(User.class);
+                textView_tenuserBandau.setText(PublicFunciton.getNameUser());
+                assert userDetail != null;
+                setBirthday(null, userDetail.getNgaysinh());
+                int length = userDetail.getSdt().length();
+                if (length > 3){
+                    textView_sdt.setText(userDetail.getSdt().replaceAll("^\\d{6}", "******"));
+                }
+//                    textView_sdt.setText("*".repeat(length - 3).concat(user.getSdt().substring(length - 3)));
                 else
-                    textView_sdt.setText(user.getSdt());
-                if (user.getGioitinh())
+                    textView_sdt.setText(userDetail.getSdt());
+                if (userDetail.getGioitinh())
                     radioButton_gioitinh.setChecked(true);
                 else
                     radioButton_gioitinh1.setChecked(true);
@@ -123,6 +131,7 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
 
             }
         });
+        Log.d("pushDetails", "pushDetails: True");
 
 
     }
@@ -165,6 +174,10 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
         relativeLayout_tenuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editText_sdt.setVisibility(View.GONE);
+                editemail.setVisibility(View.GONE);
+                radioGroup.setVisibility(View.GONE);
+                editpassword.setVisibility(View.GONE);
                 if(editText_tenuser.getVisibility() == View.VISIBLE){
                     editText_tenuser.setVisibility(View.GONE);
                 }
@@ -174,9 +187,46 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
                 }
             }
         });
+
+        rlpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText_sdt.setVisibility(View.GONE);
+                editText_tenuser.setVisibility(View.GONE);
+                radioGroup.setVisibility(View.GONE);
+                editemail.setVisibility(View.GONE);
+                if(editpassword.getVisibility() == View.VISIBLE){
+                    editpassword.setVisibility(View.GONE);
+                }
+                else
+                {
+                    editpassword.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        relativeEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText_sdt.setVisibility(View.GONE);
+                editText_tenuser.setVisibility(View.GONE);
+                radioGroup.setVisibility(View.GONE);
+                editpassword.setVisibility(View.GONE);
+                if(editemail.getVisibility() == View.VISIBLE){
+                    editemail.setVisibility(View.GONE);
+                }
+                else
+                {
+                    editemail.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         relativeLayout_gioitinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editText_sdt.setVisibility(View.GONE);
+                editText_tenuser.setVisibility(View.GONE);
+                editemail.setVisibility(View.GONE);
+                radioGroup.setVisibility(View.GONE);
                 if(radioGroup.getVisibility() == View.VISIBLE){
                     radioGroup.setVisibility(View.GONE);
                 }
@@ -189,6 +239,10 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
         relativeLayout_sdt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editText_tenuser.setVisibility(View.GONE);
+                radioGroup.setVisibility(View.GONE);
+                editemail.setVisibility(View.GONE);
+                editpassword.setVisibility(View.GONE);
                 if(editText_sdt.getVisibility() == View.VISIBLE){
                     editText_sdt.setVisibility(View.GONE);
                 }
@@ -217,12 +271,60 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
             imageView_user.setImageURI(selectImage);
         }
     }
+    private void putDetailUser(){
+        if (!editpassword.getText().toString().trim().isEmpty()){
+            FirebaseUser userF = FirebaseAuth.getInstance().getCurrentUser();
+            String newPassword = editpassword.getText().toString().trim();
+
+            assert userF != null;
+            userF.updatePassword(newPassword)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Log.d("UpdatePassword", "User password updated.");
+                            }
+                            else{
+                                Log.d("UpdatePassword", "Fail.");
+                            }
+                        }
+                    });
+        }
+        else{
+            Log.d("UpdatePassword", "User password Fail.");
+        }
+        String imageUrl = PublicFunciton.getIdUser();
+        String ten = editText_tenuser.getText().toString().trim();
+        boolean gioitinh = radioButton_gioitinh.isChecked();
+        String sdt = editText_sdt.getText().toString().trim();
+        if (sdt.length() < 1){
+            sdt = userDetail.getSdt();
+        }
+        int ngaySinh = currentBirthday;
+        String idUser = PublicFunciton.getIdUser();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser fUser = firebaseAuth.getCurrentUser();
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName(ten)
+                .build();
+        if (fUser != null){
+            fUser.updateProfile(profileUpdates);
+        }
+        User user = new User(imageUrl, ten, gioitinh, sdt, ngaySinh);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference userRef = database.getReference("User");
+        userRef.child(idUser).setValue(user);
+        customProgressDialog.dismiss();
+        Toast.makeText(ThongTinNguoiDungActivity.this, "Đã cập nhật thông tin", Toast.LENGTH_SHORT).show();
+    }
     public void setValueFirebase() {
+        customProgressDialog = new CustomProgressDialog(this);
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
         String imageName = PublicFunciton.getIdUser();
         StorageReference imageRef = storageRef.child("images/" + imageName);
         Log.d("imageName", "Name Image: " + anhsanpham);
+        customProgressDialog.show();
         if (anhsanpham != null){
             imageRef.putFile(anhsanpham)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -231,61 +333,38 @@ public class ThongTinNguoiDungActivity extends AppCompatActivity {
                             imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri downloadUri) {
-                                    String imageUrl = PublicFunciton.getIdUser();
-                                    String ten = editText_tenuser.getText().toString().trim();
-                                    boolean gioitinh = radioButton_gioitinh.isChecked();
-                                    String sdt = editText_sdt.getText().toString();
-                                    int ngaySinh = currentBirthday;
-                                    String idUser = PublicFunciton.getIdUser();
-                                    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                                    FirebaseUser fUser = firebaseAuth.getCurrentUser();
-                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                            .setDisplayName(ten)
-                                            .build();
-                                    if (fUser != null){
-                                        fUser.updateProfile(profileUpdates);
-                                    }
-                                    User user = new User(imageUrl, ten, gioitinh, sdt, ngaySinh);
-                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                    DatabaseReference userRef = database.getReference("User");
-                                    userRef.child(idUser).setValue(user);
-                                    Toast.makeText(ThongTinNguoiDungActivity.this, "Đã cập nhật thông tin", Toast.LENGTH_SHORT).show();
+                                    putDetailUser();
                                 }
                             });
                         }
                     });
         }
         else{
-            String imageUrl = PublicFunciton.getIdUser();
-            String ten = editText_tenuser.getText().toString().trim();
-            boolean gioitinh = radioButton_gioitinh.isChecked();
-            String sdt = editText_sdt.getText().toString();
-            int ngaySinh = currentBirthday;
-            String idUser = PublicFunciton.getIdUser();
-            FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-            FirebaseUser fUser = firebaseAuth.getCurrentUser();
-            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                    .setDisplayName(ten)
-                    .build();
-            if (fUser != null){
-                fUser.updateProfile(profileUpdates);
-            }
-            User user = new User(imageUrl, ten, gioitinh, sdt, ngaySinh);
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference userRef = database.getReference("User");
-            userRef.child(idUser).setValue(user);
-            Toast.makeText(ThongTinNguoiDungActivity.this, "Đã cập nhật thông tin", Toast.LENGTH_SHORT).show();
+            putDetailUser();
         }
+        editText_tenuser.setVisibility(View.GONE);
+        radioGroup.setVisibility(View.GONE);
+        editemail.setVisibility(View.GONE);
+        editpassword.setVisibility(View.GONE);
+        editText_sdt.setVisibility(View.GONE);
+//        goBack();
 
+    }
 
+    private void goBack() {
+        startActivity(new Intent(ThongTinNguoiDungActivity.this, NguoiDungActivity.class));
     }
 
     private void anhXa(){
         relativeLayout_tenuser = findViewById(R.id.tenuser);
         relativeLayout_gioitinh = findViewById(R.id.gioitinh);
+        relativeEmail = findViewById(R.id.relativeEmail);
         relativeLayout_sdt = findViewById(R.id.sdt);
+        rlpassword = findViewById(R.id.rlpassword);
         editText_tenuser = findViewById(R.id.edittenuser);
         editText_sdt = findViewById(R.id.editsdt);
+        editemail = findViewById(R.id.editemail);
+        editpassword = findViewById(R.id.editpassword);
         imageView_trove = findViewById(R.id.img_trove);
         imageView_user = findViewById(R.id.imageuser);
         button_luu = findViewById(R.id.btnluu);

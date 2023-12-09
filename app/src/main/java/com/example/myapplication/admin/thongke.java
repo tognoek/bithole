@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 
 import com.example.myapplication.R;
-import com.example.myapplication.detail_shop;
 
 public class thongke extends AppCompatActivity {
     private LinearLayout linear_dangbai;

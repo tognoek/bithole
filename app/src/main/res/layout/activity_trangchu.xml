@@ -265,78 +265,109 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="8dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp">
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp">
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:layout_margin="5dp"
                         android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/aonam"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            app:cardCornerRadius="45dp"
+                            android:layout_height="65dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/donam_trangchu"/>
+                        </androidx.cardview.widget.CardView>
                         <TextView
-                            android:layout_width="57dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Nam"
                             android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:layout_margin="5dp"
                         android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/aonuu"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            app:cardCornerRadius="50dp"
+                            android:layout_height="65dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/donu_trangchu"/>
+                        </androidx.cardview.widget.CardView>
                         <TextView
-                            android:layout_width="57dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Nữ"
                             android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:layout_margin="5dp"
                         android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/treem"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            app:cardCornerRadius="50dp"
+                            android:layout_height="65dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/dotreem_trangchu"/>
+                        </androidx.cardview.widget.CardView>
                         <TextView
-                            android:layout_width="57dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Trẻ em"
                             android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:layout_margin="5dp"
                         android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/anhphukien"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            app:cardCornerRadius="50dp"
+                            android:layout_height="65dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/phukien_trangchu"/>
+                        </androidx.cardview.widget.CardView>
                         <TextView
-                            android:layout_width="57dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Phụ kiện"
                             android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="5dp"
                         android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/trangsuc1"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            app:cardCornerRadius="50dp"
+                            android:layout_height="65dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/trangsuc_trangchu"/>
+                        </androidx.cardview.widget.CardView>
                         <TextView
-                            android:layout_width="63dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Trang sức"
                             android:gravity="center"/>
@@ -347,79 +378,109 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="8dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp">
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp">
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:layout_margin="5dp"
                         android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#D9D9D9"
-                            android:src="@drawable/aophong1"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            app:cardCornerRadius="45dp"
+                            android:layout_height="65dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/aophong_trangchu"/>
+                        </androidx.cardview.widget.CardView>
                         <TextView
-                            android:layout_width="60dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Áo phông"
                             android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:layout_margin="5dp"
                         android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/aosomi"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            app:cardCornerRadius="50dp"
+                            android:layout_height="65dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/somi_trangchu"/>
+                        </androidx.cardview.widget.CardView>
                         <TextView
-                            android:layout_width="57dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Sơ mi"
                             android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:layout_margin="5dp"
                         android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/quanjean1"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            app:cardCornerRadius="50dp"
+                            android:layout_height="65dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/quajnean_trangchu"/>
+                        </androidx.cardview.widget.CardView>
                         <TextView
-                            android:layout_width="62dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Quần jean"
                             android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:layout_margin="5dp"
                         android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/quanvai"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            app:cardCornerRadius="50dp"
+                            android:layout_height="65dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/quanvai_trangchu"/>
+                        </androidx.cardview.widget.CardView>
                         <TextView
-                            android:layout_width="57dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Quần Vải"
+                            android:text="Quẩn vải"
                             android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="5dp"
                         android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/giay"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            app:cardCornerRadius="50dp"
+                            android:layout_height="65dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/giay_trangchu"/>
+                        </androidx.cardview.widget.CardView>
                         <TextView
-                            android:layout_width="63dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Giày"
                             android:gravity="center"/>
