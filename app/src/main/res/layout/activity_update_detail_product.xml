@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.UpdateDetailProduct">
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pink"
+        android:padding="5dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_trove"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingEnd="10dp"
+            app:srcCompat="@drawable/s_trove" />
+
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/img_trove"
+            android:text="Sửa thông tin sản phẩm"
+            android:textColor="@color/black"
+            android:textSize="23dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#E8E8E8"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/textthongtinct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="THÔNG TIN CHI TIẾT"
+                    android:textSize="18dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/s_dash_rectangle"
+                android:padding="10dp">
+
+
+                <ImageView
+                    android:id="@+id/imageview"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:src="@drawable/imagedefault" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#E8E8E8"
+                android:padding="10dp"
+                android:text="TIÊU ĐỀ VÀ MÔ TẢ CHI TIẾT"
+                android:textSize="15dp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp">
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/textdanhmuc"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/s_radius_textbox"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Danh mục"
+                    android:textSize="18dp"
+                    android:layout_marginStart="10dp" />
+                <Spinner
+                    android:id="@+id/danhmuc"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height="wrap_content">
+                </Spinner>
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/s_radius_textbox"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp">
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:inputType="text"
+                        android:hint="Tiêu đề bài đăng"
+                        android:background="@null"/>
+                </LinearLayout>
+
+            </FrameLayout>
+            <RelativeLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textdanhmuc"
+                android:layout_margin="10dp"
+                android:background="@drawable/s_radius_textbox"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp">
+
+                <LinearLayout
+                    android:id="@+id/textmota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp">
+
+                    <EditText
+                        android:id="@+id/mota"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:hint="Mô tả sản phẩm"
+                        android:background="@null"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <FrameLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textdanhmuc"
+                android:layout_margin="10dp"
+                android:background="@drawable/s_radius_textbox"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp">
+
+                    <EditText
+                        android:id="@+id/donGia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Giá bán"
+                        android:inputType="number"
+                        android:background="@null"/>
+                </LinearLayout>
+
+            </FrameLayout>
+            <FrameLayout
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textdanhmuc"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/s_radius_textbox"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp">
+
+                    <EditText
+                        android:id="@+id/soluong"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Số lượng"
+                        android:inputType="number"
+                        android:background="@null"/>
+                </LinearLayout>
+            </FrameLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center_horizontal">
+                <TextView
+                    android:id="@+id/push"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/s_radius_textbox"
+                    android:backgroundTint="#F09B59"
+                    android:layout_marginStart="5dp"
+                    android:padding="10dp"
+                    android:text="CẬP NHẬT"
+                    android:textColor="@color/white"
+                    android:clickable="true"
+                    android:focusable="true"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

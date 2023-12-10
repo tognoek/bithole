@@ -1,6 +1,9 @@
 package com.example.myapplication.entity;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class SanPham implements Serializable {
     private int id;
@@ -88,5 +91,17 @@ public class SanPham implements Serializable {
 
     public void setIddanhmuc(String iddanhmuc) {
         this.iddanhmuc = iddanhmuc;
+    }
+
+    public Map<String, Object> toMap(){
+        Map<String, Object> res = new HashMap<>();
+        res.put("name", this.getName());
+        res.put("mote", this.getMota());
+        res.put("dongia", this.getDongia());
+        res.put("soluong", this.getSoluong());
+        res.put("hinhanh", this.getHinhanh());
+        res.put("idshop", this.getIdshop());
+        res.put("iddanhmuc", this.getIddanhmuc());
+        return res;
     }
 }

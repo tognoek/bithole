@@ -31,7 +31,7 @@ public class thongke extends AppCompatActivity {
 
         linear_qlbaidang = findViewById(R.id.f_qlbaidang);
         linear_qlbaidang.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), thongke.class))
+                startActivity(new Intent(getApplicationContext(), activity_quanlybaidang.class))
         );
         findViewById(R.id.icontrove).setOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
     }
