@@ -14,16 +14,14 @@
         android:background="@color/pink">
         <ImageView
             android:id="@+id/trove"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_centerVertical="true"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:src="@drawable/s_trove"
             android:layout_gravity="center"
             android:layout_marginLeft="5dp">
         </ImageView>
         <TextView
             android:layout_width="wrap_content"
-            android:paddingTop="5dp"
             android:layout_height="wrap_content"
             android:text="ƯU ĐÃI CỦA SHOP"
             android:layout_centerHorizontal="true"
@@ -37,7 +35,8 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_gravity="center|right"
-            android:src="@drawable/hvt_vegg">
+            android:src="@drawable/hvt_vegg"
+            android:layout_marginRight="5dp">
         </ImageView>
     </RelativeLayout>
     <LinearLayout
@@ -51,9 +50,10 @@
             android:orientation="horizontal"
             android:layout_marginTop="5dp">
             <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:src="@drawable/hvt_gift_ic">
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/hvt_gift_ic"
+                android:layout_marginLeft="5dp">
             </ImageView>
             <TextView
                 android:layout_width="wrap_content"
@@ -77,10 +77,10 @@
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="15dp">
+                android:layout_weight="1"
+                android:orientation="vertical">
                 <ImageView
                     android:layout_width= "60dp"
                     android:layout_height="65dp"
@@ -91,11 +91,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="Con số may mắn">
                 </TextView>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginLeft="20dp">
@@ -109,12 +111,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
                     android:text="Vòng quay may mắn">
                 </TextView>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_marginLeft="20dp">
                 <ImageView
@@ -127,6 +132,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="Săn mã giảm giá">
                 </TextView>
             </LinearLayout>
@@ -182,6 +188,7 @@
                         android:layout_gravity="center">
                     </ImageView>
                     <EditText
+                        android:id="@+id/text1"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
@@ -210,6 +217,7 @@
                         android:layout_gravity="center">
                     </ImageView>
                     <EditText
+                        android:id="@+id/text2"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
@@ -237,6 +245,7 @@
                         android:layout_gravity="center">
                     </ImageView>
                     <EditText
+                        android:id="@+id/text3"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
@@ -264,6 +273,7 @@
                         android:layout_gravity="center">
                     </ImageView>
                     <EditText
+                        android:id="@+id/text4"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
@@ -290,6 +300,7 @@
                         android:layout_gravity="center">
                     </ImageView>
                     <EditText
+                        android:id="@+id/text5"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
@@ -316,15 +327,29 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp">
             </TextView>
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lượt chọn số của bạn còn: 1"
-                android:layout_marginTop="10dp"
-                android:textSize="17sp"
-                android:gravity="center"
-                android:textStyle="bold">
-            </TextView>
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lượt chọn số của bạn còn: "
+                    android:layout_marginTop="10dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold">
+                </TextView>
+                <TextView
+                    android:id="@+id/soLuot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:layout_marginTop="10dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -376,6 +401,7 @@
             </TextView>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/themLuot"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
