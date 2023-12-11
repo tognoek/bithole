@@ -40,7 +40,7 @@ public class minigame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_minigame);
         tvCountdown = findViewById(R.id.tvCountdown);
-        startTime();
+
         trove = (ImageView) findViewById(R.id.trove);
         txtthoigian = findViewById(R.id.thoigian);
         txt1 = findViewById(R.id.text1);
@@ -64,12 +64,12 @@ public class minigame extends AppCompatActivity {
         targetTime.set(Calendar.MILLISECOND, 0);
 //        targetTime.add(Calendar.DAY_OF_MONTH, 1); // Thêm 1 ngày
 
-        Date tomorrow = calendar.getTime();
+        Date today = calendar.getTime();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        String formattedTomorrow = dateFormat.format(tomorrow);
+        String formattedToday = dateFormat.format(today);
 
-        txtthoigian.setText("Phiên quay ngày "+formattedTomorrow);
+        txtthoigian.setText("Phiên quay ngày "+formattedToday);
 
 
         trove.setOnClickListener(new View.OnClickListener() {
@@ -199,7 +199,7 @@ public class minigame extends AppCompatActivity {
             }
         });
         congChuoi();
-
+        startTime();
 
 
     }
@@ -213,7 +213,7 @@ public class minigame extends AppCompatActivity {
         targetTime.set(Calendar.MINUTE, 0);
         targetTime.set(Calendar.SECOND, 0);
         targetTime.set(Calendar.MILLISECOND, 0);
-//        targetTime.add(Calendar.DAY_OF_MONTH, 1); // Thêm 1 ngày
+        targetTime.add(Calendar.DAY_OF_MONTH, 1); // Thêm 1 ngày
 
         // Tính thời gian còn lại từ thời điểm hiện tại đến 12 giờ trưa ngày mai
         long countdownMillis = targetTime.getTimeInMillis() - currentTime.getTimeInMillis();
