@@ -30,6 +30,13 @@ public class FormatTime {
 
         return  time[2] + " Tháng " + time[1] + " " + time[0];
     }
+    public String getTimeTwo(){
+        String[] time = new String[3];
+        time[0] = "" + this.time.charAt(0) + this.time.charAt(1) + this.time.charAt(2) + this.time.charAt(3);
+        time[1] = "" + this.time.charAt(4) + this.time.charAt(5);
+        time[2] = "" + this.time.charAt(6) + this.time.charAt(7);
+        return  time[2] + " Tháng " + time[1] + " " + time[0];
+    }
 
     public int getTimeInteger(){
         String returnStringTime = "";

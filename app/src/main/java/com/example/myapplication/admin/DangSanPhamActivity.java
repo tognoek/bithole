@@ -20,7 +20,6 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.AdapterDanhMuc;
 import com.example.myapplication.entity.DanhMuc;
-import com.example.myapplication.shop.detail_shop;
 import com.example.myapplication.thuvien.CustomProgressDialog;
 import com.example.myapplication.thuvien.PublicFunciton;
 import com.example.myapplication.entity.SanPham;
@@ -28,6 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
@@ -161,8 +161,12 @@ public class DangSanPhamActivity extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                sanPham.setId(Integer.parseInt(String.valueOf(snapshot.getChildrenCount())) + 1);
-                Log.d("Size listSanPham", "Size: " + snapshot.getChildrenCount());
+                sanPham.setId(1);
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    SanPham sanPhamLast = postSnapshot.getValue(SanPham.class);
+                    sanPham.setId(sanPhamLast.getId() + 1);
+                }
+                Log.d("Size listSanPham", "Size: " + sanPham.getId());
                 sanPham.setName(name);
                 sanPham.setMota(mota);
                 sanPham.setDongia(dongia);

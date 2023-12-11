@@ -9,6 +9,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class PublicFunciton {
@@ -42,5 +44,10 @@ public class PublicFunciton {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         return user.getEmail();
+    }
+    public static String getDay(){
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return currentDateTime.format(formatter);
     }
 }

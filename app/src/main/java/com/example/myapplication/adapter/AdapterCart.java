@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,9 +20,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Interface.OnItemChangeListener;
 import com.example.myapplication.Interface.OnItemCheckedChangeListener;
 import com.example.myapplication.R;
 import com.example.myapplication.entity.Cart;
+import com.example.myapplication.entity.ListCard;
 import com.example.myapplication.thuvien.FormatVND;
 import com.example.myapplication.thuvien.PublicFunciton;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,6 +47,7 @@ public class AdapterCart extends ArrayAdapter {
     private Runnable onDataSetChanged;
 
     private OnItemCheckedChangeListener onItemCheckedChangeListener;
+    private OnItemChangeListener onItemChangeListener;
     private final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("GioHang").child(PublicFunciton.getIdUser());
 
     public AdapterCart(@NonNull Activity context, int idLayout, ArrayList<Cart> myList) {
@@ -55,6 +59,14 @@ public class AdapterCart extends ArrayAdapter {
 
     public void setOnItemCheckedChangeListener(OnItemCheckedChangeListener listener) {
         this.onItemCheckedChangeListener = listener;
+    }
+
+    public OnItemChangeListener getOnItemChangeListener() {
+        return onItemChangeListener;
+    }
+
+    public void setOnItemChangeListener(OnItemChangeListener onItemChangeListener) {
+        this.onItemChangeListener = onItemChangeListener;
     }
 
     @NonNull
@@ -76,6 +88,9 @@ public class AdapterCart extends ArrayAdapter {
         ImageView logo = convertView.findViewById(R.id.logoShop);
         ImageView xoa = convertView.findViewById(R.id.img_xoa);
         CheckBox check = convertView.findViewById(R.id.checkbox);
+        LinearLayout shop = convertView.findViewById(R.id.shop);
+        LinearLayout sanpham = convertView.findViewById(R.id.sanpham);
+
         xoa.setOnClickListener(v -> removeCart(position));
 
         check.setChecked(itemnew.isCheck());
@@ -126,6 +141,20 @@ public class AdapterCart extends ArrayAdapter {
             }
         });
 
+        shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemChangeListener.onItemChanged(position, 1);
+            }
+        });
+
+        sanpham.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemChangeListener.onItemChanged(position, 2);
+            }
+        });
+
         return convertView;
     }
 
@@ -171,5 +200,36 @@ public class AdapterCart extends ArrayAdapter {
             }
         }
         return returnSum;
+    }
+
+    public int soLuong(){
+        int returnSum = 0;
+        for (int i = 0 ; i < myList.size(); i++){
+            Cart itemCart = myList.get(i);
+            if (itemCart.isCheck()){
+                returnSum = returnSum + itemCart.getSoluong();
+            }
+        }
+        return returnSum;
+    }
+    public ArrayList<Integer> getListCard(){
+        ArrayList<Integer> listCards = new ArrayList<>();
+        for (int i = 0; i < myList.size(); i++){
+            Cart itemCart = myList.get(i);
+            if (itemCart.isCheck()){
+                listCards.add(itemCart.getId());
+            }
+        }
+        return listCards;
+    }
+    public ArrayList<Integer> getListSoLuong(){
+        ArrayList<Integer> listCards = new ArrayList<>();
+        for (int i = 0; i < myList.size(); i++){
+            Cart itemCart = myList.get(i);
+            if (itemCart.isCheck()){
+                listCards.add(itemCart.getSoluong());
+            }
+        }
+        return listCards;
     }
 }

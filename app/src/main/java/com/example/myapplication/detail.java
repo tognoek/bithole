@@ -27,6 +27,7 @@ import com.example.myapplication.adapter.AdapterComment;
 import com.example.myapplication.adapter.AdapterSanPham;
 import com.example.myapplication.entity.ComMent;
 import com.example.myapplication.shop.detail_shop;
+import com.example.myapplication.thanhtoan.activity_thanhtoan;
 import com.example.myapplication.thuvien.CustomProgressDialog;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
 import com.example.myapplication.thuvien.FormatTime;
@@ -144,15 +145,10 @@ public class detail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String noidung= binhluan.getText().toString().trim();
-                LocalDateTime currentDateTime = LocalDateTime.now();
-
-                // Format the date and time (optional)
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                String formattedDateTime = currentDateTime.format(formatter);
+                String formattedDateTime = PublicFunciton.getDay();
                 String time = new FormatTime(formattedDateTime).getTime();
                 ComMent comMent = new ComMent(PublicFunciton.getNameUser(), noidung, PublicFunciton.getIdUser(), time);
                 addComMent(comMent);
-
                 binhluan.setText("");
             }
         });
@@ -216,7 +212,6 @@ public class detail extends AppCompatActivity {
         databaseReferenceUser.addListenerForSingleValueEvent (new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int i = 0;
                 boolean Update = false;
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     ListCard card = postSnapshot.getValue(ListCard.class);
@@ -225,13 +220,12 @@ public class detail extends AppCompatActivity {
                     if (card.getId() == idProduct && !Update){
                         Update = true;
                         card.setSoluong(card.getSoluong() + 1);
-                        databaseReferenceUser.child(String.valueOf(i)).setValue(card);
+                        databaseReferenceUser.child(String.valueOf(card.getId())).setValue(card);
                     }
-                    i = i + 1;
                 }
                 if (!Update){
                     ListCard card = new ListCard(idProduct, 1);
-                    databaseReferenceUser.child(String.valueOf(i)).setValue(card);
+                    databaseReferenceUser.child(String.valueOf(card.getId())).setValue(card);
                 }
                 customProgressDialog.dismiss();
                 Toast.makeText(detail.this, "Đã thêm thành công sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();

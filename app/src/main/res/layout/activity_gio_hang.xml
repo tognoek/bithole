@@ -54,6 +54,32 @@
                 android:textColor="#EF1010"/>
         </RelativeLayout>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/khongsanpham"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giỏ hàng bạn không có gì"
+            android:textSize="19dp"
+            android:layout_marginBottom="20dp"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo"/>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -74,26 +100,6 @@
                 android:layout_height="wrap_content">
 
             </com.example.myapplication.thuvien.ExpandableHeightGridView>
-            <LinearLayout
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/lht_round"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/lht_img_8"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:text="Phiếu giảm giá Bithole"
-                    android:textStyle="bold"
-                    android:paddingLeft="5dp"
-                    android:layout_gravity="center"/>
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
@@ -128,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="18dp"
-                android:text="340.000đ"
+                android:text=""
                 android:textSize="18dp"
                 android:textStyle="bold" />
 

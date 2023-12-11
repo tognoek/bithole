@@ -15,19 +15,21 @@ import androidx.annotation.Nullable;
 
 import com.example.myapplication.R;
 import com.example.myapplication.entity.SanPham;
+import com.example.myapplication.entity.SanPhamLichSu;
+import com.example.myapplication.thuvien.FormatTime;
 import com.example.myapplication.thuvien.FormatVND;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AdapterSanPham extends ArrayAdapter {
+public class AdapterLichSu extends ArrayAdapter {
 
     Activity context;
     int idLayout;
-    ArrayList<SanPham> myList;
+    ArrayList<SanPhamLichSu> myList;
 
 
-    public AdapterSanPham(@NonNull Activity context, int idLayout, ArrayList<SanPham> myList) {
+    public AdapterLichSu(@NonNull Activity context, int idLayout, ArrayList<SanPhamLichSu> myList) {
         super(context, idLayout, myList);
         this.context = context;
         this.idLayout = idLayout;
@@ -39,7 +41,7 @@ public class AdapterSanPham extends ArrayAdapter {
             parent) {
         LayoutInflater myInflactor = context.getLayoutInflater();
         convertView = myInflactor.inflate(idLayout,null);
-        SanPham itemnew = myList.get(position);
+        SanPhamLichSu itemnew = myList.get(position);
 
 
         //Anh Xa
@@ -47,11 +49,13 @@ public class AdapterSanPham extends ArrayAdapter {
         TextView ten = convertView.findViewById(R.id.tensp);
         TextView dongia = convertView.findViewById(R.id.dongia);
         TextView soluong = convertView.findViewById(R.id.soluong);
+        TextView date = convertView.findViewById(R.id.date);
         ImageView hinhAnhImageView = convertView.findViewById(R.id.hinhanh);
 
         ten.setText(itemnew.getName());
         dongia.setText(new FormatVND(String.valueOf(itemnew.getDongia())).getVND());
-        soluong.setText("Số lương: " + itemnew.getSoluong());
+        soluong.setText("Số lượng: " + itemnew.getSoluong());
+        date.setText(new FormatTime(String.valueOf(itemnew.getDate())).getTimeTwo());
 
         if (!itemnew.getHinhanh().equals("null"))
             PRODUCT_IMAGE_REF.child(itemnew.getHinhanh()).getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(hinhAnhImageView));

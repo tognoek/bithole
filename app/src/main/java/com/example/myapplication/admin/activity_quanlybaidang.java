@@ -91,23 +91,6 @@ public class activity_quanlybaidang extends AppCompatActivity implements OnItemC
         });
     }
 
-    private void oneClick() {
-        imageView_trove.setOnClickListener(view ->
-                getOnBackPressedDispatcher().onBackPressed()
-        );
-
-        linear_dangbai.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), DangSanPhamActivity.class))
-        );
-
-        linear_doanhthu.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), thongkedoanhthu.class))
-        );
-
-        linear_nhapxuat.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), thongke.class))
-        );
-    }
     @Override
     public void onItemChanged(int position, int check) {
         switch (check) {
@@ -121,6 +104,7 @@ public class activity_quanlybaidang extends AppCompatActivity implements OnItemC
                 Intent intent = new Intent(activity_quanlybaidang.this, UpdateDetailProduct.class);
                 intent.putExtra("SanPham", listSanPham.get(position));
                 startActivity(intent);
+                finish();
                 Log.d("check", "Value: " + check);
             }
             case 3 -> {
@@ -171,6 +155,23 @@ public class activity_quanlybaidang extends AppCompatActivity implements OnItemC
         childRemove.removeValue().addOnSuccessListener(v -> Toast.makeText(activity_quanlybaidang.this, "Đã xóa sán phẩm", Toast.LENGTH_SHORT).show());
     }
 
+    private void oneClick() {
+        imageView_trove.setOnClickListener(view ->
+                getOnBackPressedDispatcher().onBackPressed()
+        );
+
+        linear_dangbai.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), DangSanPhamActivity.class))
+        );
+
+        linear_doanhthu.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), thongkedoanhthu.class))
+        );
+
+        linear_nhapxuat.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), thongke.class))
+        );
+    }
     private void anhXa(){
         expandableHeightGridView = (ExpandableHeightGridView)findViewById(R.id.listSanPham);
         expandableHeightGridView.setExpanded(true);

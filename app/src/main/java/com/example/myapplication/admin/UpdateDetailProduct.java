@@ -227,7 +227,10 @@ public class UpdateDetailProduct extends AppCompatActivity {
         });
     }
     private void onClick(){
-        imageView_trove.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), activity_quanlybaidang.class)));
+        imageView_trove.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), activity_quanlybaidang.class));
+            finish();
+        });
     }
     private void anhXa(){
         filePath = null;

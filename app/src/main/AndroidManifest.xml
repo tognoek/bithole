@@ -16,6 +16,12 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".thanhtoan.thucThiThanhToan"
+            android:exported="false" />
+        <activity
+            android:name=".admin.taoVoucher"
+            android:exported="false" />
+        <activity
             android:name=".admin.UpdateDetailProduct"
             android:exported="false" />
         <activity
@@ -52,7 +58,7 @@
             android:name=".GioHang"
             android:exported="false" />
         <activity
-            android:name=".activity_thanhtoan"
+            android:name=".thanhtoan.activity_thanhtoan"
             android:exported="false" />
         <activity
             android:name=".admin.activity_quanlybaidang"

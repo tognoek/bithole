@@ -23,6 +23,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.Voucher;
 import com.example.myapplication.activity_trangchu;
 import com.example.myapplication.admin.DangSanPhamActivity;
+import com.example.myapplication.admin.taoVoucher;
 import com.example.myapplication.admin.thongkedoanhthu;
 import com.example.myapplication.minigame;
 import com.example.myapplication.select;
@@ -34,7 +35,7 @@ import com.squareup.picasso.Picasso;
 
 public class NguoiDungActivity extends AppCompatActivity {
 
-    private ImageView imageView_caidat, imageView_hotro, imageView_trove, imageView_giohang, image_user;
+    private ImageView imageView_caidat, imageView_hotro, imageView_trove, imageView_giohang, image_user, theodoi;
 
     private LinearLayout linear_trangchu, linear_danhmuc, linear_thongbao, linear_giohang, linear_vi, linear_lichsumua,
             linear_ttuser, linear_dangbai, linear_magiamgia, linear_minigame, linear_thongkedoanhthu;
@@ -141,6 +142,7 @@ public class NguoiDungActivity extends AppCompatActivity {
         button_dimuasam.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), select.class))
         );
+        theodoi.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), taoVoucher.class)));
     }
 
     private void anhXa(){
@@ -163,5 +165,6 @@ public class NguoiDungActivity extends AppCompatActivity {
         imageView_hotro = findViewById(R.id.img_hotro);
         imageView_caidat = findViewById(R.id.img_caidat);
         image_user = findViewById(R.id.circle_user);
+        theodoi = findViewById(R.id.newVoucher);
     }
 }

@@ -14,20 +14,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.myapplication.R;
-import com.example.myapplication.entity.SanPham;
+import com.example.myapplication.entity.VoucherItem;
 import com.example.myapplication.thuvien.FormatVND;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AdapterSanPham extends ArrayAdapter {
+public class AdapterVoucher extends ArrayAdapter {
 
     Activity context;
     int idLayout;
-    ArrayList<SanPham> myList;
+    ArrayList<VoucherItem> myList;
 
 
-    public AdapterSanPham(@NonNull Activity context, int idLayout, ArrayList<SanPham> myList) {
+    public AdapterVoucher(@NonNull Activity context, int idLayout, ArrayList<VoucherItem> myList) {
         super(context, idLayout, myList);
         this.context = context;
         this.idLayout = idLayout;
@@ -39,22 +39,20 @@ public class AdapterSanPham extends ArrayAdapter {
             parent) {
         LayoutInflater myInflactor = context.getLayoutInflater();
         convertView = myInflactor.inflate(idLayout,null);
-        SanPham itemnew = myList.get(position);
+        VoucherItem itemnew = myList.get(position);
 
 
         //Anh Xa
 
-        TextView ten = convertView.findViewById(R.id.tensp);
-        TextView dongia = convertView.findViewById(R.id.dongia);
-        TextView soluong = convertView.findViewById(R.id.soluong);
-        ImageView hinhAnhImageView = convertView.findViewById(R.id.hinhanh);
+        TextView name = convertView.findViewById(R.id.name);
+        TextView detail = convertView.findViewById(R.id.detail);
+//        ImageView hinhAnhImageView = convertView.findViewById(R.id.hinhanh);
 
-        ten.setText(itemnew.getName());
-        dongia.setText(new FormatVND(String.valueOf(itemnew.getDongia())).getVND());
-        soluong.setText("Số lương: " + itemnew.getSoluong());
+        name.setText(itemnew.getName());
+        detail.setText(itemnew.getMota());
 
-        if (!itemnew.getHinhanh().equals("null"))
-            PRODUCT_IMAGE_REF.child(itemnew.getHinhanh()).getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(hinhAnhImageView));
+//        if (!itemnew.getHinhanh().equals("null"))
+//            PRODUCT_IMAGE_REF.child(itemnew.getHinhanh()).getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(hinhAnhImageView));
 
         return convertView;
     }

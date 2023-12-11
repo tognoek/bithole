@@ -1,6 +1,8 @@
 package com.example.myapplication.entity;
 
-public class ListCard {
+import java.io.Serializable;
+
+public class ListCard implements Serializable {
     private int id;
     private int soluong;
 
