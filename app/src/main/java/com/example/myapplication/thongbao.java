@@ -5,16 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.ParcelUuid;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.myapplication.adapter.AdapterComment;
 import com.example.myapplication.adapter.AdapterThongBao;
 import com.example.myapplication.taikhoan.NguoiDungActivity;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
 import com.example.myapplication.entity.ThongBao;
+import com.example.myapplication.thuvien.PublicFunciton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,7 +36,7 @@ public class thongbao extends AppCompatActivity {
 
     private AdapterThongBao adapterThongBao;
 
-    private ArrayList<ThongBao> listThongbao = new ArrayList<>();
+    private ArrayList<ThongBao> listThongbao;
 
 
     @Override
@@ -41,14 +44,39 @@ public class thongbao extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thongbao);
 
+        AnhXa();
+        OnClick();
+
+        doDuLieuVaoAdapterThongBao();
         thongBao();
 
-        trangchu = (LinearLayout) findViewById(R.id.f_muasam);
-        danhmuc = (LinearLayout) findViewById(R.id.f_danhmuc);
-        giohang = (LinearLayout) findViewById(R.id.f_giohang);
-        thongtin = (LinearLayout) findViewById(R.id.f_toi);
-        gridViewThongbao = (ExpandableHeightGridView) findViewById(R.id.gridThongBao);
-        gridViewThongbao.setExpanded(true);
+    }
+    private void doDuLieuVaoAdapterThongBao() {
+        listThongbao = new ArrayList<>();
+        adapterThongBao= new AdapterThongBao(thongbao.this, R.layout.layout_thongbao, listThongbao);
+        gridViewThongbao.setAdapter(adapterThongBao);
+    }
+    private void thongBao() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("ThongBao").child(PublicFunciton.getIdUser());
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listThongbao.clear();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    ThongBao thongBao = postSnapshot.getValue(ThongBao.class);
+                    listThongbao.add(thongBao);
+                }
+               adapterThongBao.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(thongbao.this, "Fail", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void OnClick(){
         trangchu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,33 +108,12 @@ public class thongbao extends AppCompatActivity {
         findViewById(R.id.thongbao).setOnClickListener(view ->
                 getOnBackPressedDispatcher().onBackPressed());
     }
-    private void doDuLieuVaoAdapterThongBao(ArrayList<ThongBao> tblist) {
-
-    }
-    private void thongBao() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database.getReference("ThongBao");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(listThongbao != null)
-                {
-                    listThongbao.clear();
-                }
-
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    ThongBao thongBao = postSnapshot.getValue(ThongBao.class);
-                    listThongbao.add(thongBao);
-                    Log.d("motttmt", "onDataChange: " + thongBao.getTieude());
-                }
-                adapterThongBao= new AdapterThongBao(thongbao.this, R.layout.layout_thongbao, listThongbao);
-                gridViewThongbao.setAdapter(adapterThongBao);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(thongbao.this, "Fail", Toast.LENGTH_SHORT).show();
-            }
-        });
+    private void AnhXa(){
+        trangchu = (LinearLayout) findViewById(R.id.f_muasam);
+        danhmuc = (LinearLayout) findViewById(R.id.f_danhmuc);
+        giohang = (LinearLayout) findViewById(R.id.f_giohang);
+        thongtin = (LinearLayout) findViewById(R.id.f_toi);
+        gridViewThongbao = (ExpandableHeightGridView) findViewById(R.id.gridThongBao);
+        gridViewThongbao.setExpanded(true);
     }
 }

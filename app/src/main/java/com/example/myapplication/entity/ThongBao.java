@@ -1,49 +1,60 @@
 package com.example.myapplication.entity;
 
-public class ThongBao {
-    private String tieude;
-    private String hinhanh;
-    private String mota;
-    private String loaithongbao;
+import java.util.Date;
 
-    public ThongBao(String tieude, String hinhanh, String mota, String loaithongbao) {
-        this.tieude = tieude;
-        this.hinhanh = hinhanh;
-        this.mota = mota;
-        this.loaithongbao = loaithongbao;
+public class ThongBao {
+   private int id;
+   private String idSanPham;
+   private String idNguoiDang;
+   private String NoiDung;
+   private int ngayBL;
+    public ThongBao(int id, String idSanPham, String idNguoiDang, String noiDung, int ngayBL) {
+        this.id = id;
+        this.idSanPham = idSanPham;
+        this.idNguoiDang = idNguoiDang;
+        NoiDung = noiDung;
+        this.ngayBL = ngayBL;
     }
     public ThongBao() {
     }
 
-    public String getTieude() {
-        return tieude;
+    public int getId() {
+        return id;
     }
 
-    public void setTieude(String tieude) {
-        this.tieude = tieude;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getHinhanh() {
-        return hinhanh;
+    public String getIdSanPham() {
+        return idSanPham;
     }
 
-    public void setHinhanh(String hinhanh) {
-        this.hinhanh = hinhanh;
+    public void setIdSanPham(String idSanPham) {
+        this.idSanPham = idSanPham;
     }
 
-    public String getMota() {
-        return mota;
+    public String getIdNguoiDang() {
+        return idNguoiDang;
     }
 
-    public void setMota(String mota) {
-        this.mota = mota;
+    public void setIdNguoiDang(String idNguoiDang) {
+        this.idNguoiDang = idNguoiDang;
     }
 
-    public String getLoaithongbao() {
-        return loaithongbao;
+    public String getNoiDung() {
+        return NoiDung;
     }
 
-    public void setLoaithongbao(String loaithongbao) {
-        this.loaithongbao = loaithongbao;
+    public void setNoiDung(String noiDung) {
+        NoiDung = noiDung;
+    }
+
+    public int getNgayBL() {
+        return ngayBL;
+    }
+
+    public void setNgayBL(int ngayBL) {
+        this.ngayBL = ngayBL;
     }
 }

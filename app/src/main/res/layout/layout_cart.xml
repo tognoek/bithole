@@ -7,12 +7,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#D9D9D9"
+        android:background="@drawable/background_vong"
         android:orientation="vertical"
         android:layout_margin="5dp">
         <LinearLayout
             android:id="@+id/shop"
-            android:layout_margin="2dp"
+            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#E881C675"
@@ -41,6 +41,7 @@
             android:id="@+id/sanpham"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#D9D9D9"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:layout_margin="10dp">

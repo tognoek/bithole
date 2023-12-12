@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.example.myapplication.adapter.AdapterComment;
 import com.example.myapplication.adapter.AdapterSanPham;
 import com.example.myapplication.entity.ComMent;
+import com.example.myapplication.entity.ThongBao;
 import com.example.myapplication.shop.detail_shop;
 import com.example.myapplication.thanhtoan.activity_thanhtoan;
 import com.example.myapplication.thuvien.CustomProgressDialog;
@@ -149,6 +150,7 @@ public class detail extends AppCompatActivity {
                 String time = new FormatTime(formattedDateTime).getTime();
                 ComMent comMent = new ComMent(PublicFunciton.getNameUser(), noidung, PublicFunciton.getIdUser(), time);
                 addComMent(comMent);
+                thongBao();
                 binhluan.setText("");
             }
         });
@@ -326,8 +328,37 @@ public class detail extends AppCompatActivity {
         });
     }
 
+    private void doDuLieuVaoAdapterThongBao(){
 
+    }
+    private void thongBao(){
+        int idProduct = sanPham.getId();
+        String idNguoiDang = PublicFunciton.getIdUser();
+        String ngayBL = PublicFunciton.getDay();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("ThongBao");
+        DatabaseReference databaseReferenceTB = databaseReference.child(String.valueOf(sanPham.getIdshop()));
+        databaseReferenceTB.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ThongBao thongbao = new ThongBao();
+                thongbao.setId(1);
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                   ThongBao thongbaoTmp = postSnapshot.getValue(ThongBao.class);
+                   thongbao.setId(thongbaoTmp.getId() + 1);
+                }
+                thongbao.setIdNguoiDang(idNguoiDang);
+                thongbao.setIdSanPham(String.valueOf(idProduct));
+                thongbao.setNgayBL(new FormatTime(ngayBL).getTimeInteger());
+                databaseReferenceTB.child(String.valueOf(thongbao.getId())).setValue(thongbao);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
     private void doDuLieuVaoAdapterComMent() {
         listComMent = new ArrayList<>();
         adapterComment= new AdapterComment(this, R.layout.layout_comment, listComMent);
