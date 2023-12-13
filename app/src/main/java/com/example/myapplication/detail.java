@@ -99,7 +99,9 @@ public class detail extends AppCompatActivity {
         adapterComment.setHanderButton(new AdapterComment.HanderButton() {
             @Override
             public void setOnlickLike(int positon) {
-                Log.d("aaaa", "setOnlickLike: " + positon);
+                Log.d("vi tri like", "setOnlickLike: " + positon);
+//                thongBao(2);
+                PublicFunciton.taoThongBao(sanPham.getId(), listComMent.get(positon).getId(), 2);
             }
         });
 
@@ -120,7 +122,11 @@ public class detail extends AppCompatActivity {
         liner_giohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addCart();
+                if (sanPham.getSoluong() > 0){
+                    addCart();
+                }else{
+                    Toast.makeText(detail.this, "Hàng đã hết!! Xin lỗi bạn", Toast.LENGTH_SHORT).show();
+                }
             }
 
         });
@@ -148,9 +154,10 @@ public class detail extends AppCompatActivity {
                 String noidung= binhluan.getText().toString().trim();
                 String formattedDateTime = PublicFunciton.getDay();
                 String time = new FormatTime(formattedDateTime).getTime();
-                ComMent comMent = new ComMent(PublicFunciton.getNameUser(), noidung, PublicFunciton.getIdUser(), time);
+                ComMent comMent = new ComMent(PublicFunciton.getNameUser(), noidung, PublicFunciton.getIdUser(),0,  time);
                 addComMent(comMent);
-                thongBao();
+//                thongBao(1);
+                PublicFunciton.taoThongBao(sanPham.getId(), sanPham.getIdshop(), 1);
                 binhluan.setText("");
             }
         });
@@ -189,9 +196,10 @@ public class detail extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    ComMent comMent = postSnapshot.getValue(ComMent.class);
-                    listComMent.add(comMent);
+                    ComMent comMentTmp = postSnapshot.getValue(ComMent.class);
+                    listComMent.add(comMentTmp);
                 }
+                comMent.setStt(listComMent.size() + 1);
                 listComMent.add(comMent);
                 databaseReference.child(String.valueOf(idProduct)).child(String.valueOf(listComMent.size())).setValue(comMent);
             }
@@ -214,6 +222,7 @@ public class detail extends AppCompatActivity {
         databaseReferenceUser.addListenerForSingleValueEvent (new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                customProgressDialog.dismiss();
                 boolean Update = false;
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     ListCard card = postSnapshot.getValue(ListCard.class);
@@ -221,16 +230,20 @@ public class detail extends AppCompatActivity {
                     assert card != null;
                     if (card.getId() == idProduct && !Update){
                         Update = true;
-                        card.setSoluong(card.getSoluong() + 1);
-                        databaseReferenceUser.child(String.valueOf(card.getId())).setValue(card);
+                        if (sanPham.getSoluong() > card.getSoluong()){
+                            card.setSoluong(card.getSoluong() + 1);
+                            databaseReferenceUser.child(String.valueOf(card.getId())).setValue(card);
+                            Toast.makeText(detail.this, "Đã thêm thành công sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(detail.this, "Số lượng đơn hàng tương tự của bạn đã vượt quá số lượng còn lại của sản phẩm!!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
                 if (!Update){
                     ListCard card = new ListCard(idProduct, 1);
                     databaseReferenceUser.child(String.valueOf(card.getId())).setValue(card);
+                    Toast.makeText(detail.this, "Đã thêm thành công sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                 }
-                customProgressDialog.dismiss();
-                Toast.makeText(detail.this, "Đã thêm thành công sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -298,6 +311,7 @@ public class detail extends AppCompatActivity {
                 Intent intent = new Intent(detail.this, detail.class);
                 intent.putExtra("SanPham", listSanPham.get(i));
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -327,29 +341,33 @@ public class detail extends AppCompatActivity {
             }
         });
     }
-
-    private void doDuLieuVaoAdapterThongBao(){
-
-    }
-    private void thongBao(){
+    private void thongBao(int loaiTb){
         int idProduct = sanPham.getId();
         String idNguoiDang = PublicFunciton.getIdUser();
         String ngayBL = PublicFunciton.getDay();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference("ThongBao");
-        DatabaseReference databaseReferenceTB = databaseReference.child(String.valueOf(sanPham.getIdshop()));
+        DatabaseReference databaseReferenceTB = databaseReference.child(sanPham.getIdshop());
         databaseReferenceTB.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ThongBao thongbao = new ThongBao();
                 thongbao.setId(1);
+                thongbao.setNgay(new FormatTime(ngayBL).getTimeInteger());
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                    ThongBao thongbaoTmp = postSnapshot.getValue(ThongBao.class);
-                   thongbao.setId(thongbaoTmp.getId() + 1);
+                    assert thongbaoTmp != null;
+                    if (loaiTb == thongbaoTmp.getLoaiTb()) {
+                       if (thongbaoTmp.getIdNguoiDang().equals(idNguoiDang) && thongbaoTmp.getNgay() == thongbao.getNgay()) {
+                           thongbao.setId(thongbaoTmp.getId());
+                           break;
+                       }
+                   }
+                    thongbao.setId(thongbaoTmp.getId() + 1);
                 }
                 thongbao.setIdNguoiDang(idNguoiDang);
                 thongbao.setIdSanPham(String.valueOf(idProduct));
-                thongbao.setNgayBL(new FormatTime(ngayBL).getTimeInteger());
+                thongbao.setLoaiTb(loaiTb);
                 databaseReferenceTB.child(String.valueOf(thongbao.getId())).setValue(thongbao);
             }
 
@@ -361,7 +379,7 @@ public class detail extends AppCompatActivity {
     }
     private void doDuLieuVaoAdapterComMent() {
         listComMent = new ArrayList<>();
-        adapterComment= new AdapterComment(this, R.layout.layout_comment, listComMent);
+        adapterComment= new AdapterComment(this, R.layout.layout_comment, listComMent, sanPham.getId());
         gridViewComment.setAdapter(adapterComment);
     }
     private void comMent() {

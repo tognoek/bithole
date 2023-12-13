@@ -2,18 +2,21 @@ package com.example.myapplication.entity;
 
 import java.util.Date;
 
-public class ThongBao {
+public class ThongBao implements Comparable<ThongBao>{
    private int id;
    private String idSanPham;
    private String idNguoiDang;
+   //1: Binh luan || 2: Tuong tac binh luan || 3: Dat hang
+   private int loaiTb;
    private String NoiDung;
-   private int ngayBL;
-    public ThongBao(int id, String idSanPham, String idNguoiDang, String noiDung, int ngayBL) {
+   private int ngay;
+    public ThongBao(int id, String idSanPham, String idNguoiDang, int loaiTb, String noiDung, int ngay) {
         this.id = id;
         this.idSanPham = idSanPham;
         this.idNguoiDang = idNguoiDang;
+        this.loaiTb = loaiTb;
         NoiDung = noiDung;
-        this.ngayBL = ngayBL;
+        this.ngay = ngay;
     }
     public ThongBao() {
     }
@@ -42,6 +45,14 @@ public class ThongBao {
         this.idNguoiDang = idNguoiDang;
     }
 
+    public int getLoaiTb() {
+        return loaiTb;
+    }
+
+    public void setLoaiTb(int loaiTb) {
+        this.loaiTb = loaiTb;
+    }
+
     public String getNoiDung() {
         return NoiDung;
     }
@@ -50,11 +61,16 @@ public class ThongBao {
         NoiDung = noiDung;
     }
 
-    public int getNgayBL() {
-        return ngayBL;
+    public int getNgay() {
+        return ngay;
     }
 
-    public void setNgayBL(int ngayBL) {
-        this.ngayBL = ngayBL;
+    public void setNgay(int ngay) {
+        this.ngay = ngay;
+    }
+
+    @Override
+    public int compareTo(ThongBao thongBao) {
+        return Integer.compare(thongBao.getNgay(), this.getNgay());
     }
 }

@@ -8,8 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_vong"
-        android:orientation="vertical"
-        android:layout_margin="5dp">
+        android:orientation="vertical">
         <LinearLayout
             android:id="@+id/shop"
             android:layout_margin="5dp"
@@ -41,20 +40,22 @@
             android:id="@+id/sanpham"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#D9D9D9"
-            android:layout_marginTop="20dp"
+            android:background="@drawable/background_vong"
             android:orientation="horizontal"
+            android:paddingBottom="10dp"
             android:layout_margin="10dp">
             <ImageView
                 android:id="@+id/hinhanhSanPham"
                 android:layout_width="100dp"
-                android:layout_height="100dp"
-                tools:src="@drawable/lht_img_11" />
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="6dp"
+                android:layout_height="100dp"/>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:orientation="vertical">
                 <TextView
@@ -98,6 +99,8 @@
                 android:id="@+id/img_xoa"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:src="@drawable/cart_remove"
                 android:clickable="true"
                 />

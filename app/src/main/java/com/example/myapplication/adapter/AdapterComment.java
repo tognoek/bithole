@@ -17,14 +17,15 @@ import androidx.annotation.Nullable;
 
 import com.example.myapplication.R;
 import com.example.myapplication.entity.ComMent;
+import com.example.myapplication.thuvien.PublicFunciton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.Firebase;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -39,12 +40,14 @@ public class AdapterComment extends ArrayAdapter {
 
     private final int like = R.drawable.icon_like;
     private final int like_truoc = R.drawable.icon_liketruoc;
+    private int IdSanPham;
 
-    public AdapterComment(@NonNull Activity context, int idLayout, ArrayList<ComMent> myList) {
+    public AdapterComment(@NonNull Activity context, int idLayout, ArrayList<ComMent> myList, int IdSanPham) {
         super(context, idLayout, myList);
         this.context = context;
         this.idLayout = idLayout;
         this.myList = myList;
+        this.IdSanPham = IdSanPham;
     }
 
     @NonNull
@@ -59,6 +62,53 @@ public class AdapterComment extends ArrayAdapter {
         TextView time = convertView.findViewById(R.id.timeBL);
         TextView user = convertView.findViewById(R.id.tenUserBL);
         ImageView buttonlike = convertView.findViewById(R.id.btnlike);
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Like")
+                .child(PublicFunciton.getIdUser())
+                        .child(String.valueOf(this.IdSanPham))
+                                .child(String.valueOf(itemnew.getStt()));
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    int check = snapshot.getValue(Integer.class);
+                    Log.d("check", "check: True: " + position );
+                    if (check == 1){
+                        buttonlike.setImageResource(R.drawable.icon_like);
+                        buttonlike.setTag(like);
+                    }
+                    else{
+                        buttonlike.setImageResource(R.drawable.icon_liketruoc);
+                        buttonlike.setTag(like_truoc);
+                    }
+
+                }
+                else{
+                    Log.d("check", "check: False: " + position);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+//        databaseReference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (task.isSuccessful()){
+//                    if (Integer.parseInt(String.valueOf(task.getResult().getValue())) == 1){
+//                        buttonlike.setImageResource(R.drawable.icon_like);
+//                        buttonlike.setTag(like);
+//                    }
+//                    else{
+//                        buttonlike.setImageResource(R.drawable.icon_liketruoc);
+//                        buttonlike.setTag(like_truoc);
+//                    }
+//                }
+//            }
+//        });
 
         PRODUCT_IMAGE_USER_REF.child(itemnew.getId()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -75,19 +125,24 @@ public class AdapterComment extends ArrayAdapter {
             public void onClick(View view) {
                 handerButton.setOnlickLike(position);
                 if (buttonlike.getTag() != null){
-                    Log.d("tag button like", "onClick: " + Integer.parseInt(String.valueOf(buttonlike.getTag())));
                     if (Integer.parseInt(String.valueOf(buttonlike.getTag())) == like_truoc){
                         buttonlike.setImageResource(R.drawable.icon_like);
+                        Log.d("like", "onClick: like" );
+                        SetLike(String.valueOf(itemnew.getStt()), 1);
                         buttonlike.setTag(like);
                     }
                     else{
                         buttonlike.setImageResource(R.drawable.icon_liketruoc);
+                        SetLike(String.valueOf(itemnew.getStt()), 0);
                         buttonlike.setTag(like_truoc);
+                        Log.d("like", "onClick: dislike" );
                     }
                 }
                 else{
                     buttonlike.setImageResource(R.drawable.icon_like);
+                    SetLike(String.valueOf(itemnew.getStt()), 1);
                     buttonlike.setTag(like);
+                    Log.d("like", "onClick: like" );
                 }
             }
         });
@@ -97,8 +152,7 @@ public class AdapterComment extends ArrayAdapter {
 //        UserRecord userRecord = FirebaseAuth.getInstance().(itemnew.getId());
 //        user.setText(itemnew.getName());
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference("User");
+        databaseReference = firebaseDatabase.getReference("User");
         DatabaseReference userRef = databaseReference.child(itemnew.getId());
         userRef.child("ten").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -117,6 +171,15 @@ public class AdapterComment extends ArrayAdapter {
 
     public void setHanderButton(HanderButton handerButton){
         this.handerButton = handerButton;
+    }
+
+    private void SetLike(String stt, int value){
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Like")
+                .child(PublicFunciton.getIdUser())
+                .child(String.valueOf(this.IdSanPham))
+                .child(stt);
+        databaseReference.setValue(value);
     }
 
     public interface HanderButton{
