@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.example.myapplication.adapter.AdapterComment;
@@ -25,13 +26,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class thongbao extends AppCompatActivity {
 
     private LinearLayout trangchu;
     private LinearLayout danhmuc;
     private LinearLayout giohang;
-    private LinearLayout thongtin;
+    private LinearLayout thongtin, khongthongthao;
+    private ScrollView scrollView;
     private ExpandableHeightGridView gridViewThongbao;
 
     private AdapterThongBao adapterThongBao;
@@ -66,6 +69,14 @@ public class thongbao extends AppCompatActivity {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     ThongBao thongBao = postSnapshot.getValue(ThongBao.class);
                     listThongbao.add(thongBao);
+                }
+                if (listThongbao.isEmpty()){
+                    khongthongthao.setVisibility(View.VISIBLE);
+                    scrollView.setVisibility(View.GONE);
+                }else{
+                    Collections.sort(listThongbao);
+                    khongthongthao.setVisibility(View.GONE);
+                    scrollView.setVisibility(View.VISIBLE);
                 }
                adapterThongBao.notifyDataSetChanged();
             }
@@ -115,5 +126,7 @@ public class thongbao extends AppCompatActivity {
         thongtin = (LinearLayout) findViewById(R.id.f_toi);
         gridViewThongbao = (ExpandableHeightGridView) findViewById(R.id.gridThongBao);
         gridViewThongbao.setExpanded(true);
+        khongthongthao = findViewById(R.id.khongthongbao);
+        scrollView = findViewById(R.id.scrollview);
     }
 }

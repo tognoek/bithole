@@ -63,9 +63,11 @@ public class AdapterThongBao extends ArrayAdapter {
                 databaseReference1.removeEventListener(this);
                 SanPham sanPham = snapshot.getValue(SanPham.class);
                 convertView1.setOnClickListener(v -> {
-                    Intent intent = new Intent(v.getContext(), detail.class);
-                    intent.putExtra("SanPham", sanPham);
-                    v.getContext().startActivity(intent);
+                    if (itemnew.getLoaiTb() != 3){
+                        Intent intent = new Intent(v.getContext(), detail.class);
+                        intent.putExtra("SanPham", sanPham);
+                        v.getContext().startActivity(intent);
+                    }
                 });
             }
 
@@ -78,7 +80,17 @@ public class AdapterThongBao extends ArrayAdapter {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String ten = snapshot.getValue(String.class);
-                tieude.setText(ten + " đã bình luận vào bài đăng của bạn");
+                switch (itemnew.getLoaiTb()){
+                    case 1 -> {
+                        tieude.setText(ten + " đã bình luận vào bài đăng của bạn");
+                    }
+                    case 2 -> {
+                        tieude.setText(ten + " đã like bình luận của bạn");
+                    }
+                    case 3 -> {
+                        tieude.setText("Bạn có đơn hàng từ: " + ten);
+                    }
+                }
             }
 
             @Override
@@ -86,7 +98,7 @@ public class AdapterThongBao extends ArrayAdapter {
 
             }
         });
-        ngaybl.setText(new FormatTime(String.valueOf(itemnew.getNgayBL())).getTimeTwo());
+        ngaybl.setText(new FormatTime(String.valueOf(itemnew.getNgay())).getTimeTwo());
         if (!itemnew.getIdNguoiDang().equals("null"))
             PRODUCT_IMAGE_USER_REF.child(itemnew.getIdNguoiDang()).getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(hinhAnhImageView));
 

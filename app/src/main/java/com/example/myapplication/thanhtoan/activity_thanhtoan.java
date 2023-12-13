@@ -89,6 +89,7 @@ public class activity_thanhtoan extends AppCompatActivity {
     }
     private void update(){
         tientra = tongtien - tiengiam;
+        tientra = Math.max(tientra, 0);
         texttientra.setText(new FormatVND(String.valueOf(tientra)).getVND());
     }
 

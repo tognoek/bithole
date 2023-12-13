@@ -66,15 +66,18 @@ public class thucThiThanhToan extends AppCompatActivity {
                             soluong = listsoluong.get(i);
                             databaseReference.child(String.valueOf(listCard.getId())).removeValue();
                             DatabaseReference databaseReferenceSanPham = firebaseDatabase.getReference("SanPham").child(String.valueOf(listCard.getId()));
-                            databaseReferenceSanPham.child("soluong").addListenerForSingleValueEvent(new ValueEventListener() {
+                            databaseReferenceSanPham.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    Integer soluognsanpham = snapshot.getValue(Integer.class);
+                                    SanPham sanPham = snapshot.getValue(SanPham.class);
+                                    assert sanPham != null;
+                                    int soluognsanpham = sanPham.getSoluong();
                                     if (soluognsanpham <= soluong){
-                                        databaseReferenceSanPham.removeValue();
+                                        databaseReferenceSanPham.child("soluong").setValue(0);
                                     }else{
                                         databaseReferenceSanPham.child("soluong").setValue(soluognsanpham - soluong);
                                     }
+                                    PublicFunciton.taoThongBao(listCard.getId(), sanPham.getIdshop(), 3);
                                 }
 
                                 @Override
