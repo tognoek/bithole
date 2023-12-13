@@ -11,32 +11,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center"
         android:background="@color/pink">
         <ImageView
             android:id="@+id/trove"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/s_trove"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp">
+            android:layout_marginStart="15dp">
         </ImageView>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ƯU ĐÃI CỦA SHOP"
-            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
             android:textSize="25sp"
-            android:textStyle="bold"
-            android:gravity="center_vertical"
-            android:layout_gravity="center">
+            android:textStyle="bold">
         </TextView>
         <ImageView
             android:layout_alignParentEnd="true"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_gravity="center|right"
             android:src="@drawable/hvt_vegg"
-            android:layout_marginRight="5dp">
+            android:layout_marginRight="15dp">
         </ImageView>
     </RelativeLayout>
     <LinearLayout
@@ -157,8 +154,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/hvt_round_date"
                 android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp">
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:layout_gravity="center">
             </TextView>
             <TextView
                 android:layout_width="wrap_content"
@@ -170,23 +168,15 @@
                 android:layout_gravity="center">
             </TextView>
             <LinearLayout
-                android:layout_width="250dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/hvt_round_date1">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/hvt_caret_up_solid"
-                        android:layout_gravity="center">
-                    </ImageView>
                     <EditText
                         android:id="@+id/text1"
                         android:layout_width="40dp"
@@ -194,111 +184,43 @@
                         android:textSize="20sp"
                         android:inputType="number"
                         android:maxLength="1"
+                        android:layout_marginStart="10dp"
                         android:gravity="center"
                         android:background="@drawable/hvt_round_date1">
                     </EditText>
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/hvt_caret_down_solid"
-                        android:layout_gravity="center">
-                    </ImageView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/hvt_caret_up_solid"
-                        android:layout_gravity="center">
-                    </ImageView>
                     <EditText
                         android:id="@+id/text2"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
                         android:inputType="number"
+                        android:layout_marginStart="10dp"
                         android:maxLength="1"
                         android:gravity="center"
                         android:background="@drawable/hvt_round_date1">
                     </EditText>
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/hvt_caret_down_solid"
-                        android:layout_gravity="center">
-                    </ImageView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginRight="10dp">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/hvt_caret_up_solid"
-                        android:layout_gravity="center">
-                    </ImageView>
                     <EditText
                         android:id="@+id/text3"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
                         android:inputType="number"
+                        android:layout_marginStart="10dp"
                         android:maxLength="1"
                         android:gravity="center"
                         android:background="@drawable/hvt_round_date1">
                     </EditText>
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/hvt_caret_down_solid"
-                        android:layout_gravity="center">
-                    </ImageView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginRight="10dp">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/hvt_caret_up_solid"
-                        android:layout_gravity="center">
-                    </ImageView>
                     <EditText
                         android:id="@+id/text4"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textSize="20sp"
                         android:inputType="number"
+                        android:layout_marginStart="10dp"
                         android:maxLength="1"
                         android:gravity="center"
                         android:background="@drawable/hvt_round_date1">
                     </EditText>
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/hvt_caret_down_solid"
-                        android:layout_gravity="center">
-                    </ImageView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/hvt_caret_up_solid"
-                        android:layout_gravity="center">
-                    </ImageView>
                     <EditText
                         android:id="@+id/text5"
                         android:layout_width="40dp"
@@ -306,16 +228,11 @@
                         android:textSize="20sp"
                         android:maxLength="1"
                         android:inputType="number"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
                         android:gravity="center"
                         android:background="@drawable/hvt_round_date1">
                     </EditText>
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/hvt_caret_down_solid"
-                        android:layout_gravity="center">
-                    </ImageView>
-                </LinearLayout>
             </LinearLayout>
             <TextView
                 android:id="@+id/start"
@@ -364,31 +281,39 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kết quả phiên quay lần trước"
+                    android:text="Kết quả phiên quay lần trước: "
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:textSize="18dp">
                 </TextView>
+                <TextView
+                    android:id="@+id/ketqua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="32134"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/pink"
         android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        android:weightSum="2">y
+        android:paddingBottom="10dp"
+        android:weightSum="2">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_margin="10dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/hvt_round_date1">
+            android:background="@drawable/hvt_round_date2">
             <ImageView
                 android:layout_width="55dp"
                 android:layout_height="55dp"
+                android:padding="10dp"
                 android:src="@drawable/hvt_history_ic"
                 android:layout_gravity="center">
             </ImageView>
@@ -401,15 +326,17 @@
             </TextView>
         </LinearLayout>
         <LinearLayout
+            android:layout_margin="10dp"
             android:id="@+id/themLuot"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/hvt_round_date1">
+            android:background="@drawable/hvt_round_date2">
             <ImageView
                 android:layout_width="55dp"
                 android:layout_height="55dp"
+                android:padding="10dp"
                 android:src="@drawable/hvt_themmoi_ic"
                 android:layout_gravity="center">
             </ImageView>

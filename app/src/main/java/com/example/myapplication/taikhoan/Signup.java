@@ -69,6 +69,7 @@ public class Signup extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Signup.this, MainActivity.class);
                 startActivity(intent);
+                finishAffinity();
             }
         });
     }
@@ -126,7 +127,7 @@ public class Signup extends AppCompatActivity {
                                                     userRef.child(fUser.getUid()).setValue(user);
                                                     Intent intent = new Intent(Signup.this, activity_trangchu.class);
                                                     startActivity(intent);
-                                                    finishAffinity();
+                                                    finish();
                                                 }
                                                 else{
                                                     Toast.makeText(Signup.this, "Authentication failed.",

@@ -15,7 +15,7 @@ public class ThongBao implements Comparable<ThongBao>{
         this.idSanPham = idSanPham;
         this.idNguoiDang = idNguoiDang;
         this.loaiTb = loaiTb;
-        NoiDung = noiDung;
+        this.NoiDung = noiDung;
         this.ngay = ngay;
     }
     public ThongBao() {

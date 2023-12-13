@@ -56,8 +56,8 @@ public class SecondActivity extends AppCompatActivity {
         gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                finish();
                 startActivity(new Intent(SecondActivity.this, activity_trangchu.class));
+                finish();
             }
         });
     }

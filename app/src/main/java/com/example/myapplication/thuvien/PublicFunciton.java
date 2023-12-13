@@ -57,7 +57,12 @@ public class PublicFunciton {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return currentDateTime.format(formatter);
     }
-
+    public static String getYesterday() {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDateTime yesterdayDateTime = currentDateTime.minusDays(1);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return yesterdayDateTime.format(formatter);
+    }
     public static void taoThongBao(int idProduct, String idShop, int loaiTb){
         if (idShop.equals(PublicFunciton.getIdUser())){
             return;
