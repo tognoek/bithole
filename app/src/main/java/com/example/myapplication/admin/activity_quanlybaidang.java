@@ -28,6 +28,7 @@ import com.example.myapplication.adapter.AdapterSanPham;
 import com.example.myapplication.adapter.AdapterSanPhamQuanLy;
 import com.example.myapplication.detail;
 import com.example.myapplication.entity.SanPham;
+import com.example.myapplication.taikhoan.NguoiDungActivity;
 import com.example.myapplication.thuvien.ExpandableHeightGridView;
 import com.example.myapplication.thuvien.PublicFunciton;
 import com.google.firebase.database.DataSnapshot;
@@ -156,9 +157,9 @@ public class activity_quanlybaidang extends AppCompatActivity implements OnItemC
     }
 
     private void oneClick() {
-        imageView_trove.setOnClickListener(view ->
-                getOnBackPressedDispatcher().onBackPressed()
-        );
+        imageView_trove.setOnClickListener(view ->{
+            startActivity(new Intent(getApplicationContext(), NguoiDungActivity.class));
+        });
 
         linear_dangbai.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), DangSanPhamActivity.class))

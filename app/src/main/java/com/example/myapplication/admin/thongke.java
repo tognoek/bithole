@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.myapplication.R;
+import com.example.myapplication.taikhoan.NguoiDungActivity;
 
 public class thongke extends AppCompatActivity {
     private LinearLayout linear_dangbai;
@@ -29,10 +31,15 @@ public class thongke extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), thongkedoanhthu.class))
         );
 
+
         linear_qlbaidang = findViewById(R.id.f_qlbaidang);
-        linear_qlbaidang.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), activity_quanlybaidang.class))
+        linear_qlbaidang.setOnClickListener(view -> {
+                    startActivity(new Intent(getApplicationContext(), activity_quanlybaidang.class));
+                    finish();
+                }
         );
-        findViewById(R.id.icontrove).setOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
+        findViewById(R.id.icontrove).setOnClickListener(view ->{
+            startActivity(new Intent(getApplicationContext(), NguoiDungActivity.class));
+        });
     }
 }

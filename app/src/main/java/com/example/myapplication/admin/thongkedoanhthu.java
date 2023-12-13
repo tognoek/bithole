@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.myapplication.R;
+import com.example.myapplication.taikhoan.NguoiDungActivity;
 
 public class thongkedoanhthu extends AppCompatActivity {
     private LinearLayout tknx, qlbaidang, dangbai;
@@ -24,6 +25,7 @@ public class thongkedoanhthu extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), thongke.class);
                 startActivity(intent);
+                finish();
             }
         });
         qlbaidang.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +33,7 @@ public class thongkedoanhthu extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), activity_quanlybaidang.class);
                 startActivity(intent);
+                finish();
             }
         });
         dangbai.setOnClickListener(new View.OnClickListener() {
@@ -38,8 +41,12 @@ public class thongkedoanhthu extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DangSanPhamActivity.class);
                 startActivity(intent);
+                finish();
+
             }
         });
-        findViewById(R.id.icontrove).setOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
+        findViewById(R.id.icontrove).setOnClickListener(view ->{
+            startActivity(new Intent(getApplicationContext(), NguoiDungActivity.class));
+        });
     }
 }

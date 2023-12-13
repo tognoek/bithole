@@ -23,6 +23,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.adapter.AdapterDanhMuc;
 import com.example.myapplication.entity.DanhMuc;
 import com.example.myapplication.entity.SanPham;
+import com.example.myapplication.taikhoan.NguoiDungActivity;
 import com.example.myapplication.thuvien.CustomProgressDialog;
 import com.example.myapplication.thuvien.PublicFunciton;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -228,7 +229,7 @@ public class UpdateDetailProduct extends AppCompatActivity {
     }
     private void onClick(){
         imageView_trove.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), activity_quanlybaidang.class));
+            startActivity(new Intent(getApplicationContext(), NguoiDungActivity.class));
             finish();
         });
     }
