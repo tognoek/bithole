@@ -63,7 +63,7 @@ public class PublicFunciton {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return yesterdayDateTime.format(formatter);
     }
-    public static void taoThongBao(int idProduct, String idShop, int loaiTb){
+    public static void taoThongBao(int idProduct, @NonNull String idShop, int loaiTb){
         if (idShop.equals(PublicFunciton.getIdUser())){
             return;
         }
@@ -93,6 +93,33 @@ public class PublicFunciton {
                 thongbao.setIdSanPham(String.valueOf(idProduct));
                 thongbao.setLoaiTb(loaiTb);
                 databaseReferenceTB.child(String.valueOf(thongbao.getId())).setValue(thongbao);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public static void updateTien(int tien) {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Money").child(PublicFunciton.getIdUser());
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    Integer tienTong = snapshot.getValue(Integer.class);
+                    Integer sumTien = tien + tienTong;
+                    if (sumTien < 0){
+                        sumTien = 0;
+                    }
+                    sumTien = Math.min(sumTien, 1000000000);
+                    databaseReference.setValue(sumTien);
+                }
+                else{
+                    databaseReference.setValue(tien);
+                }
             }
 
             @Override

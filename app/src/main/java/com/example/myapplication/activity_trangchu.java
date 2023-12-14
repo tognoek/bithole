@@ -72,13 +72,18 @@ public class activity_trangchu extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listSanPham.clear();
+                ArrayList<SanPham> listSanPhamTmp = new ArrayList<>();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     SanPham sanPham = postSnapshot.getValue(SanPham.class);
                     if (sanPham != null){
-                        if (sanPham.getId() % id == 0){
-                            listSanPham.add(sanPham);
-                        }
+                        listSanPhamTmp.add(sanPham);
                     }
+                }
+                for (int i = listSanPhamTmp.size() - 1; i > -1; i--){
+                    if (listSanPham.size() > 19){
+                        break;
+                    }
+                    listSanPham.add(listSanPhamTmp.get(i));
                 }
                 adapterSanPham.notifyDataSetChanged();
             }

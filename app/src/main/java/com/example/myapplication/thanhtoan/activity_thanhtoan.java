@@ -58,7 +58,30 @@ public class activity_thanhtoan extends AppCompatActivity {
         momo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dathang();
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference databaseReference = firebaseDatabase.getReference("Money").child(PublicFunciton.getIdUser());
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            Integer tienUser = snapshot.getValue(Integer.class);
+                            if (tientra > tienUser){
+                                Toast.makeText(getApplicationContext(), "Tài khoản bạn không đủ tiền", Toast.LENGTH_SHORT).show();
+                            }else{
+                                dathang();
+                                PublicFunciton.updateTien(tientra * (-1));
+                            }
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(), "Tài khoản bạn không đủ tiền", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
 
         });

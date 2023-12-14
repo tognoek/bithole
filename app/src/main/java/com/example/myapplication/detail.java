@@ -96,6 +96,8 @@ public class detail extends AppCompatActivity {
         //AddProductToCart
         gioHang();
         getSizeCartUser();
+
+        MuaNgay();
         adapterComment.setHanderButton(new AdapterComment.HanderButton() {
             @Override
             public void setOnlickLike(int positon) {
@@ -253,6 +255,9 @@ public class detail extends AppCompatActivity {
         });
 
     }
+    private void loadIntoImageView(String imageUrl, ImageView imageView) {
+        Picasso.get().load(imageUrl).into(imageView);
+    }
 
     private void setProductDetail() {
         name.setText(sanPham.getName());
@@ -270,14 +275,9 @@ public class detail extends AppCompatActivity {
         PRODUCT_IMAGE_REF.child(sanPham.getHinhanh()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                RequestCreator uriImage = Picasso.get().load(uri);
-                uriImage.into(image1);
-                Drawable drawable = image1.getDrawable();
-
-                if (drawable != null) {
-                    Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-                    image2.setImageBitmap(bitmap);
-                }
+                loadIntoImageView(String.valueOf(uri), image1);
+                loadIntoImageView(String.valueOf(uri), image2);
+                loadIntoImageView(String.valueOf(uri), image3);
             }
         });
 
@@ -328,9 +328,26 @@ public class detail extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listSanPham.clear();
+                ArrayList<SanPham> sanPhamArrayList = new ArrayList<>();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     SanPham sanPham = postSnapshot.getValue(SanPham.class);
-                    listSanPham.add(sanPham);
+                    sanPhamArrayList.add(sanPham);
+                }
+                for (SanPham sanPhamTmp : sanPhamArrayList){
+                    if (listSanPham.size() > 39){
+                        break;
+                    }
+                    if (sanPhamTmp.getIddanhmuc().equals(sanPham.getIddanhmuc())){
+                        listSanPham.add(sanPhamTmp);
+                    }
+                }
+                for (SanPham sanPhamTmp : sanPhamArrayList){
+                    if (listSanPham.size() > 39){
+                        break;
+                    }
+                    if (sanPhamTmp.getIdshop().equals(sanPham.getIdshop())){
+                        listSanPham.add(sanPhamTmp);
+                    }
                 }
                 adapterSanPham.notifyDataSetChanged();
             }
@@ -406,6 +423,27 @@ public class detail extends AppCompatActivity {
         });
     }
 
+    private void MuaNgay(){
+        findViewById(R.id.muangay).setOnClickListener(view -> {
+            if (sanPham.getSoluong() > 0){
+                Intent intent = new Intent(getApplicationContext(), activity_thanhtoan.class);
+                intent.putExtra("tong", (int) sanPham.getDongia());
+                intent.putExtra("soluong", 1);
+                ArrayList<Integer> listCard = new ArrayList<>();
+                listCard.add(sanPham.getId());
+                ArrayList<Integer> listSoLuong = new ArrayList<>();
+                listSoLuong.add(-10);
+                intent.putExtra("listcart", listCard);
+                intent.putExtra("listsoluong", listSoLuong);
+                startActivity(intent);
+                finish();
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "Sản phẩm đã hết hàng", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void onClick() {
         frame_vaogiohang.setOnClickListener(view ->
                 startActivity(new Intent(getApplicationContext(), GioHang.class))
@@ -415,7 +453,6 @@ public class detail extends AppCompatActivity {
                 getOnBackPressedDispatcher().onBackPressed()
         );
         findViewById(R.id.f_giohang).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), GioHang.class)));
-        findViewById(R.id.muangay).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), activity_thanhtoan.class)));
         linear_muangay.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), activity_trangchu.class)));
     }
     private void anhXa(){

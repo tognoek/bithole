@@ -126,13 +126,23 @@ public class select extends AppCompatActivity {
                 }
             }
             listSanPham.clear();
-            listSanPham.addAll(sanPhamArrayListDanhMuc);
+            for (SanPham sanPham : sanPhamArrayListDanhMuc){
+                if (listSanPham.size() > 49){
+                    break;
+                }
+                listSanPham.add(sanPham);
+            }
         }
         else{
             listSanPham.clear();
-            listSanPham.addAll(listDf);
+            for (SanPham sanPham : listDf){
+                if (listSanPham.size() > 49){
+                    break;
+                }
+                listSanPham.add(sanPham);
+            }
         }
-        funSort(sortGiaTF);
+        adapterSanPham.notifyDataSetChanged();
     }
 
     private void danhMuc() {
@@ -168,9 +178,6 @@ public class select extends AppCompatActivity {
         listSanPham = new ArrayList<>();
         adapterSanPham = new AdapterSanPham(this, R.layout.layout_item, listSanPham);
         gridView.setAdapter(adapterSanPham);
-//        listTimKiem = new ArrayList<>(listSanPham);
-//        adapterSanPham = new AdapterSanPham(this, R.layout.layout_item, listTimKiem);
-//        gridView.setAdapter(adapterSanPham);
     }
 
     private void doDuLieu() {

@@ -13,6 +13,7 @@ import com.example.myapplication.GioHang;
 import com.example.myapplication.R;
 import com.example.myapplication.SplashActivity;
 import com.example.myapplication.activity_trangchu;
+import com.example.myapplication.detail;
 import com.example.myapplication.entity.LichSuCart;
 import com.example.myapplication.entity.ListCard;
 import com.example.myapplication.entity.SanPham;
@@ -35,6 +36,7 @@ public class thucThiThanhToan extends AppCompatActivity {
     private int soluong;
     private ListCard listCard;
     private CustomProgressDialog customProgressDialog;
+    private SanPham sanPham;
     private ArrayList<LichSuCart> lichSuCarts = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +44,53 @@ public class thucThiThanhToan extends AppCompatActivity {
         setContentView(R.layout.activity_thuc_thi_thanh_toan);
         customProgressDialog = new CustomProgressDialog(this);
         getList();
-        xoaDanhSach();
+
+        if (listsoluong.get(0) > 0){
+            xoaDanhSach();
+        }else{
+            themLichSu();
+        }
     }
+
+    private void themLichSu() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReferenceLichSu = firebaseDatabase.getReference("LichSu").child(PublicFunciton.getIdUser());
+        LichSuCart lichSuCart = new LichSuCart(listcard.get(0), listcard.get(0), 1, new FormatTime(PublicFunciton.getDay()).getTimeInteger());
+        databaseReferenceLichSu.child(String.valueOf(lichSuCart.getId())).setValue(lichSuCart);
+
+        DatabaseReference databaseReferenceSanPham = firebaseDatabase.getReference("SanPham").child(String.valueOf(listcard.get(0)));
+        databaseReferenceSanPham.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                sanPham = snapshot.getValue(SanPham.class);
+                assert sanPham != null;
+                int soluognsanpham = sanPham.getSoluong();
+                if (soluognsanpham <= 1){
+                    databaseReferenceSanPham.child("soluong").setValue(0);
+                }else{
+                    databaseReferenceSanPham.child("soluong").setValue(soluognsanpham - 1);
+                }
+                PublicFunciton.taoThongBao(listcard.get(0), sanPham.getIdshop(), 3);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), detail.class);
+                sanPham.setSoluong(sanPham.getSoluong() - 1);
+                intent.putExtra("SanPham", sanPham);
+                startActivity(intent);
+                finish();
+            }
+        }, 1000);
+    }
+
     private void getList(){
         Intent intent = getIntent();
         if (intent.hasExtra("listsoluong")){
