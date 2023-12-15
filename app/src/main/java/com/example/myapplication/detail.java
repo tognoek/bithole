@@ -337,7 +337,7 @@ public class detail extends AppCompatActivity {
                     if (listSanPham.size() > 39){
                         break;
                     }
-                    if (sanPhamTmp.getIddanhmuc().equals(sanPham.getIddanhmuc())){
+                    if (sanPhamTmp.getIddanhmuc().equals(sanPham.getIddanhmuc()) && sanPhamTmp.getId() != sanPham.getId()){
                         listSanPham.add(sanPhamTmp);
                     }
                 }
@@ -345,7 +345,14 @@ public class detail extends AppCompatActivity {
                     if (listSanPham.size() > 39){
                         break;
                     }
-                    if (sanPhamTmp.getIdshop().equals(sanPham.getIdshop())){
+                    boolean check = false;
+                    for (SanPham sanPhamCheck : listSanPham){
+                        if (sanPhamCheck.getId() == sanPhamTmp.getId()){
+                            check = true;
+                            break;
+                        }
+                    }
+                    if (!check && sanPhamTmp.getIdshop().equals(sanPham.getIdshop()) && sanPhamTmp.getId() != sanPham.getId()){
                         listSanPham.add(sanPhamTmp);
                     }
                 }
