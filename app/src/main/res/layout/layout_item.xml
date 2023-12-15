@@ -14,7 +14,7 @@
 
         <ImageView
             android:paddingTop="10dp"
-            android:id="@+id/hinhanh"
+            tools:id="@+id/hinhanh"
             android:layout_width="match_parent"
             android:layout_height="210dp"
             android:layout_gravity="center"

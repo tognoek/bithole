@@ -120,7 +120,7 @@ public class UpdateDetailProduct extends AppCompatActivity {
                     danhMucArrayList.add(danhMuc);
                 }
                 adapterDanhMuc.notifyDataSetChanged();
-                danhmuc.setSelection(Integer.parseInt(sanPhamEdit.getIddanhmuc()));
+                danhmuc.setSelection(Integer.parseInt(sanPhamEdit.getIddanhmuc()) - 1);
             }
 
             @Override
